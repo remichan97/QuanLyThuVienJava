@@ -106,6 +106,11 @@ public class frmSignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+        if (txtUsername.getText().isEmpty() || new String(txtPassword.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng điền tên đăng nhập và mật khẩu tương ứng!", "Thiếu dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         Controller.User st = new Controller.User();
         boolean user;
         user = st.dangNhap(txtUsername.getText(), new String(txtPassword.getPassword()));
@@ -114,7 +119,7 @@ public class frmSignIn extends javax.swing.JFrame {
             this.setVisible(false);
             gui.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Vui lòng kiểm tra lại tên đăng nhập và mật khẩu!", "Lỗi đăng nhập", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Vui lòng kiểm tra lại tên đăng nhập và mật khẩu!", "Lỗi đăng nhập", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnSignInActionPerformed
@@ -130,7 +135,7 @@ public class frmSignIn extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
