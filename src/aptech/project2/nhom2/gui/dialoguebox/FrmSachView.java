@@ -5,18 +5,6 @@
  */
 package aptech.project2.nhom2.gui.maingui;
 
-import aptech.project2.nhom2.dao.DanhMucSachDAO;
-import aptech.project2.nhom2.dao.NhaXuatBanDAO;
-import aptech.project2.nhom2.dao.TacGiaDAO;
-import aptech.project2.nhom2.dao.ThongTinSachDAO;
-import aptech.project2.nhom2.model.ComboBoxData;
-import aptech.project2.nhom2.model.TacGia;
-import aptech.project2.nhom2.model.ThongTinSach;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
 /**
  *
  * @author Mirai
@@ -26,21 +14,9 @@ public class FrmMainGui extends javax.swing.JFrame {
     /**
      * Creates new form FrmMainGui
      */
-    private TacGiaDAO tacGiaDAO = new TacGiaDAO();
-    private NhaXuatBanDAO nhaXuatBanDAO = new NhaXuatBanDAO();
-    private DanhMucSachDAO danhMucSachDAO = new DanhMucSachDAO();
-    private ThongTinSachDAO thongTinSachDAO = new ThongTinSachDAO();
-    
-    private DefaultComboBoxModel tacGiaModel = new DefaultComboBoxModel<>();
-    
     public FrmMainGui() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        cmbTacGia.setModel(tacGiaModel);
-        
-        loadBook();
-        loadData4ComboBox();
     }
 
     /**
@@ -113,22 +89,19 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jLabel8.setText("Tác giả");
 
+        cmbTacGia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         btnTacGia.setText("Quản lý danh mục tác giả");
 
         jLabel9.setText("Danh mục");
+
+        cmbTacGia1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnDanhMucSach.setText("Quản lý danh mục sách");
 
         jLabel10.setText("Số lượng");
 
-        numSoLuong.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-
         btnAddBook.setText("Thêm sách");
-        btnAddBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddBookActionPerformed(evt);
-            }
-        });
 
         btnEditBook.setText("Sửa thông tin");
 
@@ -137,6 +110,8 @@ public class FrmMainGui extends javax.swing.JFrame {
         btnResetBook.setText("Điền lại");
 
         jLabel12.setText("Nhà xuất bản");
+
+        cmbNhaXuatBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnNhaXuatBan.setText("Quản lý danh mục nhà xuất bản");
 
@@ -154,11 +129,11 @@ public class FrmMainGui extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtTenSach)
@@ -209,10 +184,10 @@ public class FrmMainGui extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
                     .addComponent(txtTenSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(numSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -220,7 +195,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(cmbTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTacGia))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -229,9 +204,9 @@ public class FrmMainGui extends javax.swing.JFrame {
                             .addComponent(cmbNhaXuatBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDanhMucSach, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNhaXuatBan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(11, 11, 11)
+                            .addComponent(btnDanhMucSach)
+                            .addComponent(btnNhaXuatBan))))
+                .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -240,7 +215,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(txtFileAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddBook)
                     .addComponent(btnEditBook)
@@ -251,20 +226,15 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Tên sách", "Tác giả", "Danh mục sách", "Nhà xuất bản", "Số lượng"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jLabel11.setText("Tìm tên sách");
@@ -396,11 +366,12 @@ public class FrmMainGui extends javax.swing.JFrame {
             panelTongSoSachMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTongSoSachMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
                     .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6))
+                    .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
                         .addComponent(txtSoSinhVien1)))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
@@ -480,12 +451,6 @@ public class FrmMainGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBookActionPerformed
-        // TODO add your handling code here:
-        ComboBoxData data = (ComboBoxData) cmbTacGia.getSelectedItem();
-        System.out.println(data.getValue()+","+data.getLabel());
-    }//GEN-LAST:event_btnAddBookActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -497,7 +462,7 @@ public class FrmMainGui extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -573,26 +538,4 @@ public class FrmMainGui extends javax.swing.JFrame {
     private javax.swing.JLabel txtSoSinhVien1;
     private javax.swing.JTextField txtTenSach;
     // End of variables declaration//GEN-END:variables
-
-    private void loadBook() {
-        List<ThongTinSach> sachs = thongTinSachDAO.findAll();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        sachs.forEach(it -> {
-            model.addRow(new Object[] {
-                it.getTen(),
-                it.getTacGia().getTen(),
-                it.getDanhMucSach().getTen(),
-                it.getNhaXuatBan().getTen(),
-                it.getSoLuong()
-            });
-        });
-    }
-
-    private void loadData4ComboBox() {
-        List<TacGia> tacGias = tacGiaDAO.findAll();
-        tacGias.forEach(it -> {
-//            cmbTacGia.addItem(it.getTen());
-            tacGiaModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
-        });
-    }
 }
