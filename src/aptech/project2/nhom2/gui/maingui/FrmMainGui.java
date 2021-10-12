@@ -5,17 +5,21 @@
  */
 package aptech.project2.nhom2.gui.maingui;
 
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 import aptech.project2.nhom2.dao.DanhMucSachDAO;
 import aptech.project2.nhom2.dao.NhaXuatBanDAO;
 import aptech.project2.nhom2.dao.TacGiaDAO;
 import aptech.project2.nhom2.dao.ThongTinSachDAO;
+import aptech.project2.nhom2.gui.dialoguebox.FrmDanhMuc;
 import aptech.project2.nhom2.model.ComboBoxData;
+import aptech.project2.nhom2.model.DanhMucSach;
+import aptech.project2.nhom2.model.NhaXuatBan;
 import aptech.project2.nhom2.model.TacGia;
 import aptech.project2.nhom2.model.ThongTinSach;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -32,15 +36,23 @@ public class FrmMainGui extends javax.swing.JFrame {
     private ThongTinSachDAO thongTinSachDAO = new ThongTinSachDAO();
     
     private DefaultComboBoxModel tacGiaModel = new DefaultComboBoxModel<>();
+    private DefaultComboBoxModel danhMucSachModel = new DefaultComboBoxModel<>();
+    private DefaultComboBoxModel nhaXuatBanModel = new DefaultComboBoxModel<>();
     
     public FrmMainGui() {
         initComponents();
         this.setLocationRelativeTo(null);
         
         cmbTacGia.setModel(tacGiaModel);
+        cmbNhaXuatBan.setModel(nhaXuatBanModel);
+        cmbDanhMuc.setModel(danhMucSachModel);
         
         loadBook();
         loadData4ComboBox();
+
+        cmbTacGia.setSelectedIndex(-1);
+        cmbNhaXuatBan.setSelectedIndex(-1);
+        cmbDanhMuc.setSelectedIndex(-1);
     }
 
     /**
@@ -60,7 +72,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         cmbTacGia = new javax.swing.JComboBox<>();
         btnTacGia = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        cmbTacGia1 = new javax.swing.JComboBox<>();
+        cmbDanhMuc = new javax.swing.JComboBox<>();
         btnDanhMucSach = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         numSoLuong = new javax.swing.JSpinner();
@@ -75,7 +87,8 @@ public class FrmMainGui extends javax.swing.JFrame {
         txtMoTa = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtFileAnh = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnChonAnh = new javax.swing.JButton();
+        btnMuonSach = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
@@ -98,8 +111,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuDanhSachSinhVien = new javax.swing.JMenuItem();
+        menuDanhSachNguoiDung = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuMuonSach = new javax.swing.JMenuItem();
         menuTraSach = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         menuDangXuat = new javax.swing.JMenuItem();
         menuThoat = new javax.swing.JMenuItem();
 
@@ -114,6 +130,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel8.setText("Tác giả");
 
         btnTacGia.setText("Quản lý danh mục tác giả");
+        btnTacGia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTacGiaActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Danh mục");
 
@@ -121,7 +142,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jLabel10.setText("Số lượng");
 
-        numSoLuong.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        numSoLuong.setModel(new javax.swing.SpinnerNumberModel(10, 1, null, 1));
 
         btnAddBook.setText("Thêm sách");
         btnAddBook.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +167,9 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         txtFileAnh.setEnabled(false);
 
-        jButton1.setText("Chọn ảnh");
+        btnChonAnh.setText("Chọn ảnh");
+
+        btnMuonSach.setText("Mượn sách");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,7 +199,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnDanhMucSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbTacGia1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cmbDanhMuc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -197,22 +220,25 @@ public class FrmMainGui extends javax.swing.JFrame {
                                 .addComponent(btnDeleteBook)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnResetBook)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnMuonSach)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtFileAnh)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
+                                .addComponent(btnChonAnh)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTenSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(numSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTenSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)
+                        .addComponent(numSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -224,7 +250,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(cmbTacGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbDanhMuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(cmbNhaXuatBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -239,13 +265,14 @@ public class FrmMainGui extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtFileAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnChonAnh))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddBook)
                     .addComponent(btnEditBook)
                     .addComponent(btnDeleteBook)
-                    .addComponent(btnResetBook))
+                    .addComponent(btnResetBook)
+                    .addComponent(btnMuonSach))
                 .addContainerGap())
         );
 
@@ -446,11 +473,16 @@ public class FrmMainGui extends javax.swing.JFrame {
         menuDanhSachSinhVien.setText("Danh sách sinh viên");
         jMenu1.add(menuDanhSachSinhVien);
 
+        menuDanhSachNguoiDung.setText("Danh sách người dùng");
+        jMenu1.add(menuDanhSachNguoiDung);
+        jMenu1.add(jSeparator1);
+
         menuMuonSach.setText("Mượn sách");
         jMenu1.add(menuMuonSach);
 
         menuTraSach.setText("Trả sách");
         jMenu1.add(menuTraSach);
+        jMenu1.add(jSeparator2);
 
         menuDangXuat.setText("Đăng xuất");
         jMenu1.add(menuDangXuat);
@@ -486,6 +518,12 @@ public class FrmMainGui extends javax.swing.JFrame {
         System.out.println(data.getValue()+","+data.getLabel());
     }//GEN-LAST:event_btnAddBookActionPerformed
 
+    private void btnTacGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTacGiaActionPerformed
+        // TODO add your handling code here:
+        FrmDanhMuc frm = new FrmDanhMuc(1);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnTacGiaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -514,27 +552,28 @@ public class FrmMainGui extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmMainGui().setVisible(true);
-            }
-        });
+        // java.awt.EventQueue.invokeLater(new Runnable() {
+        //     public void run() {
+        //         new FrmMainGui().setVisible(true);
+        //     }
+        // });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBook;
+    private javax.swing.JButton btnChonAnh;
     private javax.swing.JButton btnDanhMucSach;
     private javax.swing.JButton btnDeleteBook;
     private javax.swing.JButton btnEditBook;
+    private javax.swing.JButton btnMuonSach;
     private javax.swing.JButton btnNhaXuatBan;
     private javax.swing.JButton btnResetBook;
     private javax.swing.JButton btnTacGia;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnTimKiemNangCao;
+    private javax.swing.JComboBox<String> cmbDanhMuc;
     private javax.swing.JComboBox<String> cmbNhaXuatBan;
     private javax.swing.JComboBox<String> cmbTacGia;
-    private javax.swing.JComboBox<String> cmbTacGia1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -553,9 +592,12 @@ public class FrmMainGui extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbTongSoSach;
     private javax.swing.JMenuItem menuDangXuat;
+    private javax.swing.JMenuItem menuDanhSachNguoiDung;
     private javax.swing.JMenuItem menuDanhSachSinhVien;
     private javax.swing.JMenuItem menuMuonSach;
     private javax.swing.JMenuItem menuThoat;
@@ -593,6 +635,14 @@ public class FrmMainGui extends javax.swing.JFrame {
         tacGias.forEach(it -> {
 //            cmbTacGia.addItem(it.getTen());
             tacGiaModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
+        });
+        List<DanhMucSach> danhMucSach = danhMucSachDAO.findAll();
+        danhMucSach.forEach(it -> {
+            danhMucSachModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
+        });
+        List<NhaXuatBan> nhaXuatBans = nhaXuatBanDAO.findAll();
+        nhaXuatBans.forEach(it -> {
+            nhaXuatBanModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
         });
     }
 }
