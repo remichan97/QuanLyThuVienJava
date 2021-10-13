@@ -14,7 +14,7 @@ import aptech.project2.nhom2.dao.DanhMucSachDAO;
 import aptech.project2.nhom2.dao.NhaXuatBanDAO;
 import aptech.project2.nhom2.dao.TacGiaDAO;
 import aptech.project2.nhom2.dao.ThongTinSachDAO;
-import aptech.project2.nhom2.gui.dialoguebox.FrmDanhMuc;
+import aptech.project2.nhom2.gui.dialoguebox.DialogDanhMuc;
 import aptech.project2.nhom2.model.ComboBoxData;
 import aptech.project2.nhom2.model.DanhMucSach;
 import aptech.project2.nhom2.model.NhaXuatBan;
@@ -139,6 +139,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel9.setText("Danh mục");
 
         btnDanhMucSach.setText("Quản lý danh mục sách");
+        btnDanhMucSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhMucSachActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Số lượng");
 
@@ -160,6 +165,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel12.setText("Nhà xuất bản");
 
         btnNhaXuatBan.setText("Quản lý danh mục nhà xuất bản");
+        btnNhaXuatBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhaXuatBanActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Mô tả");
 
@@ -338,7 +348,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\icons8_books_48px.png")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Số đầu sách");
+        jLabel2.setText("Số lượng sách");
 
         lbTongSoSach.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbTongSoSach.setText("0");
@@ -520,9 +530,21 @@ public class FrmMainGui extends javax.swing.JFrame {
 
     private void btnTacGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTacGiaActionPerformed
         // TODO add your handling code here:
-        FrmDanhMuc frm = new FrmDanhMuc(1);
-        frm.setVisible(true);
+        DialogDanhMuc dialog = new DialogDanhMuc(null, true, 1);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnTacGiaActionPerformed
+
+    private void btnDanhMucSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucSachActionPerformed
+        // TODO add your handling code here:
+        DialogDanhMuc dialog = new DialogDanhMuc(null, true, 2);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnDanhMucSachActionPerformed
+
+    private void btnNhaXuatBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaXuatBanActionPerformed
+        // TODO add your handling code here:
+        DialogDanhMuc dialog = new DialogDanhMuc(null, true, 3);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnNhaXuatBanActionPerformed
 
     /**
      * @param args the command line arguments
