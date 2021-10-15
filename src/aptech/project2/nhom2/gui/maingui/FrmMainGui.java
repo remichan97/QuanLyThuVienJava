@@ -43,9 +43,6 @@ public class FrmMainGui extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-        cmbTacGia.setModel(tacGiaModel);
-        cmbNhaXuatBan.setModel(nhaXuatBanModel);
-        cmbDanhMuc.setModel(danhMucSachModel);
         
         loadBook();
         loadData4ComboBox();
@@ -103,11 +100,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         panelTongSoSinhVien = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtSoSinhVien = new javax.swing.JLabel();
+        lbSosinhVien = new javax.swing.JLabel();
         panelTongSoSachMuon = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtSoSinhVien1 = new javax.swing.JLabel();
+        lbSoSachMuon = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuDanhSachSinhVien = new javax.swing.JMenuItem();
@@ -320,8 +317,8 @@ public class FrmMainGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtKeyWord, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtKeyWord)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTimKiem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTimKiemNangCao)
@@ -387,8 +384,8 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Tổng số sinh viên");
 
-        txtSoSinhVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        txtSoSinhVien.setText("0");
+        lbSosinhVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbSosinhVien.setText("0");
 
         javax.swing.GroupLayout panelTongSoSinhVienLayout = new javax.swing.GroupLayout(panelTongSoSinhVien);
         panelTongSoSinhVien.setLayout(panelTongSoSinhVienLayout);
@@ -402,7 +399,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addGroup(panelTongSoSinhVienLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(txtSoSinhVien)))
+                        .addComponent(lbSosinhVien)))
                 .addGap(0, 40, Short.MAX_VALUE))
         );
         panelTongSoSinhVienLayout.setVerticalGroup(
@@ -412,7 +409,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSoSinhVien)
+                .addComponent(lbSosinhVien)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -424,8 +421,8 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Số lượng sách đang mượn");
 
-        txtSoSinhVien1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        txtSoSinhVien1.setText("0");
+        lbSoSachMuon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbSoSachMuon.setText("0");
 
         javax.swing.GroupLayout panelTongSoSachMuonLayout = new javax.swing.GroupLayout(panelTongSoSachMuon);
         panelTongSoSachMuon.setLayout(panelTongSoSachMuonLayout);
@@ -438,7 +435,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
                         .addGap(102, 102, 102)
-                        .addComponent(txtSoSinhVien1)))
+                        .addComponent(lbSoSachMuon)))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
         panelTongSoSachMuonLayout.setVerticalGroup(
@@ -448,7 +445,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSoSinhVien1)
+                .addComponent(lbSoSachMuon)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -532,18 +529,21 @@ public class FrmMainGui extends javax.swing.JFrame {
         // TODO add your handling code here:
         DialogDanhMuc dialog = new DialogDanhMuc(null, true, 1);
         dialog.setVisible(true);
+        loadData4ComboBox();
     }//GEN-LAST:event_btnTacGiaActionPerformed
 
     private void btnDanhMucSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucSachActionPerformed
         // TODO add your handling code here:
         DialogDanhMuc dialog = new DialogDanhMuc(null, true, 2);
         dialog.setVisible(true);
+        loadData4ComboBox();
     }//GEN-LAST:event_btnDanhMucSachActionPerformed
 
     private void btnNhaXuatBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaXuatBanActionPerformed
         // TODO add your handling code here:
         DialogDanhMuc dialog = new DialogDanhMuc(null, true, 3);
         dialog.setVisible(true);
+        loadData4ComboBox();
     }//GEN-LAST:event_btnNhaXuatBanActionPerformed
 
     /**
@@ -617,6 +617,8 @@ public class FrmMainGui extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbSoSachMuon;
+    private javax.swing.JLabel lbSosinhVien;
     private javax.swing.JLabel lbTongSoSach;
     private javax.swing.JMenuItem menuDangXuat;
     private javax.swing.JMenuItem menuDanhSachNguoiDung;
@@ -633,8 +635,6 @@ public class FrmMainGui extends javax.swing.JFrame {
     private javax.swing.JTextField txtFileAnh;
     private javax.swing.JTextField txtKeyWord;
     private javax.swing.JTextField txtMoTa;
-    private javax.swing.JLabel txtSoSinhVien;
-    private javax.swing.JLabel txtSoSinhVien1;
     private javax.swing.JTextField txtTenSach;
     // End of variables declaration//GEN-END:variables
 
@@ -666,5 +666,10 @@ public class FrmMainGui extends javax.swing.JFrame {
         nhaXuatBans.forEach(it -> {
             nhaXuatBanModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
         });
+
+        cmbTacGia.setModel(tacGiaModel);
+        cmbNhaXuatBan.setModel(nhaXuatBanModel);
+        cmbDanhMuc.setModel(danhMucSachModel);
     }
+
 }

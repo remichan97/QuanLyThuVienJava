@@ -19,5 +19,18 @@ public class DanhMucSach {
     public void setTen(String ten) {
         this.ten = ten;
     }
+
+    public DanhMucSach(String ten) {
+        this.ten = ten;
+    }
+
+    public DanhMucSach() {
+    }
+
+    public DanhMucSach(int id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+    
     
 }

@@ -19,5 +19,17 @@ public class NhaXuatBan {
     public void setTen(String ten) {
         this.ten = ten;
     }
+
+    public NhaXuatBan(String ten) {
+        this.ten = ten;
+    }
+
+    public NhaXuatBan() {
+    }
+
+    public NhaXuatBan(int id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
     
 }

@@ -19,5 +19,17 @@ public class TacGia {
     public void setTen(String ten) {
         this.ten = ten;
     }
+
+    public TacGia(String ten) {
+        this.ten = ten;
+    }
+
+    public TacGia() {
+    }
+
+    public TacGia(int id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
     
 }
