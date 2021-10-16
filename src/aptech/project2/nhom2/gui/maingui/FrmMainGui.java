@@ -8,6 +8,7 @@ package aptech.project2.nhom2.gui.maingui;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import aptech.project2.nhom2.dao.DanhMucSachDAO;
@@ -15,11 +16,13 @@ import aptech.project2.nhom2.dao.NhaXuatBanDAO;
 import aptech.project2.nhom2.dao.TacGiaDAO;
 import aptech.project2.nhom2.dao.ThongTinSachDAO;
 import aptech.project2.nhom2.gui.dialoguebox.DialogDanhMuc;
+import aptech.project2.nhom2.gui.signin.FrmSignIn;
 import aptech.project2.nhom2.model.ComboBoxData;
 import aptech.project2.nhom2.model.DanhMucSach;
 import aptech.project2.nhom2.model.NhaXuatBan;
 import aptech.project2.nhom2.model.TacGia;
 import aptech.project2.nhom2.model.ThongTinSach;
+import javafx.application.Application;
 
 /**
  *
@@ -492,9 +495,19 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(jSeparator2);
 
         menuDangXuat.setText("Đăng xuất");
+        menuDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDangXuatActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuDangXuat);
 
         menuThoat.setText("Thoát");
+        menuThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuThoatActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuThoat);
 
         jMenuBar1.add(jMenu1);
@@ -545,6 +558,20 @@ public class FrmMainGui extends javax.swing.JFrame {
         dialog.setVisible(true);
         loadData4ComboBox();
     }//GEN-LAST:event_btnNhaXuatBanActionPerformed
+
+    private void menuThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuThoatActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_menuThoatActionPerformed
+
+    private void menuDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDangXuatActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Bạn muốn đăng xuất phần mềm", "Xác nhận đăng xuất", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+            FrmSignIn frm = new FrmSignIn();
+            this.setVisible(false);
+            frm.setVisible(true);
+        }
+    }//GEN-LAST:event_menuDangXuatActionPerformed
 
     /**
      * @param args the command line arguments
