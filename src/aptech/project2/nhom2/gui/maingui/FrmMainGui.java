@@ -22,7 +22,6 @@ import aptech.project2.nhom2.model.DanhMucSach;
 import aptech.project2.nhom2.model.NhaXuatBan;
 import aptech.project2.nhom2.model.TacGia;
 import aptech.project2.nhom2.model.ThongTinSach;
-import javafx.application.Application;
 
 /**
  *
@@ -38,9 +37,9 @@ public class FrmMainGui extends javax.swing.JFrame {
     private DanhMucSachDAO danhMucSachDAO = new DanhMucSachDAO();
     private ThongTinSachDAO thongTinSachDAO = new ThongTinSachDAO();
     
-    private DefaultComboBoxModel tacGiaModel = new DefaultComboBoxModel<>();
-    private DefaultComboBoxModel danhMucSachModel = new DefaultComboBoxModel<>();
-    private DefaultComboBoxModel nhaXuatBanModel = new DefaultComboBoxModel<>();
+    private DefaultComboBoxModel tacGiaModel;
+    private DefaultComboBoxModel danhMucSachModel;
+    private DefaultComboBoxModel nhaXuatBanModel;
     
     public FrmMainGui() {
         initComponents();
@@ -49,10 +48,6 @@ public class FrmMainGui extends javax.swing.JFrame {
         
         loadBook();
         loadData4ComboBox();
-
-        cmbTacGia.setSelectedIndex(-1);
-        cmbNhaXuatBan.setSelectedIndex(-1);
-        cmbDanhMuc.setSelectedIndex(-1);
     }
 
     /**
@@ -680,6 +675,10 @@ public class FrmMainGui extends javax.swing.JFrame {
     }
 
     private void loadData4ComboBox() {
+        tacGiaModel = new DefaultComboBoxModel<>();
+        danhMucSachModel = new DefaultComboBoxModel<>();
+        nhaXuatBanModel = new DefaultComboBoxModel<>();
+
         List<TacGia> tacGias = tacGiaDAO.findAll();
         tacGias.forEach(it -> {
 //            cmbTacGia.addItem(it.getTen());
