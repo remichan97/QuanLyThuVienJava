@@ -111,20 +111,15 @@ public class NguoiDungHeThongDAO {
     public static boolean signIn(String username, String password) {
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
-        int count = 0;
 
         try {
-            stm = con.prepareStatement("select count(*) from nguoi_dung_he_thong where ten_dang_nhap = ? and mat_khau = ?");
+            stm = con.prepareStatement("select count(*) dem from nguoi_dung_he_thong where ten_dang_nhap = ? and mat_khau = ?");
             stm.setString(1, username);
             stm.setString(2, password);
 
             ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                count = rs.getInt("count(*)");
-            }
-            if (count != 0) {
-                return true;
-            }
+            
+            return rs.getInt("dem") > 0;
         } catch (SQLException ex) {
             System.out.println("Loi: " + ex.getMessage());
         } finally {
