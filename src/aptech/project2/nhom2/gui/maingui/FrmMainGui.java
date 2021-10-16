@@ -15,10 +15,12 @@ import aptech.project2.nhom2.dao.DanhMucSachDAO;
 import aptech.project2.nhom2.dao.NhaXuatBanDAO;
 import aptech.project2.nhom2.dao.TacGiaDAO;
 import aptech.project2.nhom2.dao.ThongTinSachDAO;
+import aptech.project2.nhom2.gui.dialoguebox.DialogAdvancedSearch;
 import aptech.project2.nhom2.gui.dialoguebox.DialogDanhMuc;
 import aptech.project2.nhom2.gui.signin.FrmSignIn;
 import aptech.project2.nhom2.model.ComboBoxData;
 import aptech.project2.nhom2.model.DanhMucSach;
+import aptech.project2.nhom2.model.DataTimKiem;
 import aptech.project2.nhom2.model.NhaXuatBan;
 import aptech.project2.nhom2.model.TacGia;
 import aptech.project2.nhom2.model.ThongTinSach;
@@ -36,10 +38,12 @@ public class FrmMainGui extends javax.swing.JFrame {
     private NhaXuatBanDAO nhaXuatBanDAO = new NhaXuatBanDAO();
     private DanhMucSachDAO danhMucSachDAO = new DanhMucSachDAO();
     private ThongTinSachDAO thongTinSachDAO = new ThongTinSachDAO();
+
+    private DialogAdvancedSearch dlg;
     
-    private DefaultComboBoxModel tacGiaModel;
-    private DefaultComboBoxModel danhMucSachModel;
-    private DefaultComboBoxModel nhaXuatBanModel;
+    private DefaultComboBoxModel<ComboBoxData> tacGiaModel;
+    private DefaultComboBoxModel<ComboBoxData> danhMucSachModel;
+    private DefaultComboBoxModel<ComboBoxData> nhaXuatBanModel;
     
     public FrmMainGui() {
         initComponents();
@@ -302,8 +306,18 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel11.setText("Tìm tên sách");
 
         btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         btnTimKiemNangCao.setText("Tìm kiếm nâng cao");
+        btnTimKiemNangCao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemNangCaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabDanhMucSachLayout = new javax.swing.GroupLayout(tabDanhMucSach);
         tabDanhMucSach.setLayout(tabDanhMucSachLayout);
@@ -568,6 +582,25 @@ public class FrmMainGui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuDangXuatActionPerformed
 
+    private void btnTimKiemNangCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNangCaoActionPerformed
+        
+        // TODO add your handling code here:
+        if (dlg == null) {
+            dlg = new DialogAdvancedSearch(null, true, this);
+        }
+        dlg.setVisible(true);
+
+    }//GEN-LAST:event_btnTimKiemNangCaoActionPerformed
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here
+        if (!txtKeyWord.getText().isEmpty() && txtKeyWord != null) {
+            loadBookByName(txtKeyWord.getText());
+        } else {
+            loadBook();
+        }
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -615,9 +648,9 @@ public class FrmMainGui extends javax.swing.JFrame {
     private javax.swing.JButton btnTacGia;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnTimKiemNangCao;
-    private javax.swing.JComboBox<String> cmbDanhMuc;
-    private javax.swing.JComboBox<String> cmbNhaXuatBan;
-    private javax.swing.JComboBox<String> cmbTacGia;
+    private javax.swing.JComboBox<ComboBoxData> cmbDanhMuc;
+    private javax.swing.JComboBox<ComboBoxData> cmbNhaXuatBan;
+    private javax.swing.JComboBox<ComboBoxData> cmbTacGia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -663,6 +696,22 @@ public class FrmMainGui extends javax.swing.JFrame {
     private void loadBook() {
         List<ThongTinSach> sachs = thongTinSachDAO.findAll();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        sachs.forEach(it -> {
+            model.addRow(new Object[] {
+                it.getTen(),
+                it.getTacGia().getTen(),
+                it.getDanhMucSach().getTen(),
+                it.getNhaXuatBan().getTen(),
+                it.getSoLuong()
+            });
+        });
+    }
+
+    private void loadBookByName(String ten) {
+        List<ThongTinSach> sachs = thongTinSachDAO.findByTen(ten);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
         sachs.forEach(it -> {
             model.addRow(new Object[] {
                 it.getTen(),
@@ -696,6 +745,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         cmbTacGia.setModel(tacGiaModel);
         cmbNhaXuatBan.setModel(nhaXuatBanModel);
         cmbDanhMuc.setModel(danhMucSachModel);
+    }
+
+    public void timKiem(DataTimKiem data) {
+        System.out.println(data.toString());
+
     }
 
 }
