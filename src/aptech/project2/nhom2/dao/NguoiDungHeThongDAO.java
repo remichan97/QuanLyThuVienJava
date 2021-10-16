@@ -42,7 +42,8 @@ public class NguoiDungHeThongDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("insert into nguoi_dung_he_thong (ten_dang_nhap, mat_khau, role) values (?, ?, ?)");
+            stm = con.prepareStatement(
+                    "insert into nguoi_dung_he_thong (ten_dang_nhap, mat_khau, role) values (?, ?, ?)");
             stm.setString(1, ndht.getUsername());
             stm.setString(2, ndht.getPassword());
             stm.setString(3, ndht.getUsername());
@@ -113,12 +114,13 @@ public class NguoiDungHeThongDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("select count(*) dem from nguoi_dung_he_thong where ten_dang_nhap = ? and mat_khau = ?");
+            stm = con.prepareStatement(
+                    "select count(*) dem from nguoi_dung_he_thong where ten_dang_nhap = ? and mat_khau = ?");
             stm.setString(1, username);
             stm.setString(2, password);
 
             ResultSet rs = stm.executeQuery();
-            
+
             return rs.getInt("dem") > 0;
         } catch (SQLException ex) {
             System.out.println("Loi: " + ex.getMessage());
