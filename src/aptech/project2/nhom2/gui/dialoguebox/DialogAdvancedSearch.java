@@ -160,7 +160,7 @@ public class DialogAdvancedSearch extends javax.swing.JDialog {
             }
         });
 
-        btnClose.setText("Hủy bỏ");
+        btnClose.setText("Đóng");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
