@@ -120,7 +120,7 @@ public class NguoiDungHeThongDAO {
             stm.setString(2, password);
 
             ResultSet rs = stm.executeQuery();
-
+            rs.next();
             return rs.getInt("dem") > 0;
         } catch (SQLException ex) {
             System.out.println("Loi: " + ex.getMessage());
