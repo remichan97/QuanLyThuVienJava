@@ -2,9 +2,9 @@ package aptech.project2.nhom2.model;
 
 public class DataTimKiem {
     private String tenSach;
-    private String tacGia;
-    private String danhMuc;
-    private String nhaXuatBan;
+    private Integer tacGia;
+    private Integer danhMuc;
+    private Integer nhaXuatBan;
 
     public String getTenSach() {
         return tenSach;
@@ -14,31 +14,31 @@ public class DataTimKiem {
         this.tenSach = tenSach;
     }
 
-    public String getTacGia() {
+    public Integer getTacGia() {
         return tacGia;
     }
 
-    public void setTacGia(String tacGia) {
+    public void setTacGia(Integer tacGia) {
         this.tacGia = tacGia;
     }
 
-    public String getDanhMuc() {
+    public Integer getDanhMuc() {
         return danhMuc;
     }
 
-    public void setDanhMuc(String danhMuc) {
+    public void setDanhMuc(Integer danhMuc) {
         this.danhMuc = danhMuc;
     }
 
-    public String getNhaXuatBan() {
+    public Integer getNhaXuatBan() {
         return nhaXuatBan;
     }
 
-    public void setNhaXuatBan(String nhaXuatBan) {
+    public void setNhaXuatBan(Integer nhaXuatBan) {
         this.nhaXuatBan = nhaXuatBan;
     }
 
-    public DataTimKiem(String tenSach, String tacGia, String danhMuc, String nhaXuatBan) {
+    public DataTimKiem(String tenSach, Integer tacGia, Integer danhMuc, Integer nhaXuatBan) {
         this.tenSach = tenSach;
         this.tacGia = tacGia;
         this.danhMuc = danhMuc;
@@ -47,7 +47,7 @@ public class DataTimKiem {
 
     @Override
     public String toString() {
-        return "DataTinKiem [danhMuc=" + danhMuc + ", nhaXuatBan=" + nhaXuatBan + ", tacGia=" + tacGia + ", tenSach="
+        return "DataTimKiem [danhMuc=" + danhMuc + ", nhaXuatBan=" + nhaXuatBan + ", tacGia=" + tacGia + ", tenSach="
                 + tenSach + "]";
     }
 

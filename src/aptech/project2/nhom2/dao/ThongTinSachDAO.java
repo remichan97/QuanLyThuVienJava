@@ -15,56 +15,60 @@ import aptech.project2.nhom2.util.DbConnect;
 
 public class ThongTinSachDAO {
 
-//    public List<ThongTinSach> findAll() {
-//        List<ThongTinSach> list = new ArrayList<>();
-//        
-//        Connection con = DbConnect.open();
-//        PreparedStatement stm = null;
-//        ResultSet rs = null;
-//        
-//        try {
-//            stm = con.prepareStatement("select s.id, s.ten, s.so_luong, s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
-//                    + "                  tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach s "
-//                    + "                 inner join tac_gia tg on s.id_tac_gia = tg.id"
-//                    + "                 INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
-//                    + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1");
-//            rs = stm.executeQuery();
-//            while (rs.next()) {
-//                ThongTinSach sach = new ThongTinSach();
-//                sach.setId(rs.getInt("id"));
-//                sach.setTen(rs.getString("ten"));
-//                sach.setSoLuong(rs.getInt("so_luong"));
-//                sach.setSoLuongDaMuon(rs.getInt("so_luong_da_muon"));
-//                sach.setMoTa(rs.getString("mo_ta"));
-//                sach.setAnh(rs.getString("anh"));
-//                sach.setStatus(rs.getBoolean("status"));
-//                
-//                DanhMucSach danhMuc = new DanhMucSach();
-//                danhMuc.setId(rs.getInt("id_danh_muc"));
-//                danhMuc.setTen(rs.getString("ten_danh_muc"));
-//                
-//                NhaXuatBan nxb = new NhaXuatBan();
-//                nxb.setId(rs.getInt("id_nha_xuat_ban"));
-//                nxb.setTen(rs.getString("ten_nha_xuat_ban"));
-//                
-//                TacGia tg = new TacGia();
-//                tg.setId(rs.getInt("id_tac_gia"));
-//                tg.setTen(rs.getString("ten_tac_gia"));
-//                
-//                sach.setTacGia(tg);
-//                sach.setDanhMucSach(danhMuc);
-//                sach.setNhaXuatBan(nxb);
-//                
-//                list.add(sach);
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("Loi: " + ex.getMessage());
-//        } finally {
-//            DbConnect.close(con, stm, rs);
-//        }
-//        
-//        return list;
-//    }
+    // public List<ThongTinSach> findAll() {
+    // List<ThongTinSach> list = new ArrayList<>();
+    //
+    // Connection con = DbConnect.open();
+    // PreparedStatement stm = null;
+    // ResultSet rs = null;
+    //
+    // try {
+    // stm = con.prepareStatement("select s.id, s.ten, s.so_luong,
+    // s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
+    // + " tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten
+    // ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach
+    // s "
+    // + " inner join tac_gia tg on s.id_tac_gia = tg.id"
+    // + " INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
+    // + " inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status =
+    // 1");
+    // rs = stm.executeQuery();
+    // while (rs.next()) {
+    // ThongTinSach sach = new ThongTinSach();
+    // sach.setId(rs.getInt("id"));
+    // sach.setTen(rs.getString("ten"));
+    // sach.setSoLuong(rs.getInt("so_luong"));
+    // sach.setSoLuongDaMuon(rs.getInt("so_luong_da_muon"));
+    // sach.setMoTa(rs.getString("mo_ta"));
+    // sach.setAnh(rs.getString("anh"));
+    // sach.setStatus(rs.getBoolean("status"));
+    //
+    // DanhMucSach danhMuc = new DanhMucSach();
+    // danhMuc.setId(rs.getInt("id_danh_muc"));
+    // danhMuc.setTen(rs.getString("ten_danh_muc"));
+    //
+    // NhaXuatBan nxb = new NhaXuatBan();
+    // nxb.setId(rs.getInt("id_nha_xuat_ban"));
+    // nxb.setTen(rs.getString("ten_nha_xuat_ban"));
+    //
+    // TacGia tg = new TacGia();
+    // tg.setId(rs.getInt("id_tac_gia"));
+    // tg.setTen(rs.getString("ten_tac_gia"));
+    //
+    // sach.setTacGia(tg);
+    // sach.setDanhMucSach(danhMuc);
+    // sach.setNhaXuatBan(nxb);
+    //
+    // list.add(sach);
+    // }
+    // } catch (SQLException ex) {
+    // System.out.println("Loi: " + ex.getMessage());
+    // } finally {
+    // DbConnect.close(con, stm, rs);
+    // }
+    //
+    // return list;
+    // }
     public List<ThongTinSach> findAll() {
         return this.findBySql(null, "select s.id, s.ten, s.so_luong, s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
                 + "                  tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach s "
@@ -83,11 +87,11 @@ public class ThongTinSachDAO {
 
     public List<ThongTinSach> findByTen(String ten) {
         List<ThongTinSach> list = new ArrayList<>();
-        
+
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
         ResultSet rs = null;
-        
+
         try {
             stm = con.prepareStatement("select s.id, s.ten, s.so_luong, s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
                     + "                  tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach s "
@@ -105,23 +109,23 @@ public class ThongTinSachDAO {
                 sach.setMoTa(rs.getString("mo_ta"));
                 sach.setAnh(rs.getString("anh"));
                 sach.setStatus(rs.getBoolean("status"));
-                
+
                 DanhMucSach danhMuc = new DanhMucSach();
                 danhMuc.setId(rs.getInt("id_danh_muc"));
                 danhMuc.setTen(rs.getString("ten_danh_muc"));
-                
+
                 NhaXuatBan nxb = new NhaXuatBan();
                 nxb.setId(rs.getInt("id_nha_xuat_ban"));
                 nxb.setTen(rs.getString("ten_nha_xuat_ban"));
-                
+
                 TacGia tg = new TacGia();
                 tg.setId(rs.getInt("id_tac_gia"));
                 tg.setTen(rs.getString("ten_tac_gia"));
-                
+
                 sach.setTacGia(tg);
                 sach.setDanhMucSach(danhMuc);
                 sach.setNhaXuatBan(nxb);
-                
+
                 list.add(sach);
             }
         } catch (SQLException ex) {
@@ -129,7 +133,7 @@ public class ThongTinSachDAO {
         } finally {
             DbConnect.close(con, stm, rs);
         }
-        
+
         return list;
     }
 
@@ -148,56 +152,60 @@ public class ThongTinSachDAO {
                 + "                 INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
                 + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1 and s.id_danh_muc = ?");
 
-//        List<ThongTinSach> list = new ArrayList<>();
-//        
-//        Connection con = DbConnect.open();
-//        PreparedStatement stm = null;
-//        ResultSet rs = null;
-//        
-//        try {
-//            stm = con.prepareStatement("select s.id, s.ten, s.so_luong, s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
-//                    + "                  tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach s "
-//                    + "                 inner join tac_gia tg on s.id_tac_gia = tg.id"
-//                    + "                 INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
-//                    + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1 and s.id_danh_muc = ?");
-//            stm.setInt(1, danhMucID);
-//            
-//            rs = stm.executeQuery();
-//            while (rs.next()) {
-//                ThongTinSach sach = new ThongTinSach();
-//                sach.setId(rs.getInt("id"));
-//                sach.setTen(rs.getString("ten"));
-//                sach.setSoLuong(rs.getInt("so_luong"));
-//                sach.setSoLuongDaMuon(rs.getInt("so_luong_da_muon"));
-//                sach.setMoTa(rs.getString("mo_ta"));
-//                sach.setAnh(rs.getString("anh"));
-//                sach.setStatus(rs.getBoolean("status"));
-//                
-//                DanhMucSach danhMuc = new DanhMucSach();
-//                danhMuc.setId(rs.getInt("id_danh_muc"));
-//                danhMuc.setTen(rs.getString("ten_danh_muc"));
-//                
-//                NhaXuatBan nxb = new NhaXuatBan();
-//                nxb.setId(rs.getInt("id_nha_xuat_ban"));
-//                nxb.setTen(rs.getString("ten_nha_xuat_ban"));
-//                
-//                TacGia tg = new TacGia();
-//                tg.setId(rs.getInt("id_tac_gia"));
-//                tg.setTen(rs.getString("ten_tac_gia"));
-//                
-//                sach.setTacGia(tg);
-//                sach.setDanhMucSach(danhMuc);
-//                sach.setNhaXuatBan(nxb);
-//                
-//                list.add(sach);
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("Loi: " + ex.getMessage());
-//        } finally {
-//            DbConnect.close(con, stm, rs);
-//        }
-//        
-//        return list;
+        // List<ThongTinSach> list = new ArrayList<>();
+        //
+        // Connection con = DbConnect.open();
+        // PreparedStatement stm = null;
+        // ResultSet rs = null;
+        //
+        // try {
+        // stm = con.prepareStatement("select s.id, s.ten, s.so_luong,
+        // s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
+        // + " tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten
+        // ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach
+        // s "
+        // + " inner join tac_gia tg on s.id_tac_gia = tg.id"
+        // + " INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
+        // + " inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1
+        // and s.id_danh_muc = ?");
+        // stm.setInt(1, danhMucID);
+        //
+        // rs = stm.executeQuery();
+        // while (rs.next()) {
+        // ThongTinSach sach = new ThongTinSach();
+        // sach.setId(rs.getInt("id"));
+        // sach.setTen(rs.getString("ten"));
+        // sach.setSoLuong(rs.getInt("so_luong"));
+        // sach.setSoLuongDaMuon(rs.getInt("so_luong_da_muon"));
+        // sach.setMoTa(rs.getString("mo_ta"));
+        // sach.setAnh(rs.getString("anh"));
+        // sach.setStatus(rs.getBoolean("status"));
+        //
+        // DanhMucSach danhMuc = new DanhMucSach();
+        // danhMuc.setId(rs.getInt("id_danh_muc"));
+        // danhMuc.setTen(rs.getString("ten_danh_muc"));
+        //
+        // NhaXuatBan nxb = new NhaXuatBan();
+        // nxb.setId(rs.getInt("id_nha_xuat_ban"));
+        // nxb.setTen(rs.getString("ten_nha_xuat_ban"));
+        //
+        // TacGia tg = new TacGia();
+        // tg.setId(rs.getInt("id_tac_gia"));
+        // tg.setTen(rs.getString("ten_tac_gia"));
+        //
+        // sach.setTacGia(tg);
+        // sach.setDanhMucSach(danhMuc);
+        // sach.setNhaXuatBan(nxb);
+        //
+        // list.add(sach);
+        // }
+        // } catch (SQLException ex) {
+        // System.out.println("Loi: " + ex.getMessage());
+        // } finally {
+        // DbConnect.close(con, stm, rs);
+        // }
+        //
+        // return list;
     }
 
     public List<ThongTinSach> findBySql(Integer value, String sql) {
@@ -251,7 +259,7 @@ public class ThongTinSachDAO {
         return list;
     }
 
-    public List<ThongTinSach> searchAdvanced(String tenDanhMuc, String tenSach, String tenNhaXuatBan, String tacGia) {
+    public List<ThongTinSach> searchAdvanced(String tenSach, Integer tacGiaID, Integer danhMucID, Integer nxbID) {
         List<ThongTinSach> list = new ArrayList<>();
 
         String sql = "select s.id, s.ten, s.so_luong, s.so_luong_da_muon, s.mo_ta, s.anh, s.status,"
@@ -259,7 +267,7 @@ public class ThongTinSachDAO {
                 + "                 inner join tac_gia tg on s.id_tac_gia = tg.id"
                 + "                 INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
                 + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1";
-        sql = this.makewhere(sql, tenDanhMuc, tenSach, tenNhaXuatBan, tacGia);
+        sql = this.makewhere(sql, tenSach, tacGiaID, danhMucID, nxbID);
 
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
@@ -267,7 +275,7 @@ public class ThongTinSachDAO {
 
         try {
             stm = con.prepareStatement(sql);
-            this.setParams(stm, tenDanhMuc, tenSach, tenNhaXuatBan, tacGia);
+            this.setParams(stm, tenSach, tacGiaID, danhMucID, nxbID);
             rs = stm.executeQuery();
             while (rs.next()) {
                 ThongTinSach sach = new ThongTinSach();
@@ -311,7 +319,8 @@ public class ThongTinSachDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("insert into thong_tin_sach (`ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `id_nha_xuat_ban`, `mo_ta`, `anh`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            stm = con.prepareStatement(
+                    "insert into thong_tin_sach (`ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `id_nha_xuat_ban`, `mo_ta`, `anh`) VALUES (?, ?, ?, ?, ?, ?, ?)");
             stm.setString(1, sach.getTen());
             stm.setInt(2, sach.getTacGia().getId());
             stm.setInt(3, sach.getDanhMucSach().getId());
@@ -380,38 +389,39 @@ public class ThongTinSachDAO {
         }
         return false;
     }
-    
-    private String makewhere(String sql, String tenDanhMuc, String tenSach, String tenNhaXuatBan, String tacGia) {
-        if (tenDanhMuc != null && !tenDanhMuc.isEmpty()) {
-            sql += " and ds.ten = ?";
+
+    private String makewhere(String sql, String tenSach, Integer tacGiaID, Integer danhMucID, Integer nxbID) {
+        if (danhMucID != null) {
+            sql += " and ds.id = ?";
         }
         if (tenSach != null && !tenSach.isEmpty()) {
             sql += " and s.ten = ?";
         }
-        if (tenNhaXuatBan != null && !tenNhaXuatBan.isEmpty()) {
-            sql += " and s.ten = ?";
+        if (nxbID != null) {
+            sql += " and nxb.id = ?";
         }
-        if (tacGia != null && !tacGia.isEmpty()) {
-            sql += " and s.ten = ?";
+        if (tacGiaID != null) {
+            sql += " and tg.id = ?";
         }
         return sql;
 
     }
 
-    private void setParams(PreparedStatement stm, String tenDanhMuc, String tenSach, String tenNhaXuatBan, String tacGia) throws SQLException {
+    private void setParams(PreparedStatement stm, String tenSach, Integer tacGiaID, Integer danhMucID, Integer nxbID)
+            throws SQLException {
         int index = 1;
 
-        if (tenDanhMuc != null && !tenDanhMuc.isEmpty()) {
-            stm.setString(index++, tenDanhMuc);
+        if (danhMucID != null) {
+            stm.setInt(index++, danhMucID);
         }
         if (tenSach != null && !tenSach.isEmpty()) {
             stm.setString(index++, tenSach);
         }
-        if (tenNhaXuatBan != null && !tenNhaXuatBan.isEmpty()) {
-            stm.setString(index++, tenSach);
+        if (tacGiaID != null) {
+            stm.setInt(index++, tacGiaID);
         }
-        if (tacGia != null && !tacGia.isEmpty()) {
-            stm.setString(index++, tenSach);
+        if (nxbID != null) {
+            stm.setInt(index++, nxbID);
         }
     }
 }

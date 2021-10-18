@@ -748,8 +748,18 @@ public class FrmMainGui extends javax.swing.JFrame {
     }
 
     public void timKiem(DataTimKiem data) {
-        System.out.println(data.toString());
-
+        List<ThongTinSach> nangCao = thongTinSachDAO.searchAdvanced(data.getTenSach(), data.getTacGia(), data.getDanhMuc(), data.getNhaXuatBan());
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        nangCao.forEach(it -> {
+            model.addRow(new Object[] {
+                it.getTen(),
+                it.getTacGia().getTen(),
+                it.getDanhMucSach().getTen(),
+                it.getNhaXuatBan().getTen(),
+                it.getSoLuong()
+            });
+        });
     }
 
 }

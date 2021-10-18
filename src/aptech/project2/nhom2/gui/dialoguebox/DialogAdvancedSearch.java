@@ -8,6 +8,7 @@ package aptech.project2.nhom2.gui.dialoguebox;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 import aptech.project2.nhom2.dao.DanhMucSachDAO;
 import aptech.project2.nhom2.dao.NhaXuatBanDAO;
@@ -199,15 +200,43 @@ public class DialogAdvancedSearch extends javax.swing.JDialog {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        dispose();
+        txtTenSach.setText("");
+        cmbDanhMuc.setSelectedIndex(-1);
+        cmbNhaXuatBan.setSelectedIndex(-1);
+        cmbTacGia.setSelectedIndex(-1);
+        this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        DataTimKiem data = new DataTimKiem(txtTenSach.getText(), cmbTacGia.getSelectedItem().toString(), cmbDanhMuc.getSelectedItem().toString(), cmbNhaXuatBan.getSelectedItem().toString());
+        if (txtTenSach.getText().isEmpty() || txtTenSach.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập tên sách cần tìm", "Chưa nhập từ khóa", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        Integer danhMucID = setValue((ComboBoxData) cmbDanhMuc.getSelectedItem());
+        Integer nxbID = setValue((ComboBoxData) cmbNhaXuatBan.getSelectedItem());
+        Integer tacGiaID = setValue((ComboBoxData) cmbTacGia.getSelectedItem());
+
+
+
+        // System.out.println(tacGiaID);
+        // System.out.println(danhMucID);
+        // System.out.println(nxbID);
+        DataTimKiem data = new DataTimKiem(txtTenSach.getText(), tacGiaID, danhMucID, nxbID);
         this.main.timKiem(data);
         this.dispose();
     }//GEN-LAST:event_btnSearchActionPerformed
+
+
+    private Integer setValue(ComboBoxData selectedItem) {
+        if (selectedItem != null) {
+            return selectedItem.getValue();
+        } else {
+            return null;
+        }
+    }
+
 
     /**
      * @param args the command line arguments
