@@ -94,5 +94,31 @@ public class ThongTinSach {
         this.status = status;
     }
 
+    public ThongTinSach() {
+    }
+
+    public ThongTinSach(String ten, TacGia tacGia, DanhMucSach danhMucSach, NhaXuatBan nhaXuatBan, int soLuong,
+            String moTa, String anh) {
+        this.ten = ten;
+        this.tacGia = tacGia;
+        this.danhMucSach = danhMucSach;
+        this.nhaXuatBan = nhaXuatBan;
+        this.soLuong = soLuong;
+        this.moTa = moTa;
+        this.anh = anh;
+    }
+
+    public ThongTinSach(int id, String ten, TacGia tacGia, DanhMucSach danhMucSach, NhaXuatBan nhaXuatBan, int soLuong,
+            String moTa, String anh) {
+        this.id = id;
+        this.ten = ten;
+        this.tacGia = tacGia;
+        this.danhMucSach = danhMucSach;
+        this.nhaXuatBan = nhaXuatBan;
+        this.soLuong = soLuong;
+        this.moTa = moTa;
+        this.anh = anh;
+    }
+
     
 }

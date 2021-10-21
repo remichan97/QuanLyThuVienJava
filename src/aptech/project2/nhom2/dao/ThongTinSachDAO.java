@@ -338,14 +338,20 @@ public class ThongTinSachDAO {
         return false;
     }
 
-    public boolean update(ThongTinSach dmsach) {
+    public boolean update(ThongTinSach sach) {
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("update danh_muc_sach set ten = ? where id = ?");
-            stm.setString(1, dmsach.getTen());
-            stm.setInt(2, dmsach.getId());
+            stm = con.prepareStatement("update danh_muc_sach set ten = ?, id_tac_gia = ?, id_danh_muc = ?, so_luong = ?, id_nha_xuat_ban = ?, mo_ta = ?, anh = ? where id = ?");
+            stm.setString(1, sach.getTen());
+            stm.setInt(2, sach.getTacGia().getId());
+            stm.setInt(3, sach.getDanhMucSach().getId());
+            stm.setInt(4, sach.getSoLuong());
+            stm.setInt(5, sach.getNhaXuatBan().getId());
+            stm.setString(6, sach.getMoTa());
+            stm.setString(7, sach.getAnh());
+            stm.setInt(8, sach.getId());
 
             return stm.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -361,7 +367,7 @@ public class ThongTinSachDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("update danh_muc_sach set status = !status where id = ?");
+            stm = con.prepareStatement("update thong_tin_sach set status = !status where id = ?");
             stm.setInt(1, id);
 
             return stm.executeUpdate() > 0;
@@ -378,7 +384,7 @@ public class ThongTinSachDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("update danh_muc_sach set status = false where id = ?");
+            stm = con.prepareStatement("update thong_tin_sach set status = false where id = ?");
             stm.setInt(1, id);
 
             return stm.executeUpdate() > 0;
