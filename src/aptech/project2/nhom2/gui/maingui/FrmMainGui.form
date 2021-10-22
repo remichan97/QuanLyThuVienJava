@@ -203,7 +203,11 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnResetBook" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnMuonSach" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnChiTiet" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -265,13 +269,26 @@
                           <Component id="txtFileAnh" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnChonAnh" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnAddBook" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnEditBook" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnDeleteBook" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnResetBook" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMuonSach" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnAddBook" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEditBook" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteBook" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnResetBook" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSeparator3" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                      <Component id="btnMuonSach" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnChiTiet" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -361,6 +378,7 @@
                   <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_edit_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a th&#xf4;ng tin"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBookActionPerformed"/>
@@ -372,6 +390,7 @@
                   <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_delete_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a s&#xe1;ch"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteBookActionPerformed"/>
@@ -442,6 +461,26 @@
                   <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_borrow_book_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n s&#xe1;ch"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator3">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnChiTiet">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_info_16px.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Xem chi ti&#x1ebf;t"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

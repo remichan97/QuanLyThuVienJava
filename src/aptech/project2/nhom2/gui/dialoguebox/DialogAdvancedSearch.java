@@ -199,7 +199,6 @@ public class DialogAdvancedSearch extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
         txtTenSach.setText("");
         cmbDanhMuc.setSelectedIndex(-1);
         cmbNhaXuatBan.setSelectedIndex(-1);
@@ -208,7 +207,6 @@ public class DialogAdvancedSearch extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
         if (txtTenSach.getText().isEmpty() || txtTenSach.getText() == null) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập tên sách cần tìm", "Chưa nhập từ khóa", JOptionPane.INFORMATION_MESSAGE);
             return;

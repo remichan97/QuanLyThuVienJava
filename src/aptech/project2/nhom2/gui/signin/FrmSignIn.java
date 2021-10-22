@@ -121,7 +121,6 @@ public class FrmSignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pwMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwMatKhauActionPerformed
-        // TODO add your handling code here:
         this.doLogIn();
     }//GEN-LAST:event_pwMatKhauActionPerformed
 

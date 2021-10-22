@@ -199,7 +199,6 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listDanhMucMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_listDanhMucMousePressed
-        // TODO add your handling code here:
         List<ComboBoxData> data = listDanhMuc.getSelectedValuesList();
         id = data.get(0).getValue();
         jTextField1.setText(data.get(0).toString());
@@ -207,7 +206,6 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     }// GEN-LAST:event_listDanhMucMousePressed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập tên danh mục cần thêm", "Thiếu dữ liệu",
                     JOptionPane.INFORMATION_MESSAGE);
@@ -238,7 +236,6 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     }// GEN-LAST:event_btnAddActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
         if (listDanhMuc.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn một danh mục tại danh sách để sửa thông tin",
                     "Chưa chọn danh mục", JOptionPane.INFORMATION_MESSAGE);
@@ -269,7 +266,6 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     }// GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
         if (listDanhMuc.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn một danh mục tại danh sách để xóa thông tin",
                     "Chưa chọn danh mục", JOptionPane.INFORMATION_MESSAGE);
@@ -301,7 +297,6 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     }// GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnViewBooksActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnViewBooksActionPerformed
-        // TODO add your handling code here:
         if (listDanhMuc.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null,
                     "Vui lòng chọn một danh mục tại danh sách để xem thông tin sách liên quan", "Chưa chọn danh mục",

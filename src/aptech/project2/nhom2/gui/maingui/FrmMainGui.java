@@ -92,6 +92,8 @@ public class FrmMainGui extends javax.swing.JFrame {
         txtFileAnh = new javax.swing.JTextField();
         btnChonAnh = new javax.swing.JButton();
         btnMuonSach = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        btnChiTiet = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
@@ -162,6 +164,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         btnEditBook.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_edit_16px.png")); // NOI18N
         btnEditBook.setText("Sửa thông tin");
+        btnEditBook.setEnabled(false);
         btnEditBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditBookActionPerformed(evt);
@@ -170,6 +173,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         btnDeleteBook.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_delete_16px.png")); // NOI18N
         btnDeleteBook.setText("Xóa sách");
+        btnDeleteBook.setEnabled(false);
         btnDeleteBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteBookActionPerformed(evt);
@@ -204,6 +208,14 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         btnMuonSach.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_borrow_book_16px.png")); // NOI18N
         btnMuonSach.setText("Mượn sách");
+        btnMuonSach.setEnabled(false);
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnChiTiet.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_info_16px.png")); // NOI18N
+        btnChiTiet.setText("Xem chi tiết");
+        btnChiTiet.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -255,7 +267,11 @@ public class FrmMainGui extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnResetBook)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnMuonSach)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnChiTiet)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtFileAnh)
@@ -300,13 +316,21 @@ public class FrmMainGui extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(txtFileAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnChonAnh))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddBook)
-                    .addComponent(btnEditBook)
-                    .addComponent(btnDeleteBook)
-                    .addComponent(btnResetBook)
-                    .addComponent(btnMuonSach))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddBook)
+                            .addComponent(btnEditBook)
+                            .addComponent(btnDeleteBook)
+                            .addComponent(btnResetBook)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMuonSach)
+                                .addComponent(btnChiTiet)))))
                 .addContainerGap())
         );
 
@@ -574,9 +598,13 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jTable1MousePressed
-        // TODO add your handling code here:
         if (jTable1.getSelectedRow() != -1) {
             int index = jTable1.getSelectedRow();
+
+            btnEditBook.setEnabled(true);
+            btnDeleteBook.setEnabled(true);
+            btnMuonSach.setEnabled(true);
+            btnChiTiet.setEnabled(true);
 
             txtTenSach.setText(sachs.get(index).getTen());
             numSoLuong.setValue(sachs.get(index).getSoLuong());
@@ -585,13 +613,6 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_jTable1MousePressed
 
     private void btnEditBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditBookActionPerformed
-        // TODO add your handling code here:
-        if (jTable1.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn sách cần sửa thông tin", "Chưa chọn sách",
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
         int index = jTable1.getSelectedRow();
         int id = sachs.get(index).getId();
 
@@ -615,13 +636,6 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_btnEditBookActionPerformed
 
     private void btnDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteBookActionPerformed
-        // TODO add your handling code here:
-        if (jTable1.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn quyển sách cần xóa", "Chưa chọn sách",
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
         int index = jTable1.getSelectedRow();
         int id = sachs.get(index).getId();
 
@@ -633,14 +647,6 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_btnDeleteBookActionPerformed
 
     private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAddBookActionPerformed
-        // TODO add your handling code here:
-        if (txtTenSach.getText().isEmpty() || cmbDanhMuc.getSelectedIndex() == -1 || cmbTacGia.getSelectedIndex() == -1
-                || cmbNhaXuatBan.getSelectedIndex() == -1 || txtMoTa.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập các thông tin để thực hiện thao tác thêm sách",
-                    "Chưa nhập dữ liệu", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
         ComboBoxData tacGia = (ComboBoxData) cmbTacGia.getSelectedItem();
         TacGia tacGiaData = new TacGia(tacGia.getValue(), tacGia.getLabel());
         ComboBoxData danhMuc = (ComboBoxData) cmbTacGia.getSelectedItem();
@@ -661,33 +667,28 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_btnAddBookActionPerformed
 
     private void btnTacGiaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTacGiaActionPerformed
-        // TODO add your handling code here:
         DialogDanhMuc dialog = new DialogDanhMuc(null, true, 1);
         dialog.setVisible(true);
         loadData4ComboBox();
     }// GEN-LAST:event_btnTacGiaActionPerformed
 
     private void btnDanhMucSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDanhMucSachActionPerformed
-        // TODO add your handling code here:
         DialogDanhMuc dialog = new DialogDanhMuc(null, true, 2);
         dialog.setVisible(true);
         loadData4ComboBox();
     }// GEN-LAST:event_btnDanhMucSachActionPerformed
 
     private void btnNhaXuatBanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNhaXuatBanActionPerformed
-        // TODO add your handling code here:
         DialogDanhMuc dialog = new DialogDanhMuc(null, true, 3);
         dialog.setVisible(true);
         loadData4ComboBox();
     }// GEN-LAST:event_btnNhaXuatBanActionPerformed
 
     private void menuThoatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuThoatActionPerformed
-        // TODO add your handling code here:
         System.exit(0);
     }// GEN-LAST:event_menuThoatActionPerformed
 
     private void menuDangXuatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuDangXuatActionPerformed
-        // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "Bạn muốn đăng xuất phần mềm", "Xác nhận đăng xuất",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
             FrmSignIn frm = new FrmSignIn();
@@ -698,7 +699,6 @@ public class FrmMainGui extends javax.swing.JFrame {
 
     private void btnTimKiemNangCaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTimKiemNangCaoActionPerformed
 
-        // TODO add your handling code here:
         if (dlg == null) {
             dlg = new DialogAdvancedSearch(null, true, this);
         }
@@ -707,7 +707,6 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_btnTimKiemNangCaoActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here
         if (!txtKeyWord.getText().isEmpty() && txtKeyWord != null) {
             loadBookByName(txtKeyWord.getText());
         } else {
@@ -716,9 +715,13 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_btnTimKiemActionPerformed
 
     private void btnResetBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnResetBookActionPerformed
-        // TODO add your handling code here:
         txtTenSach.setText("");
         numSoLuong.setValue(10);
+
+        btnEditBook.setEnabled(false);
+        btnDeleteBook.setEnabled(false);
+        btnMuonSach.setEnabled(false);
+        btnChiTiet.setEnabled(false);
 
         cmbTacGia.setSelectedIndex(-1);
         cmbNhaXuatBan.setSelectedIndex(-1);
@@ -772,6 +775,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBook;
+    private javax.swing.JButton btnChiTiet;
     private javax.swing.JButton btnChonAnh;
     private javax.swing.JButton btnDanhMucSach;
     private javax.swing.JButton btnDeleteBook;
@@ -805,6 +809,7 @@ public class FrmMainGui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbSoSachMuon;
     private javax.swing.JLabel lbSosinhVien;
