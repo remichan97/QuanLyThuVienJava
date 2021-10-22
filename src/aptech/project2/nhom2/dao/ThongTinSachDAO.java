@@ -97,8 +97,8 @@ public class ThongTinSachDAO {
                     + "                  tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach s "
                     + "                 inner join tac_gia tg on s.id_tac_gia = tg.id"
                     + "                 INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
-                    + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1 and s.ten = ?");
-            stm.setString(1, ten);
+                    + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1 and s.ten like ?");
+            stm.setString(1, "%" + ten + "%");
             rs = stm.executeQuery();
             while (rs.next()) {
                 ThongTinSach sach = new ThongTinSach();
@@ -343,7 +343,8 @@ public class ThongTinSachDAO {
         PreparedStatement stm = null;
 
         try {
-            stm = con.prepareStatement("update danh_muc_sach set ten = ?, id_tac_gia = ?, id_danh_muc = ?, so_luong = ?, id_nha_xuat_ban = ?, mo_ta = ?, anh = ? where id = ?");
+            stm = con.prepareStatement(
+                    "update danh_muc_sach set ten = ?, id_tac_gia = ?, id_danh_muc = ?, so_luong = ?, id_nha_xuat_ban = ?, mo_ta = ?, anh = ? where id = ?");
             stm.setString(1, sach.getTen());
             stm.setInt(2, sach.getTacGia().getId());
             stm.setInt(3, sach.getDanhMucSach().getId());
@@ -401,7 +402,7 @@ public class ThongTinSachDAO {
             sql += " and ds.id = ?";
         }
         if (tenSach != null && !tenSach.isEmpty()) {
-            sql += " and s.ten = ?";
+            sql += " and s.ten like ?";
         }
         if (nxbID != null) {
             sql += " and nxb.id = ?";
@@ -421,7 +422,7 @@ public class ThongTinSachDAO {
             stm.setInt(index++, danhMucID);
         }
         if (tenSach != null && !tenSach.isEmpty()) {
-            stm.setString(index++, tenSach);
+            stm.setString(index++, "%" + tenSach + "%");
         }
         if (tacGiaID != null) {
             stm.setInt(index++, tacGiaID);
