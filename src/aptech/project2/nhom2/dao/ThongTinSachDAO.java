@@ -318,23 +318,30 @@ public class ThongTinSachDAO {
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
 
-        try {
-            stm = con.prepareStatement(
-                    "insert into thong_tin_sach (`ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `id_nha_xuat_ban`, `mo_ta`, `anh`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            stm.setString(1, sach.getTen());
-            stm.setInt(2, sach.getTacGia().getId());
-            stm.setInt(3, sach.getDanhMucSach().getId());
-            stm.setInt(4, sach.getSoLuong());
-            stm.setInt(5, sach.getNhaXuatBan().getId());
-            stm.setString(6, sach.getMoTa());
-            stm.setString(7, sach.getAnh());
+        if (checkDelete(sach)) {
+            int id = getDeletedID(sach);
+            toggleStatus(id);
+            return true;
+        } else {
+            try {
+                stm = con.prepareStatement(
+                        "insert into thong_tin_sach (`ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `id_nha_xuat_ban`, `mo_ta`, `anh`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                stm.setString(1, sach.getTen());
+                stm.setInt(2, sach.getTacGia().getId());
+                stm.setInt(3, sach.getDanhMucSach().getId());
+                stm.setInt(4, sach.getSoLuong());
+                stm.setInt(5, sach.getNhaXuatBan().getId());
+                stm.setString(6, sach.getMoTa());
+                stm.setString(7, sach.getAnh());
 
-            return stm.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            System.out.println("Loi: " + ex.getMessage());
-        } finally {
-            DbConnect.close(con, stm, null);
+                return stm.executeUpdate() > 0;
+            } catch (SQLException ex) {
+                System.out.println("Loi: " + ex.getMessage());
+            } finally {
+                DbConnect.close(con, stm, null);
+            }
         }
+
         return false;
     }
 
@@ -430,5 +437,51 @@ public class ThongTinSachDAO {
         if (nxbID != null) {
             stm.setInt(index++, nxbID);
         }
+    }
+
+    private boolean checkDelete(ThongTinSach data) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+
+        try {
+            stm = con.prepareStatement(
+                    "select count(*) dem from thong_tin_sach where ten = ? and id_tac_gia = ? and id_danh_muc = ? and id_nha_xuat_ban = ? and status = 0");
+            stm.setString(1, data.getTen());
+            stm.setInt(2, data.getTacGia().getId());
+            stm.setInt(3, data.getDanhMucSach().getId());
+            stm.setInt(4, data.getNhaXuatBan().getId());
+
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+            return rs.getInt("dem") > 0;
+        } catch (SQLException ex) {
+            System.out.println("Loi: " + ex.getMessage());
+        } finally {
+            DbConnect.close(con, stm, null);
+        }
+        return false;
+    }
+
+    private int getDeletedID(ThongTinSach data) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+
+        try {
+            stm = con.prepareStatement(
+                    "select id from thong_tin_sach where ten = ? and id_tac_gia = ? and id_danh_muc = ? and id_nha_xuat_ban = ? and status = 0");
+            stm.setString(1, data.getTen());
+            stm.setInt(2, data.getTacGia().getId());
+            stm.setInt(3, data.getDanhMucSach().getId());
+            stm.setInt(4, data.getNhaXuatBan().getId());
+
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+            return rs.getInt("dem");
+        } catch (SQLException ex) {
+            System.out.println("Loi: " + ex.getMessage());
+        } finally {
+            DbConnect.close(con, stm, null);
+        }
+        return 0;
     }
 }

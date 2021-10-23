@@ -41,6 +41,30 @@ public class ComboBoxData {
     public String toString() {
         return label; //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.value;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ComboBoxData other = (ComboBoxData) obj;
+        if (this.value != other.value) {
+            return false;
+        }
+        return true;
+    }
     
 }
