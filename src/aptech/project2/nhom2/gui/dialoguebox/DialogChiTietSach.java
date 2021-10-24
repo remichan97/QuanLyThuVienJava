@@ -48,9 +48,9 @@ public class DialogChiTietSach extends javax.swing.JDialog {
         if (data.getAnh().isEmpty() || data.getAnh() == null || data.getAnh() == "") {
             lbImage.setEnabled(false);
         } else {
-            lbImage.setIcon(new ImageIcon(new ImageIcon(path + data.getAnh()).getImage().getScaledInstance(168, 233, Image.SCALE_DEFAULT)));
+            lbImage.setIcon(new ImageIcon(new ImageIcon(path + data.getAnh()).getImage().getScaledInstance(164, 233, Image.SCALE_DEFAULT)));
             lbImage.setText("");
-            lbImage.setToolTipText("Nhấn để xem ảnh kích thước gốc");
+            lbImage.setToolTipText("Nhấn chuột vào ảnh để xem kích thước ảnh gốc");
         }
     }
 
