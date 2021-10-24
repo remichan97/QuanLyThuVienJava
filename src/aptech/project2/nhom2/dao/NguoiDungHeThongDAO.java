@@ -43,10 +43,9 @@ public class NguoiDungHeThongDAO {
 
         try {
             stm = con.prepareStatement(
-                    "insert into nguoi_dung_he_thong (ten_dang_nhap, mat_khau, role) values (?, ?, ?)");
+                    "insert into nguoi_dung_he_thong (ten_dang_nhap, mat_khau) values (?, ?)");
             stm.setString(1, ndht.getUsername());
             stm.setString(2, ndht.getPassword());
-            stm.setString(3, ndht.getUsername());
 
             return stm.executeUpdate() > 0;
         } catch (SQLException ex) {

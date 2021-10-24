@@ -16,11 +16,17 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuDanhSachSinhVien">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_user_menu_female_16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch sinh vi&#xea;n"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuDanhSachNguoiDung">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_administrative_tools_16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
               </Properties>
             </MenuItem>
@@ -28,18 +34,27 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuMuonSach">
               <Properties>
-                <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n s&#xe1;ch"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_borrow_book_16px_1.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n/tr&#x1ea3; s&#xe1;ch"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuTraSach">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tr&#x1ea3; s&#xe1;ch"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_send_hot_list_16px.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch tr&#x1ea3; mu&#x1ed9;n"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuDangXuat">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_exit_sign_16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
               </Properties>
               <Events>
@@ -48,6 +63,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuThoat">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_close_window_16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
               </Properties>
               <Events>

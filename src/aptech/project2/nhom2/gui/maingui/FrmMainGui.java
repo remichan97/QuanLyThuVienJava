@@ -7,6 +7,7 @@ package aptech.project2.nhom2.gui.maingui;
 
 import java.io.File;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
@@ -563,20 +564,25 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jMenu1.setText("Chức năng");
 
+        menuDanhSachSinhVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_user_menu_female_16px.png")); // NOI18N
         menuDanhSachSinhVien.setText("Danh sách sinh viên");
         jMenu1.add(menuDanhSachSinhVien);
 
+        menuDanhSachNguoiDung.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_administrative_tools_16px.png")); // NOI18N
         menuDanhSachNguoiDung.setText("Danh sách người dùng");
         jMenu1.add(menuDanhSachNguoiDung);
         jMenu1.add(jSeparator1);
 
-        menuMuonSach.setText("Mượn sách");
+        menuMuonSach.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_borrow_book_16px_1.png")); // NOI18N
+        menuMuonSach.setText("Mượn/trả sách");
         jMenu1.add(menuMuonSach);
 
-        menuTraSach.setText("Trả sách");
+        menuTraSach.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_send_hot_list_16px.png")); // NOI18N
+        menuTraSach.setText("Danh sách trả muộn");
         jMenu1.add(menuTraSach);
         jMenu1.add(jSeparator2);
 
+        menuDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_exit_sign_16px.png")); // NOI18N
         menuDangXuat.setText("Đăng xuất");
         menuDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -585,6 +591,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
         jMenu1.add(menuDangXuat);
 
+        menuThoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_close_window_16px.png")); // NOI18N
         menuThoat.setText("Thoát");
         menuThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -916,10 +923,10 @@ public class FrmMainGui extends javax.swing.JFrame {
     }
 
     private void loadBookByName(String ten) {
-        sachs = thongTinSachDAO.findByTen(ten);
+        List<ThongTinSach> search = sachs.stream().filter(a -> a.getTen().equals(ten)).collect(Collectors.toList());
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        sachs.forEach(it -> {
+        search.forEach(it -> {
             model.addRow(new Object[] { it.getTen(), it.getTacGia().getTen(), it.getDanhMucSach().getTen(),
                     it.getNhaXuatBan().getTen(), it.getSoLuong() });
         });
