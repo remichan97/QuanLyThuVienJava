@@ -49,6 +49,8 @@ public class FrmMainGui extends javax.swing.JFrame {
     private DialogAdvancedSearch dlg;
     private DialogChiTietSach chiTietSach;
 
+    private String fileName;
+
     private DefaultComboBoxModel<ComboBoxData> tacGiaModel;
     private DefaultComboBoxModel<ComboBoxData> danhMucSachModel;
     private DefaultComboBoxModel<ComboBoxData> nhaXuatBanModel;
@@ -923,7 +925,7 @@ public class FrmMainGui extends javax.swing.JFrame {
     }
 
     private void loadBookByName(String ten) {
-        List<ThongTinSach> search = sachs.stream().filter(a -> a.getTen().equals(ten)).collect(Collectors.toList());
+        List<ThongTinSach> search = sachs.stream().filter(a -> a.getTen().contains(ten)).collect(Collectors.toList());
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         search.forEach(it -> {

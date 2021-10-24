@@ -321,6 +321,7 @@ public class ThongTinSachDAO {
         if (checkDelete(sach)) {
             int id = getDeletedID(sach);
             toggleStatus(id);
+            updateMoTa(sach.getMoTa(), id);
             return true;
         } else {
             try {
@@ -351,7 +352,7 @@ public class ThongTinSachDAO {
 
         try {
             stm = con.prepareStatement(
-                    "update danh_muc_sach set ten = ?, id_tac_gia = ?, id_danh_muc = ?, so_luong = ?, id_nha_xuat_ban = ?, mo_ta = ?, anh = ? where id = ?");
+                    "update thong_tin_sach set ten = ?, id_tac_gia = ?, id_danh_muc = ?, so_luong = ?, id_nha_xuat_ban = ?, mo_ta = ?, anh = ? where id = ?");
             stm.setString(1, sach.getTen());
             stm.setInt(2, sach.getTacGia().getId());
             stm.setInt(3, sach.getDanhMucSach().getId());
@@ -476,12 +477,30 @@ public class ThongTinSachDAO {
 
             ResultSet rs = stm.executeQuery();
             rs.next();
-            return rs.getInt("dem");
+            return rs.getInt("id");
         } catch (SQLException ex) {
             System.out.println("Loi: " + ex.getMessage());
         } finally {
             DbConnect.close(con, stm, null);
         }
         return 0;
+    }
+
+    private void updateMoTa(String moTa, int id) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+
+        try {
+            stm = con.prepareStatement(
+                    "update thong_tin_sach set mo_ta = ? where id = ?");
+            stm.setString(1, moTa);
+            stm.setInt(2, id);
+
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Loi: " + ex.getMessage());
+        } finally {
+            DbConnect.close(con, stm, null);
+        }
     }
 }
