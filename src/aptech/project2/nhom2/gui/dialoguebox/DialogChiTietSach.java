@@ -271,7 +271,7 @@ public class DialogChiTietSach extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void lbImageMouseClicked(java.awt.event.MouseEvent evt) throws IOException {//GEN-FIRST:event_lbImageMouseClicked
-        if (sachData.getAnh() == "") {
+        if (sachData.getAnh() == "" || sachData.getAnh() == null || sachData.getAnh().isEmpty()) {
             return;
         }
         Desktop.getDesktop().open(new File(path + sachData.getAnh()));
