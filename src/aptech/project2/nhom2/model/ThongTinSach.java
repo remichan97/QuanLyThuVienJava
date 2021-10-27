@@ -120,5 +120,10 @@ public class ThongTinSach {
         this.anh = anh;
     }
 
+    public ThongTinSach(int id, String ten) {
+        this.id = id;
+        this.ten = ten;
+    }
+
     
 }

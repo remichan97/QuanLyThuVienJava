@@ -39,8 +39,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n/tr&#x1ea3; s&#xe1;ch"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuMuonSachActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuTraSach">
+            <MenuItem class="javax.swing.JMenuItem" name="menuTraSachMuon">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_send_hot_list_16px.png"/>

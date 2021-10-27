@@ -23,7 +23,7 @@ public class SinhVienDAO {
             rs = stm.executeQuery();
             while (rs.next()) {
                 SinhVien sv = new SinhVien();
-                sv.setId(rs.getInt("id"));
+                sv.setId(rs.getString("id"));
                 sv.setTen(rs.getString("ten"));
 
                 list.add(sv);
@@ -61,7 +61,7 @@ public class SinhVienDAO {
         try {
             stm = con.prepareStatement("update sinh_vien set ten = ? where id = ?");
             stm.setString(1, sv.getTen());
-            stm.setInt(2, sv.getId());
+            stm.setString(2, sv.getId());
 
             return stm.executeUpdate() > 0;
         } catch (SQLException ex) {
