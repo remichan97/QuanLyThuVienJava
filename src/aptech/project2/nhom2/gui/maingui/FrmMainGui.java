@@ -81,6 +81,7 @@ public class FrmMainGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -171,7 +172,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         numSoLuong.setModel(new javax.swing.SpinnerNumberModel(10, 1, null, 1));
 
-        btnAddBook.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_add_16px.png")); // NOI18N
+        btnAddBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_add_16px.png"))); // NOI18N
         btnAddBook.setText("Thêm sách");
         btnAddBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +184,7 @@ public class FrmMainGui extends javax.swing.JFrame {
             }
         });
 
-        btnEditBook.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_edit_16px.png")); // NOI18N
+        btnEditBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_edit_16px.png"))); // NOI18N
         btnEditBook.setText("Sửa thông tin");
         btnEditBook.setEnabled(false);
         btnEditBook.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +197,7 @@ public class FrmMainGui extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteBook.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_delete_16px.png")); // NOI18N
+        btnDeleteBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"))); // NOI18N
         btnDeleteBook.setText("Xóa sách");
         btnDeleteBook.setEnabled(false);
         btnDeleteBook.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +206,7 @@ public class FrmMainGui extends javax.swing.JFrame {
             }
         });
 
-        btnResetBook.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_reset_16px.png")); // NOI18N
+        btnResetBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_reset_16px.png"))); // NOI18N
         btnResetBook.setText("Điền lại");
         btnResetBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,7 +229,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         txtFileAnh.setEnabled(false);
 
-        btnChonAnh.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_browse_folder_16px.png")); // NOI18N
+        btnChonAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_browse_folder_16px.png"))); // NOI18N
         btnChonAnh.setText("Chọn ảnh");
         btnChonAnh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,14 +237,14 @@ public class FrmMainGui extends javax.swing.JFrame {
             }
         });
 
-        btnMuonSach.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_borrow_book_16px.png")); // NOI18N
+        btnMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_borrow_book_16px.png"))); // NOI18N
         btnMuonSach.setText("Mượn sách");
         btnMuonSach.setEnabled(false);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnChiTiet.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_info_16px.png")); // NOI18N
+        btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_info_16px.png"))); // NOI18N
         btnChiTiet.setText("Xem chi tiết");
         btnChiTiet.setEnabled(false);
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
@@ -395,7 +396,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jLabel11.setText("Tìm tên sách");
 
-        btnTimKiem.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_search_16px.png")); // NOI18N
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_search_16px.png"))); // NOI18N
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,7 +404,7 @@ public class FrmMainGui extends javax.swing.JFrame {
             }
         });
 
-        btnTimKiemNangCao.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\buttonicons\\icons8_advanced_search_16px.png")); // NOI18N
+        btnTimKiemNangCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_advanced_search_16px.png"))); // NOI18N
         btnTimKiemNangCao.setText("Tìm kiếm nâng cao");
         btnTimKiemNangCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,7 +447,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         panelTongSoSach.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTongSoSach.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\icons8_books_48px.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_books_48px.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Số lượng sách");
@@ -467,7 +468,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                     .addGroup(panelTongSoSachLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(lbTongSoSach)))
-                .addGap(0, 60, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         panelTongSoSachLayout.setVerticalGroup(
             panelTongSoSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -483,7 +484,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         panelTongSoSinhVien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTongSoSinhVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\icons8_person_48px.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_person_48px.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Tổng số sinh viên");
@@ -504,7 +505,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                     .addGroup(panelTongSoSinhVienLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(lbSosinhVien)))
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         panelTongSoSinhVienLayout.setVerticalGroup(
             panelTongSoSinhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,7 +521,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         panelTongSoSachMuon.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTongSoSachMuon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\icons8_borrow_book_48px.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_borrow_book_48px.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Số lượng sách đang mượn");
@@ -559,12 +560,11 @@ public class FrmMainGui extends javax.swing.JFrame {
             panelOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOverviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelTongSoSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTongSoSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelTongSoSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelTongSoSachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelTongSoSachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelOverviewLayout.setVerticalGroup(
             panelOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -581,16 +581,16 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jMenu1.setText("Chức năng");
 
-        menuDanhSachSinhVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_user_menu_female_16px.png")); // NOI18N
+        menuDanhSachSinhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_user_menu_female_16px.png"))); // NOI18N
         menuDanhSachSinhVien.setText("Danh sách sinh viên");
         jMenu1.add(menuDanhSachSinhVien);
 
-        menuDanhSachNguoiDung.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_administrative_tools_16px.png")); // NOI18N
+        menuDanhSachNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_what_i_do_16px.png"))); // NOI18N
         menuDanhSachNguoiDung.setText("Danh sách người dùng");
         jMenu1.add(menuDanhSachNguoiDung);
         jMenu1.add(jSeparator1);
 
-        menuMuonSach.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_borrow_book_16px_1.png")); // NOI18N
+        menuMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_borrow_book_16px_1.png"))); // NOI18N
         menuMuonSach.setText("Mượn/trả sách");
         menuMuonSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -599,12 +599,12 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
         jMenu1.add(menuMuonSach);
 
-        menuTraSachMuon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_send_hot_list_16px.png")); // NOI18N
+        menuTraSachMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_send_hot_list_16px.png"))); // NOI18N
         menuTraSachMuon.setText("Danh sách trả muộn");
         jMenu1.add(menuTraSachMuon);
         jMenu1.add(jSeparator2);
 
-        menuDangXuat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_exit_sign_16px.png")); // NOI18N
+        menuDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_exit_sign_16px.png"))); // NOI18N
         menuDangXuat.setText("Đăng xuất");
         menuDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -613,7 +613,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
         jMenu1.add(menuDangXuat);
 
-        menuThoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mirai\\Desktop\\QuanLyThuVienProject\\icons\\menuicons\\icons8_close_window_16px.png")); // NOI18N
+        menuThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_close_window_16px.png"))); // NOI18N
         menuThoat.setText("Thoát");
         menuThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -644,11 +644,10 @@ public class FrmMainGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMuonSachActionPerformed
-        // TODO add your handling code here:
+    private void menuMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuMuonSachActionPerformed
         mSach = new DialogMuonSach(null, true);
         mSach.setVisible(true);
-    }//GEN-LAST:event_menuMuonSachActionPerformed
+    }// GEN-LAST:event_menuMuonSachActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonAnhActionPerformed
         JFileChooser chooser = new JFileChooser();
@@ -720,9 +719,9 @@ public class FrmMainGui extends javax.swing.JFrame {
             thongTinSachDAO.update(new ThongTinSach(id, txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
                     (Integer) numSoLuong.getValue(), txtMoTa.getText(), ""));
         } else {
-            String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "")+ "-" + System.currentTimeMillis() / 100 + "." + fileExt;
-            FileUtils.copyFile(new File(txtFileAnh.getText()), new File(
-                    "image/" + file));
+            String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "") + "-"
+                    + System.currentTimeMillis() / 100 + "." + fileExt;
+            FileUtils.copyFile(new File(txtFileAnh.getText()), new File("image/" + file));
             thongTinSachDAO.update(new ThongTinSach(id, txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
                     (Integer) numSoLuong.getValue(), txtMoTa.getText(), file));
         }
@@ -754,6 +753,15 @@ public class FrmMainGui extends javax.swing.JFrame {
             return;
         }
 
+        ThongTinSach test = sachs.stream().filter(it -> it.getTen().equals(txtTenSach.getText())).findAny()
+                .orElse(null);
+
+        if (test != null) {
+            JOptionPane.showMessageDialog(null, "Sách cần thêm đã tồn tại trong hệ thống!",
+                    "Thêm sách", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
         ComboBoxData tacGia = (ComboBoxData) cmbTacGia.getSelectedItem();
         TacGia tacGiaData = new TacGia(tacGia.getValue(), tacGia.getLabel());
         ComboBoxData danhMuc = (ComboBoxData) cmbTacGia.getSelectedItem();
@@ -765,9 +773,9 @@ public class FrmMainGui extends javax.swing.JFrame {
             thongTinSachDAO.addNew(new ThongTinSach(txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
                     (Integer) numSoLuong.getValue(), txtMoTa.getText(), ""));
         } else {
-            String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "")+ "-" + System.currentTimeMillis() / 100 + "." + fileExt;
-            FileUtils.copyFile(new File(txtFileAnh.getText()), new File(
-                    "image/" + file));
+            String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "") + "-"
+                    + System.currentTimeMillis() / 100 + "." + fileExt;
+            FileUtils.copyFile(new File(txtFileAnh.getText()), new File("image/" + file));
             thongTinSachDAO.addNew(new ThongTinSach(txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
                     (Integer) numSoLuong.getValue(), txtMoTa.getText(), file));
         }

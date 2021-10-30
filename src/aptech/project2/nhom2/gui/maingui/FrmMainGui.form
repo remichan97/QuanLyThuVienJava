@@ -17,7 +17,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuDanhSachSinhVien">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_user_menu_female_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/menuicons/icons8_user_menu_female_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch sinh vi&#xea;n"/>
               </Properties>
@@ -25,7 +25,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuDanhSachNguoiDung">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_administrative_tools_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/menuicons/icons8_what_i_do_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
               </Properties>
@@ -35,7 +35,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuMuonSach">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_borrow_book_16px_1.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/menuicons/icons8_borrow_book_16px_1.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n/tr&#x1ea3; s&#xe1;ch"/>
               </Properties>
@@ -46,7 +46,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuTraSachMuon">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_send_hot_list_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/menuicons/icons8_send_hot_list_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch tr&#x1ea3; mu&#x1ed9;n"/>
               </Properties>
@@ -56,7 +56,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuDangXuat">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_exit_sign_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/menuicons/icons8_exit_sign_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
               </Properties>
@@ -67,7 +67,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuThoat">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\menuicons\icons8_close_window_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/menuicons/icons8_close_window_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
               </Properties>
@@ -385,7 +385,7 @@
             <Component class="javax.swing.JButton" name="btnAddBook">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_add_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_add_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m s&#xe1;ch"/>
               </Properties>
@@ -396,7 +396,7 @@
             <Component class="javax.swing.JButton" name="btnEditBook">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_edit_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_edit_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a th&#xf4;ng tin"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -408,7 +408,7 @@
             <Component class="javax.swing.JButton" name="btnDeleteBook">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_delete_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="X&#xf3;a s&#xe1;ch"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -420,7 +420,7 @@
             <Component class="javax.swing.JButton" name="btnResetBook">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_reset_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_reset_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec1;n l&#x1ea1;i"/>
               </Properties>
@@ -471,7 +471,7 @@
             <Component class="javax.swing.JButton" name="btnChonAnh">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_browse_folder_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_browse_folder_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n &#x1ea3;nh"/>
               </Properties>
@@ -482,7 +482,7 @@
             <Component class="javax.swing.JButton" name="btnMuonSach">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_borrow_book_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_borrow_book_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n s&#xe1;ch"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -501,7 +501,7 @@
             <Component class="javax.swing.JButton" name="btnChiTiet">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_info_16px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_info_16px.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Xem chi ti&#x1ebf;t"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -582,7 +582,7 @@
         <Component class="javax.swing.JButton" name="btnTimKiem">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_search_16px.png"/>
+              <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_search_16px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
           </Properties>
@@ -593,7 +593,7 @@
         <Component class="javax.swing.JButton" name="btnTimKiemNangCao">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\buttonicons\icons8_advanced_search_16px.png"/>
+              <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_advanced_search_16px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m n&#xe2;ng cao"/>
           </Properties>
@@ -610,12 +610,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelTongSoSach" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="panelTongSoSach" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="panelTongSoSinhVien" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="panelTongSoSachMuon" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="panelTongSoSachMuon" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -661,7 +660,7 @@
                               <Component id="lbTongSoSach" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -682,7 +681,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\icons8_books_48px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/icons8_books_48px.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -731,7 +730,7 @@
                               <Component id="lbSosinhVien" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -752,7 +751,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\icons8_person_48px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/icons8_person_48px.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -820,7 +819,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Mirai\Desktop\QuanLyThuVienProject\icons\icons8_borrow_book_48px.png"/>
+                  <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/icons8_borrow_book_48px.png"/>
                 </Property>
               </Properties>
             </Component>
