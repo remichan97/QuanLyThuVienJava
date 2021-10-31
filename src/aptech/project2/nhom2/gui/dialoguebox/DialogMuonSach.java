@@ -39,10 +39,10 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	public DialogMuonSach(java.awt.Frame parent, boolean modal, ThongTinSach sach, SinhVien sv) {
 		super(parent, modal);
 		initComponents();
+		
+		hideFlag(false);
 
 		initInput(sach, sv);
-
-		hideFlag(false);
 
 		this.setLocationRelativeTo(null);
 		this.pack();
@@ -57,7 +57,10 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	private void initInput(ThongTinSach sach, SinhVien sv) {
 		if (sach != null) {
 			numMaSach.setValue(sach.getId());
+			lbTenSach.setVisible(true);
 			lbTenSach.setText("Tên sách: " + sach.getTen());
+			lbBookStatus.setVisible(true);
+			lbBookStatus.setText("Tình trạng: Sách còn trong thư viện");
 			dataSach = sach;
 		}
 		if (sv != null) {
@@ -75,146 +78,158 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	// @SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
-	// Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-		jLabel1 = new javax.swing.JLabel();
-		txtMaSinhVien = new javax.swing.JTextField();
-		btnChonSinhVien = new javax.swing.JButton();
-		jLabel2 = new javax.swing.JLabel();
-		btnChonSach = new javax.swing.JButton();
-		jLabel3 = new javax.swing.JLabel();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		txtGhiChu = new javax.swing.JTextArea();
-		btnMuonSach = new javax.swing.JButton();
-		btnDienLai = new javax.swing.JButton();
-		lbTenSinhVien = new javax.swing.JLabel();
-		lbTenSach = new javax.swing.JLabel();
-		numMaSach = new javax.swing.JSpinner();
-		lbBookStatus = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtMaSinhVien = new javax.swing.JTextField();
+        btnChonSinhVien = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnChonSach = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtGhiChu = new javax.swing.JTextArea();
+        btnMuonSach = new javax.swing.JButton();
+        btnDienLai = new javax.swing.JButton();
+        lbTenSinhVien = new javax.swing.JLabel();
+        lbTenSach = new javax.swing.JLabel();
+        numMaSach = new javax.swing.JSpinner();
+        lbBookStatus = new javax.swing.JLabel();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-		setTitle("Mượn sách");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mượn sách");
 
-		jLabel1.setText("Mã sinh viên");
+        jLabel1.setText("Mã sinh viên");
 
-		txtMaSinhVien.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtMaSinhVien.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-		btnChonSinhVien.setText("Tìm sinh viên");
-		btnChonSinhVien.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnChonSinhVienActionPerformed(evt);
-			}
-		});
+        btnChonSinhVien.setText("Tìm sinh viên");
+        btnChonSinhVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonSinhVienActionPerformed(evt);
+            }
+        });
 
-		jLabel2.setText("Mã sách");
+        jLabel2.setText("Mã sách");
 
-		btnChonSach.setText("Tìm sách");
-		btnChonSach.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnChonSachActionPerformed(evt);
-			}
-		});
+        btnChonSach.setText("Kiểm tra tình trạng");
+        btnChonSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonSachActionPerformed(evt);
+            }
+        });
 
-		jLabel3.setText("Ghi chú");
+        jLabel3.setText("Ghi chú");
 
-		txtGhiChu.setColumns(20);
-		txtGhiChu.setRows(5);
-		jScrollPane1.setViewportView(txtGhiChu);
+        txtGhiChu.setColumns(20);
+        txtGhiChu.setRows(5);
+        jScrollPane1.setViewportView(txtGhiChu);
 
-		btnMuonSach.setText("Mượn sách");
-		btnMuonSach.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnMuonSachActionPerformed(evt);
-			}
-		});
+        btnMuonSach.setText("Mượn sách");
+        btnMuonSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMuonSachActionPerformed(evt);
+            }
+        });
 
-		btnDienLai.setText("Điền lại");
-		btnDienLai.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnDienLaiActionPerformed(evt);
-			}
-		});
+        btnDienLai.setText("Điền lại");
+        btnDienLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDienLaiActionPerformed(evt);
+            }
+        });
 
-		lbTenSinhVien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		lbTenSinhVien.setText("Tên sinh viên: ");
+        lbTenSinhVien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTenSinhVien.setText("Tên sinh viên: ");
 
-		lbTenSach.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		lbTenSach.setForeground(new java.awt.Color(51, 51, 255));
-		lbTenSach.setText("Tên sách: ");
-		lbTenSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		lbTenSach.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				lbTenSachMouseClicked(evt);
-			}
-		});
+        lbTenSach.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTenSach.setForeground(new java.awt.Color(51, 51, 255));
+        lbTenSach.setText("Tên sách: ");
+        lbTenSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbTenSach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbTenSachMouseClicked(evt);
+            }
+        });
 
-		numMaSach.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        numMaSach.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
-		lbBookStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		lbBookStatus.setText("Tình trạng: ");
+        lbBookStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbBookStatus.setText("Tình trạng: ");
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addContainerGap()
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE).addComponent(btnMuonSach)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addComponent(btnDienLai))
-						.addGroup(layout.createSequentialGroup()
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addComponent(jLabel1).addComponent(jLabel2).addComponent(jLabel3))
-								.addGap(18, 18, 18)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-										.addComponent(jScrollPane1)
-										.addGroup(layout.createSequentialGroup().addGroup(layout
-												.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-												.addGroup(layout.createSequentialGroup()
-														.addComponent(txtMaSinhVien,
-																javax.swing.GroupLayout.PREFERRED_SIZE, 199,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(18, 18, 18))
-												.addGroup(layout.createSequentialGroup().addComponent(numMaSach)
-														.addGap(137, 137, 137)))
-												.addGroup(layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addComponent(btnChonSinhVien,
-																javax.swing.GroupLayout.DEFAULT_SIZE, 107,
-																Short.MAX_VALUE)
-														.addComponent(btnChonSach, javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-										.addGroup(layout.createSequentialGroup()
-												.addGroup(layout
-														.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addComponent(lbTenSinhVien).addComponent(lbTenSach)
-														.addComponent(lbBookStatus))
-												.addGap(0, 0, Short.MAX_VALUE)))))
-				.addContainerGap()));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-				.createSequentialGroup().addContainerGap()
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1)
-						.addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnChonSinhVien))
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(lbTenSinhVien)
-				.addGap(5, 5, 5)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel2)
-						.addComponent(btnChonSach).addComponent(numMaSach, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-				.addGap(4, 4, 4).addComponent(lbTenSach).addGap(11, 11, 11).addComponent(lbBookStatus)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addGroup(layout.createSequentialGroup().addGap(33, 33, 33).addComponent(jLabel3)))
-				.addGap(18, 18, 18)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(btnMuonSach).addComponent(btnDienLai))
-				.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnMuonSach)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDienLai))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(numMaSach)
+                                        .addGap(137, 137, 137)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnChonSinhVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnChonSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbTenSinhVien)
+                                    .addComponent(lbTenSach)
+                                    .addComponent(lbBookStatus))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChonSinhVien))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbTenSinhVien)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnChonSach)
+                    .addComponent(numMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addComponent(lbTenSach)
+                .addGap(11, 11, 11)
+                .addComponent(lbBookStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMuonSach)
+                    .addComponent(btnDienLai))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-		pack();
-	}// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
 	private void btnChonSinhVienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonSinhVienActionPerformed
 		SinhVien searchSinhVien = sinhVien.stream().filter(it -> it.getId().equals(txtMaSinhVien.getText())).findAny()
@@ -226,7 +241,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 			btnMuonSach.setVisible(true);
 		} else {
 			lbTenSinhVien.setVisible(false);
-			JOptionPane.showMessageDialog(null, "Không tìm thấy sinh viên với mã đã nhập", "Không tìm thấy",
+			JOptionPane.showMessageDialog(null, "Không tìm thấy sinh viên với mã sinh viên đã nhập", "Không tìm thấy",
 					JOptionPane.INFORMATION_MESSAGE);
 			btnMuonSach.setEnabled(false);
 		}
@@ -343,20 +358,20 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	// });
 	// }
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton btnChonSach;
-	private javax.swing.JButton btnChonSinhVien;
-	private javax.swing.JButton btnDienLai;
-	private javax.swing.JButton btnMuonSach;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JLabel lbBookStatus;
-	private javax.swing.JLabel lbTenSach;
-	private javax.swing.JLabel lbTenSinhVien;
-	private javax.swing.JSpinner numMaSach;
-	private javax.swing.JTextArea txtGhiChu;
-	private javax.swing.JTextField txtMaSinhVien;
-	// End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChonSach;
+    private javax.swing.JButton btnChonSinhVien;
+    private javax.swing.JButton btnDienLai;
+    private javax.swing.JButton btnMuonSach;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbBookStatus;
+    private javax.swing.JLabel lbTenSach;
+    private javax.swing.JLabel lbTenSinhVien;
+    private javax.swing.JSpinner numMaSach;
+    private javax.swing.JTextArea txtGhiChu;
+    private javax.swing.JTextField txtMaSinhVien;
+    // End of variables declaration//GEN-END:variables
 }

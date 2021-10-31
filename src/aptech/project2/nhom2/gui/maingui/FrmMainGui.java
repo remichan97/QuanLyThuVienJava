@@ -240,6 +240,11 @@ public class FrmMainGui extends javax.swing.JFrame {
         btnMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_borrow_book_16px.png"))); // NOI18N
         btnMuonSach.setText("Mượn sách");
         btnMuonSach.setEnabled(false);
+        btnMuonSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMuonSachActionPerformed(evt);
+            }
+        });
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -643,6 +648,20 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuonSachActionPerformed
+
+        int index = jTable1.getSelectedRow();
+
+        if (sachs.get(index).getSoLuongDaMuon() == sachs.get(index).getSoLuong()) {
+            JOptionPane.showMessageDialog(null, "Sách đã chọn đã được mượn hết", "Hết sách", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        mSach = new DialogMuonSach(null, true, new ThongTinSach(sachs.get(index).getId(),sachs.get(index).getTen(), sachs.get(index).getTacGia(), sachs.get(index).getDanhMucSach(), sachs.get(index).getNhaXuatBan(), sachs.get(index).getSoLuong(), sachs.get(index).getMoTa(), sachs.get(index).getAnh()), null);
+        mSach.setVisible(true);
+
+    }//GEN-LAST:event_btnMuonSachActionPerformed
 
     private void menuMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuMuonSachActionPerformed
         mSach = new DialogMuonSach(null, true, null, null);
