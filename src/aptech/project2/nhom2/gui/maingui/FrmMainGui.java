@@ -375,11 +375,11 @@ public class FrmMainGui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên sách", "Tác giả", "Danh mục sách", "Nhà xuất bản", "Số lượng"
+                "Tên sách", "Tác giả", "Danh mục sách", "Nhà xuất bản", "Số lượng", "Số lượng đã mượn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -591,7 +591,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         menuMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_borrow_book_16px_1.png"))); // NOI18N
-        menuMuonSach.setText("Mượn/trả sách");
+        menuMuonSach.setText("Mượn sách");
         menuMuonSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuMuonSachActionPerformed(evt);
@@ -599,8 +599,8 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
         jMenu1.add(menuMuonSach);
 
-        menuTraSachMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_send_hot_list_16px.png"))); // NOI18N
-        menuTraSachMuon.setText("Danh sách trả muộn");
+        menuTraSachMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_assignment_return_16px.png"))); // NOI18N
+        menuTraSachMuon.setText("Trả sách");
         jMenu1.add(menuTraSachMuon);
         jMenu1.add(jSeparator2);
 
@@ -645,8 +645,9 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuMuonSachActionPerformed
-        mSach = new DialogMuonSach(null, true);
+        mSach = new DialogMuonSach(null, true, null, null);
         mSach.setVisible(true);
+        loadBook();
     }// GEN-LAST:event_menuMuonSachActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonAnhActionPerformed
@@ -958,7 +959,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         model.setRowCount(0);
         sachs.forEach(it -> {
             model.addRow(new Object[] { it.getTen(), it.getTacGia().getTen(), it.getDanhMucSach().getTen(),
-                    it.getNhaXuatBan().getTen(), it.getSoLuong() });
+                    it.getNhaXuatBan().getTen(), it.getSoLuong(), it.getSoLuongDaMuon() });
         });
     }
 

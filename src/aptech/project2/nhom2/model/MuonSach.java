@@ -3,20 +3,21 @@ package aptech.project2.nhom2.model;
 import java.util.Date;
 
 public class MuonSach {
-    private int id_muon_sach;
+    private int id;
     private SinhVien sinhVien;
     private ThongTinSach tSach;
     private Date ngay_muon;
     private Date ngay_tra;
     private Date ngay_tra_thuc_te;
-    private int so_luong_muon;
+    private String ghi_chu;
+    private int status;
 
-    public int getId_muon_sach() {
-        return id_muon_sach;
+    public int getId() {
+        return id;
     }
 
-    public void setId_muon_sach(int id_muon_sach) {
-        this.id_muon_sach = id_muon_sach;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public SinhVien getSinhVien() {
@@ -59,23 +60,30 @@ public class MuonSach {
         this.ngay_tra_thuc_te = ngay_tra_thuc_te;
     }
 
-    public int getSo_luong_muon() {
-        return so_luong_muon;
+    public String getGhi_chu() {
+        return ghi_chu;
     }
 
-    public void setSo_luong_muon(int so_luong_muon) {
-        this.so_luong_muon = so_luong_muon;
+    public void setGhi_chu(String ghi_chu) {
+        this.ghi_chu = ghi_chu;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public MuonSach(SinhVien sinhVien, ThongTinSach tSach, String ghi_chu, int status) {
+        this.sinhVien = sinhVien;
+        this.tSach = tSach;
+        this.ghi_chu = ghi_chu;
+        this.status = status;
     }
 
     public MuonSach() {
     }
-
-    public MuonSach(SinhVien sinhVien, ThongTinSach tSach, Date ngay_muon, Date ngay_tra, int so_luong_muon) {
-        this.sinhVien = sinhVien;
-        this.tSach = tSach;
-        this.ngay_muon = ngay_muon;
-        this.ngay_tra = ngay_tra;
-        this.so_luong_muon = so_luong_muon;
-    }
-
+    
 }
