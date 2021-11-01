@@ -527,6 +527,11 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         panelTongSoSachMuon.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTongSoSachMuon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelTongSoSachMuon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTongSoSachMuonMouseClicked(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_borrow_book_48px.png"))); // NOI18N
 
@@ -674,12 +679,22 @@ public class FrmMainGui extends javax.swing.JFrame {
         traSach = new DialogTraSach(null, true);
         traSach.setVisible(true);
         loadBook();
+        loadStats();
     }//GEN-LAST:event_menuTraSachMuonActionPerformed
+
+    private void panelTongSoSachMuonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTongSoSachMuonMouseClicked
+        // TODO add your handling code here:
+        traSach = new DialogTraSach(null, true);
+        traSach.setVisible(true);
+        loadBook();
+        loadStats();
+    }//GEN-LAST:event_panelTongSoSachMuonMouseClicked
 
     private void menuMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuMuonSachActionPerformed
         mSach = new DialogMuonSach(null, true, null, null);
         mSach.setVisible(true);
         loadBook();
+        loadStats();
     }// GEN-LAST:event_menuMuonSachActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonAnhActionPerformed
@@ -774,6 +789,7 @@ public class FrmMainGui extends javax.swing.JFrame {
             thongTinSachDAO.delete(id);
         }
         loadBook();
+        loadStats();
 
         buttonStatus(false);
     }// GEN-LAST:event_btnDeleteBookActionPerformed
@@ -815,6 +831,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         btnResetBookActionPerformed(null);
         loadBook();
+        loadStats();
 
         jTable1.clearSelection();
         buttonStatus(false);
@@ -1052,4 +1069,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
     }
 
+    private void loadStats() {
+        
+    }
 }

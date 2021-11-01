@@ -24,10 +24,12 @@ public class DialogTraSach extends javax.swing.JDialog {
      * Creates new form DialogTraSach
      */
 
-    private DefaultTableModel listIssuedModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ghi chú"});
-    private DefaultTableModel listReturnedOnTimeModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú"});
-    private DefaultTableModel listLateReturnModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú"});
-    private DefaultTableModel listLostModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày mất", "Ghi chú"});
+    private DefaultTableModel listIssuedModel = new DefaultTableModel(new Object[][] {},
+            new String[] { "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ghi chú" });
+    private DefaultTableModel listReturnedModel = new DefaultTableModel(new Object[][] {},
+            new String[] { "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú" });
+    private DefaultTableModel listLostModel = new DefaultTableModel(new Object[][] {},
+            new String[] { "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày mất", "Ghi chú" });
 
     private List<MuonSach> dataList;
 
@@ -45,38 +47,56 @@ public class DialogTraSach extends javax.swing.JDialog {
         dataList = MuonTraSachDAO.getAllBorrowList();
 
         switch (string) {
-            case "Đang mượn":
-                List<MuonSach> issued = dataList.stream().filter(it -> it.getStatus() == 0).collect(Collectors.toList());
+        case "Đang mượn":
+            List<MuonSach> issued = dataList.stream().filter(it -> it.getStatus() == 0).collect(Collectors.toList());
 
-                jTable1.setModel(listIssuedModel);
-                listIssuedModel.setRowCount(0);
-                issued.forEach(it -> {
-                    listIssuedModel.addRow(new Object[] {
-                        it.getSinhVien().getId(),
-                        it.gettSach().getId(),
-                        DateConverter.convertDate(it.getNgay_muon()),
-                        DateConverter.convertDate(it.getNgay_tra()),
-                        it.getGhi_chu()
-                    });
-                });
-                break;
-            
-            case "Báo mất":
-                List<MuonSach> lost = dataList.stream().filter(it -> it.getStatus() == 2).collect(Collectors.toList());
+            jTable1.setModel(listIssuedModel);
+            listIssuedModel.setRowCount(0);
+            issued.forEach(it -> {
+                listIssuedModel.addRow(new Object[] { it.getSinhVien().getId(), it.gettSach().getId(),
+                        DateConverter.convertDate(it.getNgay_muon()), DateConverter.convertDate(it.getNgay_tra()),
+                        it.getGhi_chu() });
+            });
+            break;
+        case "Sách trả đúng hạn":
+            List<MuonSach> onTime = dataList.stream()
+                    .filter(it -> it.getStatus() == 1 && it.getNgay_tra_thuc_te().before(it.getNgay_tra())
+                            || it.getNgay_tra_thuc_te().equals(it.getNgay_tra()))
+                    .collect(Collectors.toList());
 
-                jTable1.setModel(listLostModel);
-                listLostModel.setRowCount(0);
-                lost.forEach(it -> {
-                    listLostModel.addRow( new Object[] {
-                        it.getSinhVien().getId(),
-                        it.gettSach().getId(),
-                        DateConverter.convertDate(it.getNgay_muon()),
-                        DateConverter.convertDate(it.getNgay_tra()),
-                        DateConverter.convertDate(it.getNgay_tra_thuc_te()),
-                        it.getGhi_chu()
-                    });
-                });
-                break;
+            jTable1.setModel(listReturnedModel);
+            listReturnedModel.setRowCount(0);
+            onTime.forEach(it -> {
+                listReturnedModel.addRow(new Object[] { it.getSinhVien().getId(), it.gettSach().getId(),
+                        DateConverter.convertDate(it.getNgay_muon()), DateConverter.convertDate(it.getNgay_tra()),
+                        it.getGhi_chu() });
+            });
+            break;
+        case "Trả muộn":
+            List<MuonSach> late = dataList.stream()
+                    .filter(it -> it.getStatus() == 1 && it.getNgay_tra_thuc_te().after(it.getNgay_tra()))
+                    .collect(Collectors.toList());
+
+            jTable1.setModel(listReturnedModel);
+            listReturnedModel.setRowCount(0);
+            late.forEach(it -> {
+                listReturnedModel.addRow(new Object[] { it.getSinhVien().getId(), it.gettSach().getId(),
+                        DateConverter.convertDate(it.getNgay_muon()), DateConverter.convertDate(it.getNgay_tra()),
+                        it.getGhi_chu() });
+            });
+            break;
+
+        case "Báo mất":
+            List<MuonSach> lost = dataList.stream().filter(it -> it.getStatus() == 2).collect(Collectors.toList());
+
+            jTable1.setModel(listLostModel);
+            listLostModel.setRowCount(0);
+            lost.forEach(it -> {
+                listLostModel.addRow(new Object[] { it.getSinhVien().getId(), it.gettSach().getId(),
+                        DateConverter.convertDate(it.getNgay_muon()), DateConverter.convertDate(it.getNgay_tra()),
+                        DateConverter.convertDate(it.getNgay_tra_thuc_te()), it.getGhi_chu() });
+            });
+            break;
         }
     }
 
@@ -86,25 +106,26 @@ public class DialogTraSach extends javax.swing.JDialog {
      * regenerated by the Form Editor.
      */
     // @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtTenSinhVien = new javax.swing.JTextField();
+        txtTenSachMuon = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtNgayMuon = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtNgayHenTra = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txtGhiChu = new javax.swing.JTextArea();
+        btnTraSach = new javax.swing.JButton();
+        btnBaoMat = new javax.swing.JButton();
+        btnChonLai = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -121,38 +142,55 @@ public class DialogTraSach extends javax.swing.JDialog {
 
         jLabel2.setText("Tên sách mượn");
 
-        jTextField1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField1.setEnabled(false);
+        txtTenSinhVien.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTenSinhVien.setEnabled(false);
 
-        jTextField2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField2.setEnabled(false);
+        txtTenSachMuon.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtTenSachMuon.setEnabled(false);
 
         jLabel3.setText("Ngày mượn");
 
-        jTextField3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField3.setEnabled(false);
+        txtNgayMuon.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNgayMuon.setEnabled(false);
 
         jLabel4.setText("Ngày hẹn trả");
 
-        jTextField4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField4.setEnabled(false);
+        txtNgayHenTra.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNgayHenTra.setEnabled(false);
 
         jLabel5.setText("Ghi chú");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtGhiChu.setColumns(20);
+        txtGhiChu.setRows(5);
+        jScrollPane1.setViewportView(txtGhiChu);
 
-        jButton1.setText("Trả sách");
-
-        jButton2.setText("Báo mất");
-
-        jButton3.setText("Chọn lại");
-
-        jButton4.setText("Đóng");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnTraSach.setText("Trả sách");
+        btnTraSach.setEnabled(false);
+        btnTraSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnTraSachActionPerformed(evt);
+            }
+        });
+
+        btnBaoMat.setText("Báo mất");
+        btnBaoMat.setEnabled(false);
+        btnBaoMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaoMatActionPerformed(evt);
+            }
+        });
+
+        btnChonLai.setText("Chọn lại");
+        btnChonLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonLaiActionPerformed(evt);
+            }
+        });
+
+        btnClose.setText("Đóng");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -170,7 +208,7 @@ public class DialogTraSach extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(txtTenSinhVien))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -182,20 +220,20 @@ public class DialogTraSach extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addComponent(txtTenSachMuon)
+                            .addComponent(txtNgayMuon)
+                            .addComponent(txtNgayHenTra, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                             .addComponent(jScrollPane1))))
                 .addGap(10, 10, 10))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnTraSach, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBaoMat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnChonLai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -204,21 +242,21 @@ public class DialogTraSach extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenSachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayHenTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
@@ -228,12 +266,12 @@ public class DialogTraSach extends javax.swing.JDialog {
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnTraSach)
+                    .addComponent(btnBaoMat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btnChonLai)
                 .addGap(13, 13, 13)
-                .addComponent(jButton4))
+                .addComponent(btnClose))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Bảng dữ liệu"));
@@ -250,6 +288,11 @@ public class DialogTraSach extends javax.swing.JDialog {
             }
         ));
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jLabel6.setText("Chọn dữ liệu cần xem");
@@ -305,61 +348,95 @@ public class DialogTraSach extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
-        loadData(jComboBox1.getSelectedItem().toString());
-    }//GEN-LAST:event_jComboBox1PropertyChange
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnChonLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonLaiActionPerformed
+        // TODO add your handling code here:
+        jTable1.clearSelection();
+        txtGhiChu.setText("");
+        txtNgayMuon.setText("");
+        txtNgayHenTra.setText("");
+        txtTenSachMuon.setText("");
+        txtTenSinhVien.setText("");
+    }//GEN-LAST:event_btnChonLaiActionPerformed
+
+    private void btnBaoMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaoMatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBaoMatActionPerformed
+
+    private void btnTraSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraSachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTraSachActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+
+        
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {// GEN-FIRST:event_jComboBox1PropertyChange
+        loadData(jComboBox1.getSelectedItem().toString());
+    }// GEN-LAST:event_jComboBox1PropertyChange
+
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    // public static void main(String args[]) {
+    //     /* Set the Nimbus look and feel */
+    //     // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+    //     // (optional) ">
+    //     /*
+    //      * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+    //      * look and feel. For details see
+    //      * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+    //      */
+    //     try {
+    //         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    //             if ("Nimbus".equals(info.getName())) {
+    //                 javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    //                 break;
+    //             }
+    //         }
+    //     } catch (ClassNotFoundException ex) {
+    //         java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null,
+    //                 ex);
+    //     } catch (InstantiationException ex) {
+    //         java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null,
+    //                 ex);
+    //     } catch (IllegalAccessException ex) {
+    //         java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null,
+    //                 ex);
+    //     } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+    //         java.util.logging.Logger.getLogger(DialogTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null,
+    //                 ex);
+    //     }
+    //     // </editor-fold>
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DialogTraSach dialog = new DialogTraSach(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    //     /* Create and display the dialog */
+    //     java.awt.EventQueue.invokeLater(new Runnable() {
+    //         public void run() {
+    //             DialogTraSach dialog = new DialogTraSach(new javax.swing.JFrame(), true);
+    //             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+    //                 @Override
+    //                 public void windowClosing(java.awt.event.WindowEvent e) {
+    //                     System.exit(0);
+    //                 }
+    //             });
+    //             dialog.setVisible(true);
+    //         }
+    //     });
+    // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnBaoMat;
+    private javax.swing.JButton btnChonLai;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnTraSach;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -373,10 +450,10 @@ public class DialogTraSach extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextArea txtGhiChu;
+    private javax.swing.JTextField txtNgayHenTra;
+    private javax.swing.JTextField txtNgayMuon;
+    private javax.swing.JTextField txtTenSachMuon;
+    private javax.swing.JTextField txtTenSinhVien;
     // End of variables declaration//GEN-END:variables
 }
