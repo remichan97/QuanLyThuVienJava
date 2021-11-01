@@ -86,11 +86,11 @@ public class MuonSach {
     public MuonSach() {
     }
 
-    public MuonSach(int id, Date ngay_tra_thuc_te, String ghi_chu, int status) {
+    public MuonSach(int id, ThongTinSach tSach, String ghi_chu, int status) {
         this.id = id;
-        this.ngay_tra_thuc_te = ngay_tra_thuc_te;
+        this.tSach = tSach;
         this.ghi_chu = ghi_chu;
         this.status = status;
     }
-    
+
 }

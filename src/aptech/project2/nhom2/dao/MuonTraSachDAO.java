@@ -32,6 +32,8 @@ public class MuonTraSachDAO {
                 muonSach.setNgay_muon(rs.getDate("ngay_muon"));
                 muonSach.setNgay_tra(rs.getDate("ngay_tra"));
                 muonSach.setNgay_tra_thuc_te(rs.getDate("ngay_tra_thuc_te"));
+                muonSach.setGhi_chu(rs.getString("ghi_chu"));
+                muonSach.setStatus(rs.getInt("status"));
 
                 SinhVien sv = new SinhVien();
                 sv.setId(rs.getString("id_sinh_vien"));
@@ -83,16 +85,29 @@ public class MuonTraSachDAO {
 
     }
 
-    public static boolean returnBook(MuonSach traSach) {
-        return false;
-    }
+    public static void returnBook(MuonSach traSach) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
 
-    public static void lateReturn() {
+        try {
+            String sql1 = "update muon_sach set ngay_tra_thuc_te = ?, status = ? where id = ?";
 
-    }
+            stm = con.prepareStatement(sql1);
+            stm.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
+            stm.setInt(2, traSach.getStatus());
+            stm.setInt(3, traSach.getId());
+            stm.addBatch();
 
-    public static void lostBook() {
 
+            stm.executeUpdate();
+
+            updateBook(traSach.gettSach().getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbConnect.close(con, stm, rs);
+        }
     }
 
     public static void issueBooks(int id) {
@@ -105,6 +120,67 @@ public class MuonTraSachDAO {
             stm.setInt(1, id);
 
             stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbConnect.close(con, stm, rs);
+        }
+    }
+
+    public static void updateBook(int idSach) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            stm = con.prepareStatement("update thong_tin_sach set so_luong_da_muon = so_luong_da_muon - 1 where id = ?");
+            stm.setInt(1, idSach);
+
+            stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbConnect.close(con, stm, rs);
+        }
+    }
+
+    public static void matSach(int idSach) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            stm = con.prepareStatement("update thong_tin_sach set so_luong = so_luong - 1 where id = ?");
+            stm.setInt(1, idSach);
+
+            stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbConnect.close(con, stm, rs);
+        }
+    }
+
+    public static void lostBook(MuonSach matSach) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            String sql1 = "update muon_sach set ngay_tra_thuc_te = ?, status = ?, ghi_chu = ? where id = ?";
+
+            stm = con.prepareStatement(sql1);
+            stm.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
+            stm.setInt(2, matSach.getStatus());
+            stm.setInt(3, matSach.getId());
+            stm.setString(3, matSach.getGhi_chu());
+            stm.addBatch();
+
+
+            stm.executeUpdate();
+
+            updateBook(matSach.gettSach().getId());
+            matSach(matSach.gettSach().getId());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

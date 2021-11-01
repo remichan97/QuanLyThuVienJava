@@ -672,7 +672,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         mSach = new DialogMuonSach(null, true, new ThongTinSach(sachs.get(index).getId(),sachs.get(index).getTen(), sachs.get(index).getTacGia(), sachs.get(index).getDanhMucSach(), sachs.get(index).getNhaXuatBan(), sachs.get(index).getSoLuong(), sachs.get(index).getMoTa(), sachs.get(index).getAnh()), null);
         mSach.setVisible(true);
-
+        loadBook();
     }//GEN-LAST:event_btnMuonSachActionPerformed
 
     private void menuTraSachMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTraSachMuonActionPerformed

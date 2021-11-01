@@ -258,7 +258,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 			if (search.getSoLuong() == search.getSoLuongDaMuon()) {
 				btnMuonSach.setEnabled(false);
 				lbBookStatus.setVisible(true);
-				lbBookStatus.setText("Tình trạng: Sách đã hết");
+				lbBookStatus.setText("Tình trạng: Sách đã mượn hết");
 				btnMuonSach.setEnabled(false);
 			} else {
 				btnMuonSach.setEnabled(true);
@@ -288,6 +288,8 @@ public class DialogMuonSach extends javax.swing.JDialog {
 		} else {
 			MuonTraSachDAO.borrowBooks(new MuonSach(dataSV, dataSach, txtGhiChu.getText(), 0));
 		}
+
+		JOptionPane.showMessageDialog(null, "Đã mượn sách thành công", "Mượn sách", JOptionPane.INFORMATION_MESSAGE);
 		this.dispose();
 	}// GEN-LAST:event_btnMuonSachActionPerformed
 
