@@ -3,7 +3,6 @@ package aptech.project2.nhom2.model;
 public class NguoiDungHeThong {
     private String username;
     private String password;
-    private enum role {Admin, NguoiDung}
 
     public String getUsername() {
         return username;
