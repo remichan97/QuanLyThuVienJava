@@ -23,6 +23,8 @@ public class FrmSignIn extends javax.swing.JFrame {
     public FrmSignIn() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        this.pack();
     }
 
     /**
