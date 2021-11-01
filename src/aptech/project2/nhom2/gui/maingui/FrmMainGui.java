@@ -26,6 +26,7 @@ import aptech.project2.nhom2.gui.dialoguebox.DialogAdvancedSearch;
 import aptech.project2.nhom2.gui.dialoguebox.DialogChiTietSach;
 import aptech.project2.nhom2.gui.dialoguebox.DialogDanhMuc;
 import aptech.project2.nhom2.gui.dialoguebox.DialogMuonSach;
+import aptech.project2.nhom2.gui.dialoguebox.DialogTraSach;
 import aptech.project2.nhom2.gui.signin.FrmSignIn;
 import aptech.project2.nhom2.model.ComboBoxData;
 import aptech.project2.nhom2.model.DanhMucSach;
@@ -54,6 +55,7 @@ public class FrmMainGui extends javax.swing.JFrame {
     private DialogAdvancedSearch dlg;
     private DialogChiTietSach chiTietSach;
     private DialogMuonSach mSach;
+    private DialogTraSach traSach;
 
     private String fileExt;
 
@@ -606,6 +608,11 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         menuTraSachMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_assignment_return_16px.png"))); // NOI18N
         menuTraSachMuon.setText("Trả sách");
+        menuTraSachMuon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTraSachMuonActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuTraSachMuon);
         jMenu1.add(jSeparator2);
 
@@ -662,6 +669,12 @@ public class FrmMainGui extends javax.swing.JFrame {
         mSach.setVisible(true);
 
     }//GEN-LAST:event_btnMuonSachActionPerformed
+
+    private void menuTraSachMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTraSachMuonActionPerformed
+        traSach = new DialogTraSach(null, true);
+        traSach.setVisible(true);
+        loadBook();
+    }//GEN-LAST:event_menuTraSachMuonActionPerformed
 
     private void menuMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuMuonSachActionPerformed
         mSach = new DialogMuonSach(null, true, null, null);

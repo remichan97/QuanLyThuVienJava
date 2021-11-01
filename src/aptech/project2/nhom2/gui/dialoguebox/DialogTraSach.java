@@ -5,6 +5,15 @@
  */
 package aptech.project2.nhom2.gui.dialoguebox;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.swing.table.DefaultTableModel;
+
+import aptech.project2.nhom2.dao.MuonTraSachDAO;
+import aptech.project2.nhom2.model.MuonSach;
+import aptech.project2.nhom2.util.DateConverter;
+
 /**
  *
  * @author Mirai
@@ -14,9 +23,61 @@ public class DialogTraSach extends javax.swing.JDialog {
     /**
      * Creates new form DialogTraSach
      */
+
+    private DefaultTableModel listIssuedModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ghi chú"});
+    private DefaultTableModel listReturnedOnTimeModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú"});
+    private DefaultTableModel listLateReturnModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú"});
+    private DefaultTableModel listLostModel = new DefaultTableModel(new Object[] [] {}, new String[] {"Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày mất", "Ghi chú"});
+
+    private List<MuonSach> dataList;
+
     public DialogTraSach(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+
         initComponents();
+
+        loadData("Đang mượn");
+
+        this.setLocationRelativeTo(null);
+    }
+
+    private void loadData(String string) {
+        dataList = MuonTraSachDAO.getAllBorrowList();
+
+        switch (string) {
+            case "Đang mượn":
+                List<MuonSach> issued = dataList.stream().filter(it -> it.getStatus() == 0).collect(Collectors.toList());
+
+                jTable1.setModel(listIssuedModel);
+                listIssuedModel.setRowCount(0);
+                issued.forEach(it -> {
+                    listIssuedModel.addRow(new Object[] {
+                        it.getSinhVien().getId(),
+                        it.gettSach().getId(),
+                        DateConverter.convertDate(it.getNgay_muon()),
+                        DateConverter.convertDate(it.getNgay_tra()),
+                        it.getGhi_chu()
+                    });
+                });
+                break;
+            
+            case "Báo mất":
+                List<MuonSach> lost = dataList.stream().filter(it -> it.getStatus() == 2).collect(Collectors.toList());
+
+                jTable1.setModel(listLostModel);
+                listLostModel.setRowCount(0);
+                lost.forEach(it -> {
+                    listLostModel.addRow( new Object[] {
+                        it.getSinhVien().getId(),
+                        it.gettSach().getId(),
+                        DateConverter.convertDate(it.getNgay_muon()),
+                        DateConverter.convertDate(it.getNgay_tra()),
+                        DateConverter.convertDate(it.getNgay_tra_thuc_te()),
+                        it.getGhi_chu()
+                    });
+                });
+                break;
+        }
     }
 
     /**
@@ -52,6 +113,7 @@ public class DialogTraSach extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Trả sách");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin trả sách"));
 
@@ -59,9 +121,21 @@ public class DialogTraSach extends javax.swing.JDialog {
 
         jLabel2.setText("Tên sách mượn");
 
+        jTextField1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField1.setEnabled(false);
+
+        jTextField2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField2.setEnabled(false);
+
         jLabel3.setText("Ngày mượn");
 
+        jTextField3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField3.setEnabled(false);
+
         jLabel4.setText("Ngày hẹn trả");
+
+        jTextField4.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextField4.setEnabled(false);
 
         jLabel5.setText("Ghi chú");
 
@@ -76,6 +150,11 @@ public class DialogTraSach extends javax.swing.JDialog {
         jButton3.setText("Chọn lại");
 
         jButton4.setText("Đóng");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 204));
@@ -170,11 +249,17 @@ public class DialogTraSach extends javax.swing.JDialog {
 
             }
         ));
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jTable1);
 
         jLabel6.setText("Chọn dữ liệu cần xem");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang mượn", "Sách trả đúng hạn", "Trả muộn", "Sách bị mất" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang mượn", "Sách trả đúng hạn", "Trả muộn", "Báo mất" }));
+        jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jComboBox1PropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -219,6 +304,14 @@ public class DialogTraSach extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
+        loadData(jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1PropertyChange
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
