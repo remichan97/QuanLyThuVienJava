@@ -758,9 +758,9 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         ComboBoxData tacGia = (ComboBoxData) cmbTacGia.getSelectedItem();
         TacGia tacGiaData = new TacGia(tacGia.getValue(), tacGia.getLabel());
-        ComboBoxData danhMuc = (ComboBoxData) cmbTacGia.getSelectedItem();
+        ComboBoxData danhMuc = (ComboBoxData) cmbDanhMuc.getSelectedItem();
         DanhMucSach danhMucData = new DanhMucSach(danhMuc.getValue(), danhMuc.getLabel());
-        ComboBoxData nxb = (ComboBoxData) cmbTacGia.getSelectedItem();
+        ComboBoxData nxb = (ComboBoxData) cmbNhaXuatBan.getSelectedItem();
         NhaXuatBan nxbData = new NhaXuatBan(nxb.getValue(), nxb.getLabel());
 
         if (txtFileAnh.getText().isEmpty()) {
