@@ -30,6 +30,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 
 	private List<ThongTinSach> sach = sachDao.findAll();
 	private List<SinhVien> sinhVien = svDao.findAll();
+	private List<MuonSach> muonSach = MuonTraSachDAO.getAllBorrowList();
 
 	private DialogChiTietSach dlg;
 
@@ -39,7 +40,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	public DialogMuonSach(java.awt.Frame parent, boolean modal, ThongTinSach sach, SinhVien sv) {
 		super(parent, modal);
 		initComponents();
-		
+
 		hideFlag(false);
 
 		initInput(sach, sv);
@@ -52,6 +53,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 		lbTenSach.setVisible(b);
 		lbTenSinhVien.setVisible(b);
 		lbBookStatus.setVisible(b);
+		lbStudentStatus.setVisible(b);
 	}
 
 	private void initInput(ThongTinSach sach, SinhVien sv) {
@@ -78,6 +80,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	// @SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -95,9 +98,11 @@ public class DialogMuonSach extends javax.swing.JDialog {
         lbTenSach = new javax.swing.JLabel();
         numMaSach = new javax.swing.JSpinner();
         lbBookStatus = new javax.swing.JLabel();
+        lbStudentStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mượn sách");
+        setResizable(false);
 
         jLabel1.setText("Mã sinh viên");
 
@@ -157,6 +162,9 @@ public class DialogMuonSach extends javax.swing.JDialog {
         lbBookStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbBookStatus.setText("Tình trạng: ");
 
+        lbStudentStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbStudentStatus.setText("Sinh viên đã mượn tối đa 03 quyển sách");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,28 +180,26 @@ public class DialogMuonSach extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(numMaSach)
-                                        .addGap(137, 137, 137)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnChonSinhVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnChonSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(btnChonSinhVien, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbTenSinhVien)
                                     .addComponent(lbTenSach)
-                                    .addComponent(lbBookStatus))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(lbBookStatus)
+                                    .addComponent(lbStudentStatus))
+                                .addGap(0, 115, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(numMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnChonSach)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -206,14 +212,16 @@ public class DialogMuonSach extends javax.swing.JDialog {
                     .addComponent(btnChonSinhVien))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbTenSinhVien)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbStudentStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(btnChonSach)
                     .addComponent(numMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbTenSach)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbBookStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +229,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jLabel3)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMuonSach)
                     .addComponent(btnDienLai))
@@ -234,11 +242,17 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	private void btnChonSinhVienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonSinhVienActionPerformed
 		SinhVien searchSinhVien = sinhVien.stream().filter(it -> it.getId().equals(txtMaSinhVien.getText())).findAny()
 				.orElse(null);
+		long count = muonSach.stream().filter(it -> it.getSinhVien().getId().equals(txtMaSinhVien.getText())).count();
 		if (searchSinhVien != null) {
 			lbTenSinhVien.setVisible(true);
 			lbTenSinhVien.setText("Tên sinh viên: " + searchSinhVien.getTen());
 			dataSV = searchSinhVien;
-			btnMuonSach.setVisible(true);
+			if (count == 3) {
+				lbStudentStatus.setVisible(true);
+				btnMuonSach.setEnabled(false);
+			} else {
+				btnMuonSach.setEnabled(true);
+			}
 		} else {
 			lbTenSinhVien.setVisible(false);
 			JOptionPane.showMessageDialog(null, "Không tìm thấy sinh viên với mã sinh viên đã nhập", "Không tìm thấy",
@@ -283,8 +297,15 @@ public class DialogMuonSach extends javax.swing.JDialog {
 		}
 
 		if (lbTenSach.isVisible() == false || lbTenSinhVien.isVisible()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng kiểm tra tình trạng sách và kiểm tra thông tin sinh viên trước khi tiến hành mượn sách",
-			"Chưa kiểm tra thông tin", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					"Vui lòng kiểm tra tình trạng sách và kiểm tra thông tin sinh viên trước khi tiến hành mượn sách",
+					"Chưa kiểm tra thông tin", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		if (checkBorrowed(txtMaSinhVien.getText(), (int) numMaSach.getValue()) == false) {
+			JOptionPane.showMessageDialog(null, "Sinh viên đã mượn sách đã chọn! Không thể mượn thêm",
+					"Sách đã được mượn", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
@@ -376,10 +397,16 @@ public class DialogMuonSach extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbBookStatus;
+    private javax.swing.JLabel lbStudentStatus;
     private javax.swing.JLabel lbTenSach;
     private javax.swing.JLabel lbTenSinhVien;
     private javax.swing.JSpinner numMaSach;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtMaSinhVien;
     // End of variables declaration//GEN-END:variables
+
+	private boolean checkBorrowed(String maSV, int id_sach) {
+		MuonSach check = muonSach.stream().filter(it -> it.getSinhVien().getId().equals(maSV)).findAny().orElse(null);
+		return check == null;
+	}
 }
