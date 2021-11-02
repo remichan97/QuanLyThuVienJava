@@ -85,6 +85,7 @@ public class DialogChiTietSach extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chi tiết sách");
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin chi tiết"));
 
@@ -215,6 +216,7 @@ public class DialogChiTietSach extends javax.swing.JDialog {
                 try {
                     lbImageMouseClicked(evt);
                 } catch (IOException e) {
+                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
