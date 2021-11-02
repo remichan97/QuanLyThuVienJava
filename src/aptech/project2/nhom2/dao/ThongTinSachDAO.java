@@ -74,7 +74,7 @@ public class ThongTinSachDAO {
                 + "                  tg.id id_tac_gia, tg.ten ten_tac_gia, nxb.id id_nha_xuat_ban, nxb.ten ten_nha_xuat_ban, ds.id id_danh_muc, ds.ten ten_danh_muc from thong_tin_sach s "
                 + "                 inner join tac_gia tg on s.id_tac_gia = tg.id"
                 + "                 INNER join nha_xuat_ban nxb on s.id_nha_xuat_ban = nxb.id"
-                + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id where s.status = 1");
+                + "                 inner join danh_muc_sach ds on s.id_danh_muc = ds.id");
     }
 
     public List<ThongTinSach> findByNXB(int nxbID) {
@@ -230,7 +230,7 @@ public class ThongTinSachDAO {
                 sach.setSoLuongDaMuon(rs.getInt("so_luong_da_muon"));
                 sach.setMoTa(rs.getString("mo_ta"));
                 sach.setAnh(rs.getString("anh"));
-                sach.setStatus(rs.getBoolean("status"));
+                sach.setStatus(rs.getInt("status"));
 
                 DanhMucSach danhMuc = new DanhMucSach();
                 danhMuc.setId(rs.getInt("id_danh_muc"));
@@ -285,7 +285,7 @@ public class ThongTinSachDAO {
                 sach.setSoLuongDaMuon(rs.getInt("so_luong_da_muon"));
                 sach.setMoTa(rs.getString("mo_ta"));
                 sach.setAnh(rs.getString("anh"));
-                sach.setStatus(rs.getBoolean("status"));
+                sach.setStatus(rs.getInt("status"));
 
                 DanhMucSach danhMuc = new DanhMucSach();
                 danhMuc.setId(rs.getInt("id_danh_muc"));
@@ -317,13 +317,7 @@ public class ThongTinSachDAO {
     public boolean addNew(ThongTinSach sach) {
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
-
-        if (checkDelete(sach)) {
-            int id = getDeletedID(sach);
-            toggleStatus(id);
-            updateMoTa(sach.getMoTa(), id);
-            return true;
-        } else {
+        
             try {
                 stm = con.prepareStatement(
                         "insert into thong_tin_sach (`ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `id_nha_xuat_ban`, `mo_ta`, `anh`) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -341,7 +335,6 @@ public class ThongTinSachDAO {
             } finally {
                 DbConnect.close(con, stm, null);
             }
-        }
 
         return false;
     }
@@ -440,53 +433,7 @@ public class ThongTinSachDAO {
         }
     }
 
-    private boolean checkDelete(ThongTinSach data) {
-        Connection con = DbConnect.open();
-        PreparedStatement stm = null;
-
-        try {
-            stm = con.prepareStatement(
-                    "select count(*) dem from thong_tin_sach where ten = ? and id_tac_gia = ? and id_danh_muc = ? and id_nha_xuat_ban = ? and status = 0");
-            stm.setString(1, data.getTen());
-            stm.setInt(2, data.getTacGia().getId());
-            stm.setInt(3, data.getDanhMucSach().getId());
-            stm.setInt(4, data.getNhaXuatBan().getId());
-
-            ResultSet rs = stm.executeQuery();
-            rs.next();
-            return rs.getInt("dem") > 0;
-        } catch (SQLException ex) {
-            System.out.println("Loi: " + ex.getMessage());
-        } finally {
-            DbConnect.close(con, stm, null);
-        }
-        return false;
-    }
-
-    private int getDeletedID(ThongTinSach data) {
-        Connection con = DbConnect.open();
-        PreparedStatement stm = null;
-
-        try {
-            stm = con.prepareStatement(
-                    "select id from thong_tin_sach where ten = ? and id_tac_gia = ? and id_danh_muc = ? and id_nha_xuat_ban = ? and status = 0");
-            stm.setString(1, data.getTen());
-            stm.setInt(2, data.getTacGia().getId());
-            stm.setInt(3, data.getDanhMucSach().getId());
-            stm.setInt(4, data.getNhaXuatBan().getId());
-
-            ResultSet rs = stm.executeQuery();
-            rs.next();
-            return rs.getInt("id");
-        } catch (SQLException ex) {
-            System.out.println("Loi: " + ex.getMessage());
-        } finally {
-            DbConnect.close(con, stm, null);
-        }
-        return 0;
-    }
-
-    private void updateMoTa(String moTa, int id) {
+    public void updateMoTa(String moTa, int id) {
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
 

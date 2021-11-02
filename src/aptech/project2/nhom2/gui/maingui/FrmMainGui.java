@@ -53,6 +53,7 @@ public class FrmMainGui extends javax.swing.JFrame {
     private ThongTinSachDAO thongTinSachDAO = new ThongTinSachDAO();
 
     private List<ThongTinSach> sachs;
+    private List<ThongTinSach> sachAll;
 
     private DialogAdvancedSearch dlg;
     private DialogChiTietSach chiTietSach;
@@ -710,7 +711,6 @@ public class FrmMainGui extends javax.swing.JFrame {
     }// GEN-LAST:event_menuTraSachMuonActionPerformed
 
     private void panelTongSoSachMuonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_panelTongSoSachMuonMouseClicked
-        // TODO add your handling code here:
         traSach = new DialogTraSach(null, true);
         traSach.setVisible(true);
         loadBook();
@@ -859,16 +859,25 @@ public class FrmMainGui extends javax.swing.JFrame {
             return;
         }
 
-        if (txtFileAnh.getText().isEmpty()) {
-            thongTinSachDAO.addNew(new ThongTinSach(txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
-                    (Integer) numSoLuong.getValue(), txtMoTa.getText(), ""));
+        ThongTinSach deleted = checkDeleted(test);
+
+        if (deleted == null) {
+                if (txtFileAnh.getText().isEmpty()) {
+                    thongTinSachDAO.addNew(new ThongTinSach(txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
+                            (Integer) numSoLuong.getValue(), txtMoTa.getText(), ""));
+                } else {
+                    String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "") + "-"
+                            + System.currentTimeMillis() / 100 + "." + fileExt;
+                    FileUtils.copyFile(new File(txtFileAnh.getText()), new File("image/" + file));
+                    thongTinSachDAO.addNew(new ThongTinSach(txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
+                            (Integer) numSoLuong.getValue(), txtMoTa.getText(), file));
+                }
         } else {
-            String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "") + "-"
-                    + System.currentTimeMillis() / 100 + "." + fileExt;
-            FileUtils.copyFile(new File(txtFileAnh.getText()), new File("image/" + file));
-            thongTinSachDAO.addNew(new ThongTinSach(txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
-                    (Integer) numSoLuong.getValue(), txtMoTa.getText(), file));
+                int id = deleted.getId();
+                thongTinSachDAO.toggleStatus(id);
+                thongTinSachDAO.updateMoTa(txtMoTa.getText(), id);
         }
+
 
         btnResetBookActionPerformed(null);
         loadBook();
@@ -1044,7 +1053,8 @@ public class FrmMainGui extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void loadBook() {
-        sachs = thongTinSachDAO.findAll();
+        sachAll = thongTinSachDAO.findAll();
+        sachs = sachAll.stream().filter(it -> it.isStatus() == 1).collect(Collectors.toList());
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         sachs.forEach(it -> {
@@ -1111,8 +1121,13 @@ public class FrmMainGui extends javax.swing.JFrame {
     }
 
     private void loadStats() {
-        lbTongSoSach.setText(ThongTinSachDAO.countBooks() + "");
+        lbTongSoSach.setText(sachs.stream().filter(it -> it.isStatus() == 1).count() + "");
         lbSosinhVien.setText(SinhVienDAO.countStudent() + "");
         lbSoSachMuon.setText(MuonTraSachDAO.countIssued() + "");
+    }
+
+    private ThongTinSach checkDeleted(ThongTinSach test) {
+        ThongTinSach deleted = sachAll.stream().filter(it -> it.getTen().equals(test.getTen()) && it.getTacGia().getId() == test.getTacGia().getId() && it.getDanhMucSach().getId() == test.getDanhMucSach().getId() && it.getNhaXuatBan().getId() == test.getNhaXuatBan().getId() && it.isStatus() == 0).findAny().orElse(null);
+        return deleted;
     }
 }

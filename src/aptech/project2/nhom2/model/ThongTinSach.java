@@ -10,7 +10,7 @@ public class ThongTinSach {
     private int soLuongDaMuon;
     private String moTa;
     private String anh;
-    private boolean status;
+    private int status;
     
 //`id`, `ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `so_luong_da_muon`, `id_nha_xuat_ban`, `mo_ta`, `anh`, `status`
 
@@ -86,11 +86,11 @@ public class ThongTinSach {
         this.anh = anh;
     }
 
-    public boolean isStatus() {
+    public int isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
