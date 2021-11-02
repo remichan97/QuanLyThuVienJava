@@ -22,8 +22,8 @@ public class MuonTraSachDAO {
 
         try {
             stm = con.prepareStatement(
-                    "SELECT a.id, a.id_sinh_vien, c.ten ten_sinh_vien, a.id_sach_muon, b.ten ten_sach_muon, a.ngay_muon, a.ngay_tra, a.ngay_tra_thuc_te, a.ghi_chu, a.status \n"
-                            + "FROM muon_sach a \n" + "inner join thong_tin_sach b on a.id_sach_muon = b.id \n"
+                    "SELECT a.id, a.id_sinh_vien, c.ten ten_sinh_vien, a.id_sach, b.ten ten_sach_muon, a.ngay_muon, a.ngay_tra, a.ngay_tra_thuc_te, a.ghi_chu, a.status \n"
+                            + "FROM muon_sach a \n" + "inner join thong_tin_sach b on a.id_sach = b.id \n"
                             + "inner join sinh_vien c on a.id_sinh_vien = c.id");
             rs = stm.executeQuery();
             while (rs.next()) {
@@ -39,7 +39,7 @@ public class MuonTraSachDAO {
                 sv.setId(rs.getString("id_sinh_vien"));
                 sv.setTen(rs.getString("ten_sinh_vien"));
 
-                ThongTinSach sach = new ThongTinSach(rs.getInt("id_sach_muon"), rs.getString("ten_sach_muon"));
+                ThongTinSach sach = new ThongTinSach(rs.getInt("id_sach"), rs.getString("ten_sach_muon"));
 
                 muonSach.setSinhVien(sv);
                 muonSach.settSach(sach);
@@ -62,7 +62,7 @@ public class MuonTraSachDAO {
 
         try {
             stm = con.prepareStatement(
-                    "insert into muon_sach (id_sinh_vien, id_sach_muon, ngay_muon, ngay_tra, ghi_chu, status) values (?, ?, ?, ?, ?, ?)");
+                    "insert into muon_sach (id_sinh_vien, id_sach, ngay_muon, ngay_tra, ghi_chu, status) values (?, ?, ?, ?, ?, ?)");
             stm.setString(1, muonSach.getSinhVien().getId());
             stm.setInt(2, muonSach.gettSach().getId());
             stm.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
@@ -174,10 +174,8 @@ public class MuonTraSachDAO {
             stm = con.prepareStatement(sql1);
             stm.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
             stm.setInt(2, matSach.getStatus());
-            stm.setInt(3, matSach.getId());
             stm.setString(3, matSach.getGhi_chu());
-            stm.addBatch();
-
+            stm.setInt(4, matSach.getId());
 
             stm.executeUpdate();
 
