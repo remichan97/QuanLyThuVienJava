@@ -19,7 +19,9 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FileUtils;
 
 import aptech.project2.nhom2.dao.DanhMucSachDAO;
+import aptech.project2.nhom2.dao.MuonTraSachDAO;
 import aptech.project2.nhom2.dao.NhaXuatBanDAO;
+import aptech.project2.nhom2.dao.SinhVienDAO;
 import aptech.project2.nhom2.dao.TacGiaDAO;
 import aptech.project2.nhom2.dao.ThongTinSachDAO;
 import aptech.project2.nhom2.gui.dialoguebox.DialogAdvancedSearch;
@@ -69,6 +71,8 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         loadBook();
         loadData4ComboBox();
+
+        loadStats();
     }
 
     /**
@@ -673,6 +677,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         mSach = new DialogMuonSach(null, true, new ThongTinSach(sachs.get(index).getId(),sachs.get(index).getTen(), sachs.get(index).getTacGia(), sachs.get(index).getDanhMucSach(), sachs.get(index).getNhaXuatBan(), sachs.get(index).getSoLuong(), sachs.get(index).getMoTa(), sachs.get(index).getAnh()), null);
         mSach.setVisible(true);
         loadBook();
+        loadStats();
     }//GEN-LAST:event_btnMuonSachActionPerformed
 
     private void menuTraSachMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTraSachMuonActionPerformed
@@ -1070,6 +1075,8 @@ public class FrmMainGui extends javax.swing.JFrame {
     }
 
     private void loadStats() {
-        
+        lbTongSoSach.setText(ThongTinSachDAO.countBooks() + "");
+        lbSosinhVien.setText(SinhVienDAO.countStudent() + "");
+        lbSoSachMuon.setText(MuonTraSachDAO.countIssued() + "");
     }
 }

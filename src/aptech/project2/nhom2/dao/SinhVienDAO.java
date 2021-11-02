@@ -105,4 +105,22 @@ public class SinhVienDAO {
         }
         return false;
     }
+
+    public static int countStudent() {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+
+        try {
+            stm = con.prepareStatement("select count(*) dem from sinh_vien where status = 1");
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+
+            return rs.getInt("dem");
+        } catch (SQLException ex) {
+            System.out.println("Loi: " + ex.getMessage());
+        } finally {
+            DbConnect.close(con, stm, null);
+        }
+        return -1;
+    }
 }

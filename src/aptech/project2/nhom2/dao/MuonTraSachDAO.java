@@ -187,4 +187,22 @@ public class MuonTraSachDAO {
             DbConnect.close(con, stm, rs);
         }
     }
+
+    public static int countIssued() {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+
+        try {
+            stm = con.prepareStatement("select count(distinct id_sach) dem from muon_sach where status = 0");
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+            return rs.getInt("dem");
+        } catch (SQLException ex) {
+            System.out.println("Loi: " + ex.getMessage());
+        } finally {
+            DbConnect.close(con, stm, null);
+        }
+
+        return -1;
+    }
 }

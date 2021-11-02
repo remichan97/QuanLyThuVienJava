@@ -503,4 +503,23 @@ public class ThongTinSachDAO {
             DbConnect.close(con, stm, null);
         }
     }
+
+    public static int countBooks() {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+
+        try {
+            stm = con.prepareStatement(
+                    "select count(*) dem from thong_tin_sach where status = 1");
+
+            ResultSet rs = stm.executeQuery();
+            rs.next();
+            return rs.getInt("dem");
+        } catch (SQLException ex) {
+            System.out.println("Loi: " + ex.getMessage());
+        } finally {
+            DbConnect.close(con, stm, null);
+        }
+        return -1;
+    }
 }
