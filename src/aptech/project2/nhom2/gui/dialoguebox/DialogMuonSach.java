@@ -276,9 +276,15 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	}// GEN-LAST:event_btnChonSachActionPerformed
 
 	private void btnMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMuonSachActionPerformed
-		if (txtMaSinhVien.getText().isEmpty() || lbTenSach.isVisible() == false) {
+		if (txtMaSinhVien.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ các thông tin trước khi tiến hành mượn sách",
 					"Thiếu dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
+
+		if (lbTenSach.isVisible() == false || lbTenSinhVien.isVisible()) {
+			JOptionPane.showMessageDialog(null, "Vui lòng kiểm tra tình trạng sách và kiểm tra thông tin sinh viên trước khi tiến hành mượn sách",
+			"Chưa kiểm tra thông tin", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 

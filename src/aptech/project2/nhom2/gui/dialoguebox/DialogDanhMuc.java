@@ -38,6 +38,10 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     private DanhMucSachDAO danhMucSachDAO = new DanhMucSachDAO();
     private ThongTinSachDAO thongTinSachDAO = new ThongTinSachDAO();
 
+    private List<TacGia> tacGia;
+    private List<DanhMucSach> danhMucSach;
+    private List<NhaXuatBan> nhaXuatBans;
+
     private DefaultListModel<ComboBoxData> tacGiaModel = new DefaultListModel<>();
     private DefaultListModel<ComboBoxData> nxbModel = new DefaultListModel<>();
     private DefaultListModel<ComboBoxData> danhMucSachModel = new DefaultListModel<>();
@@ -75,19 +79,19 @@ public class DialogDanhMuc extends javax.swing.JDialog {
     private void loadData(int option) {
         switch (option) {
             case 1:
-                List<TacGia> tacGia = tacGiaDAO.findAll();
+                tacGia = tacGiaDAO.findAll();
                 tacGia.forEach(it -> {
                     tacGiaModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
                 });
                 break;
             case 2:
-                List<DanhMucSach> danhMucSach = danhMucSachDAO.findAll();
+                danhMucSach = danhMucSachDAO.findAll();
                 danhMucSach.forEach(it -> {
                     danhMucSachModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
                 });
                 break;
             case 3:
-                List<NhaXuatBan> nhaXuatBans = nhaXuatBanDAO.findAll();
+                nhaXuatBans = nhaXuatBanDAO.findAll();
                 nhaXuatBans.forEach(it -> {
                     nxbModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
                 });
@@ -213,6 +217,12 @@ public class DialogDanhMuc extends javax.swing.JDialog {
         }
         switch (choice) {
             case 1:
+                TacGia test = tacGia.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny().orElse(null);
+                if (test != null) {
+                    JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                    JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
                 tacGiaDAO.addNew(new TacGia(jTextField1.getText()));
                 tacGiaModel.setSize(0);
                 jTextField1.setText("");
@@ -220,12 +230,24 @@ public class DialogDanhMuc extends javax.swing.JDialog {
                 break;
 
             case 2:
+            DanhMucSach testDanhMucSach = danhMucSach.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny().orElse(null);
+            if (testDanhMucSach!= null) {
+                JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
                 danhMucSachDAO.addNew(new DanhMucSach(jTextField1.getText()));
                 danhMucSachModel.setSize(0);
                 jTextField1.setText("");
                 loadData(choice);
                 break;
             case 3:
+            NhaXuatBan testNhaXuatBan = nhaXuatBans.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny().orElse(null);
+            if (testNhaXuatBan != null) {
+                JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
                 nhaXuatBanDAO.addNew(new NhaXuatBan(jTextField1.getText()));
                 nxbModel.setSize(0);
                 jTextField1.setText("");
