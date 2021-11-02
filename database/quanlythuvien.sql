@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2021 at 11:14 AM
+-- Generation Time: Nov 02, 2021 at 04:11 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -38,26 +38,16 @@ CREATE TABLE `danh_muc_sach` (
 --
 
 INSERT INTO `danh_muc_sach` (`id`, `ten`, `status`) VALUES
-(1, 'tin hoc', 1),
-(2, 'van hoc', 1),
-(3, 'sach giao khoa', 1),
-(4, 'tap chi', 1),
+(1, 'Sách giáo khoa', 1),
+(2, 'Tự truyện', 1),
+(3, 'Sách tham khảo', 1),
+(4, 'Tạp chí', 1),
 (5, 'truyen tranh', 0),
-(6, 'truyen tranh', 0),
-(7, 'sach tham khao', 1),
-(8, 'tu truyen', 1),
-(9, 'sang tac', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `muc_phat_muon`
---
-
-CREATE TABLE `muc_phat_muon` (
-  `muc_phat` int(1) NOT NULL,
-  `tien_phat` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(7, 'sach tham khao', 0),
+(8, 'tu truyen', 0),
+(9, 'sang tac', 0),
+(10, 'Truyện chữ', 1),
+(11, 'Văn học nước ngoài', 1);
 
 -- --------------------------------------------------------
 
@@ -66,15 +56,24 @@ CREATE TABLE `muc_phat_muon` (
 --
 
 CREATE TABLE `muon_sach` (
-  `id_muon_sach` int(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_sinh_vien` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `id_sach_muon` int(3) NOT NULL,
+  `id_sach` int(3) NOT NULL,
   `ngay_muon` date NOT NULL,
   `ngay_tra` date NOT NULL,
-  `ngay_tra_thuc_te` date NOT NULL,
-  `so_luong_muon` int(2) NOT NULL,
-  `tien_phat_muon` int(5) NOT NULL
+  `ngay_tra_thuc_te` date DEFAULT NULL,
+  `status` int(1) NOT NULL,
+  `le_phi_phat` int(6) DEFAULT NULL,
+  `ghi_chu` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `muon_sach`
+--
+
+INSERT INTO `muon_sach` (`id`, `id_sinh_vien`, `id_sach`, `ngay_muon`, `ngay_tra`, `ngay_tra_thuc_te`, `status`, `le_phi_phat`, `ghi_chu`) VALUES
+(1, '2', 6, '2021-11-02', '2021-11-09', '2021-11-15', 1, 60000, 'Không có'),
+(2, '3', 5, '2021-11-15', '2021-11-22', '2021-12-30', 3, 300000, 'Sinh viên pawer trả muộn quyển Nhật Ky Anne Frank quá 30 ngày, phạt300000 đồng, và bị thu hồi quyền mượn sách tại thư viện');
 
 -- --------------------------------------------------------
 
@@ -113,22 +112,10 @@ CREATE TABLE `nha_xuat_ban` (
 --
 
 INSERT INTO `nha_xuat_ban` (`id`, `ten`, `status`) VALUES
-(1, 'nxb giao duc', 1),
-(2, 'nvb van hoc', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nop_phat`
---
-
-CREATE TABLE `nop_phat` (
-  `id_muon_sach` int(4) NOT NULL,
-  `id_sach_muon` int(3) NOT NULL,
-  `id_sinh_vien` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `muc_phat` int(1) NOT NULL,
-  `ghi_chu` varchar(100) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(1, 'NXB Giáo Dục', 1),
+(2, 'NXB Văn Học', 1),
+(3, 'NXB Kim Đồng', 1),
+(4, 'NXB Hội Nhà Văn', 1);
 
 -- --------------------------------------------------------
 
@@ -141,6 +128,22 @@ CREATE TABLE `sinh_vien` (
   `ten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `sinh_vien`
+--
+
+INSERT INTO `sinh_vien` (`id`, `ten`, `status`) VALUES
+('1', 'kpswl', 0),
+('10', 'ivhmt', 0),
+('2', 'obrmo', 1),
+('3', 'pawer', 1),
+('4', 'jxtpf', 0),
+('5', 'lbepd', 1),
+('6', 'gqslp', 0),
+('7', 'diina', 1),
+('8', 'brgib', 0),
+('9', 'hikfd', 1);
 
 -- --------------------------------------------------------
 
@@ -159,11 +162,11 @@ CREATE TABLE `tac_gia` (
 --
 
 INSERT INTO `tac_gia` (`id`, `ten`, `status`) VALUES
-(1, 'a', 1),
-(2, 'b', 1),
-(3, 'c', 1),
-(4, 'd', 1),
-(5, 'e', 1),
+(1, 'Tô Hoài', 1),
+(2, 'Hector Malot', 1),
+(3, 'Đặng Thùy Trâm', 1),
+(4, 'Victor Hugo', 1),
+(5, 'Anne Frank', 1),
 (6, 'f', 0);
 
 -- --------------------------------------------------------
@@ -190,8 +193,12 @@ CREATE TABLE `thong_tin_sach` (
 --
 
 INSERT INTO `thong_tin_sach` (`id`, `ten`, `id_tac_gia`, `id_danh_muc`, `so_luong`, `so_luong_da_muon`, `id_nha_xuat_ban`, `mo_ta`, `anh`, `status`) VALUES
-(1, 'vnexpress', 1, 1, 5, 0, 1, '', '', 1),
-(2, 'dantri', 2, 2, 3, 0, 1, '', '', 1);
+(1, 'Dế Mèn Phiêu Lưu Ký', 1, 10, 5, 0, 3, 'Tác phẩm dành cho thiếu nhi', 'DeMenPhieuLuuKy-16358437360.jpg', 1),
+(2, 'Không Gia Đình', 2, 11, 5, 0, 3, 'Tác phẩm kể về hành trình của một cậu bé đi tìm lại gia đình mình', 'KhongGiaĐinh-16358282099.jpg', 1),
+(3, 'Thằng gù Nhà Thờ Đức Bà', 4, 11, 10, 0, 2, 'Một tiểu thuyết có tính chất lịch sử lấy bối cảnh Paris thời Trung cổ', 'ThangguNhaThoĐucBa-16358291745.jpg', 1),
+(4, 'Nhật Ký Đặng Thùy Trâm', 3, 2, 10, 0, 4, 'Những ghi chép hằng ngày của một nữ bác sỹ nơi chiến tuyến', 'NhatKyĐangThuyTram-16358284124.jpg', 1),
+(5, 'Nhật Ky Anne Frank', 5, 11, 10, 0, 2, 'Cuộc sống của một cô bé người Do Thái dưới ách thông trị của Đức Quốc Xã', 'NhatKyAnneFrank-16358288387.jpg', 1),
+(6, 'Những Người Khốn Khổ', 4, 11, 10, 0, 1, 'Bài hát ca ngợi về tình yêu và sự tự do của một con người tái sinh trong đau khổ và tuyệt vọng', 'NhungNguoiKhonKho-16358285835.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -204,18 +211,12 @@ ALTER TABLE `danh_muc_sach`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `muc_phat_muon`
---
-ALTER TABLE `muc_phat_muon`
-  ADD PRIMARY KEY (`muc_phat`);
-
---
 -- Indexes for table `muon_sach`
 --
 ALTER TABLE `muon_sach`
-  ADD PRIMARY KEY (`id_muon_sach`),
-  ADD KEY `fk_sachmuon` (`id_sach_muon`),
-  ADD KEY `fk_sinhvien` (`id_sinh_vien`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_sinhvien` (`id_sinh_vien`),
+  ADD KEY `fk_sachmuon` (`id_sach`);
 
 --
 -- Indexes for table `nguoi_dung_he_thong`
@@ -228,13 +229,6 @@ ALTER TABLE `nguoi_dung_he_thong`
 --
 ALTER TABLE `nha_xuat_ban`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `nop_phat`
---
-ALTER TABLE `nop_phat`
-  ADD KEY `fk_idmuonsach` (`id_muon_sach`),
-  ADD KEY `fk_sinhvienmuonsach` (`id_sinh_vien`);
 
 --
 -- Indexes for table `sinh_vien`
@@ -265,19 +259,19 @@ ALTER TABLE `thong_tin_sach`
 -- AUTO_INCREMENT for table `danh_muc_sach`
 --
 ALTER TABLE `danh_muc_sach`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `muc_phat_muon`
+-- AUTO_INCREMENT for table `muon_sach`
 --
-ALTER TABLE `muc_phat_muon`
-  MODIFY `muc_phat` int(1) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `muon_sach`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `nha_xuat_ban`
 --
 ALTER TABLE `nha_xuat_ban`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tac_gia`
@@ -289,7 +283,7 @@ ALTER TABLE `tac_gia`
 -- AUTO_INCREMENT for table `thong_tin_sach`
 --
 ALTER TABLE `thong_tin_sach`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -299,15 +293,8 @@ ALTER TABLE `thong_tin_sach`
 -- Constraints for table `muon_sach`
 --
 ALTER TABLE `muon_sach`
-  ADD CONSTRAINT `fk_sachmuon` FOREIGN KEY (`id_sach_muon`) REFERENCES `thong_tin_sach` (`id`),
+  ADD CONSTRAINT `fk_sachmuon` FOREIGN KEY (`id_sach`) REFERENCES `thong_tin_sach` (`id`),
   ADD CONSTRAINT `fk_sinhvien` FOREIGN KEY (`id_sinh_vien`) REFERENCES `sinh_vien` (`ID`);
-
---
--- Constraints for table `nop_phat`
---
-ALTER TABLE `nop_phat`
-  ADD CONSTRAINT `fk_idmuonsach` FOREIGN KEY (`id_muon_sach`) REFERENCES `muon_sach` (`id_muon_sach`),
-  ADD CONSTRAINT `fk_sinhvienmuonsach` FOREIGN KEY (`id_sinh_vien`) REFERENCES `muon_sach` (`id_sinh_vien`);
 
 --
 -- Constraints for table `thong_tin_sach`
