@@ -216,7 +216,6 @@ public class DialogChiTietSach extends javax.swing.JDialog {
                 try {
                     lbImageMouseClicked(evt);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

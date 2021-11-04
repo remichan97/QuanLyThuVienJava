@@ -149,7 +149,7 @@ public class FrmSignIn extends javax.swing.JFrame {
 
         if (user != null) {
             int perm = user.getAdmin();
-            FrmMainGui frm = new FrmMainGui(perm);
+            FrmMainGui frm = new FrmMainGui(perm, txtTenDangNhap.getText());
             this.setVisible(false);
             frm.setVisible(true);
         } else {

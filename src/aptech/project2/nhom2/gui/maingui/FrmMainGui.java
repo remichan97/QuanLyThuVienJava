@@ -25,6 +25,7 @@ import aptech.project2.nhom2.dao.SinhVienDAO;
 import aptech.project2.nhom2.dao.TacGiaDAO;
 import aptech.project2.nhom2.dao.ThongTinSachDAO;
 import aptech.project2.nhom2.gui.dialoguebox.DialogAdvancedSearch;
+import aptech.project2.nhom2.gui.dialoguebox.DialogChangePassword;
 import aptech.project2.nhom2.gui.dialoguebox.DialogChiTietSach;
 import aptech.project2.nhom2.gui.dialoguebox.DialogDanhMuc;
 import aptech.project2.nhom2.gui.dialoguebox.DialogMuonSach;
@@ -48,6 +49,9 @@ public class FrmMainGui extends javax.swing.JFrame {
 	/**
 	 * Creates new form FrmMainGui
 	 */
+
+    private String username;
+
 	private TacGiaDAO tacGiaDAO = new TacGiaDAO();
 	private NhaXuatBanDAO nhaXuatBanDAO = new NhaXuatBanDAO();
 	private DanhMucSachDAO danhMucSachDAO = new DanhMucSachDAO();
@@ -61,6 +65,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 	private DialogMuonSach mSach;
 	private DialogTraSach traSach;
     private DialogNguoiDung nguoiDung;
+    private DialogChangePassword changePW;
 
 	private String fileExt;
 
@@ -68,7 +73,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 	private DefaultComboBoxModel<ComboBoxData> danhMucSachModel;
 	private DefaultComboBoxModel<ComboBoxData> nhaXuatBanModel;
 
-	public FrmMainGui(int perm) {
+	public FrmMainGui(int perm, String user) {
 		initComponents();
 		this.setLocationRelativeTo(null);
 
@@ -78,6 +83,8 @@ public class FrmMainGui extends javax.swing.JFrame {
 		loadStats();
 
 		checkPerm(perm);
+
+        username = user;
 	}
 
 	private void checkPerm(int perm) {
@@ -718,7 +725,8 @@ public class FrmMainGui extends javax.swing.JFrame {
     }//GEN-LAST:event_menuDanhSachNguoiDungActionPerformed
 
     private void menuDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDoiMatKhauActionPerformed
-        // TODO add your handling code here:
+        changePW = new DialogChangePassword(null, true, username);
+        changePW.setVisible(true);
     }//GEN-LAST:event_menuDoiMatKhauActionPerformed
 
 	private void btnMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMuonSachActionPerformed

@@ -355,7 +355,6 @@ public class DialogTraSach extends javax.swing.JDialog {
     }// GEN-LAST:event_btnCloseActionPerformed
 
     private void btnChonLaiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonLaiActionPerformed
-        // TODO add your handling code here:
         jTable1.clearSelection();
         txtGhiChu.setText("");
         txtNgayMuon.setText("");
