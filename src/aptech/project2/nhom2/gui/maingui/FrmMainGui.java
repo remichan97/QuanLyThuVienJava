@@ -821,7 +821,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
 		if (txtFileAnh.getText().isEmpty()) {
 			thongTinSachDAO.update(new ThongTinSach(id, txtTenSach.getText(), tacGiaData, danhMucData, nxbData,
-					(Integer) numSoLuong.getValue(), txtMoTa.getText(), ""));
+					(Integer) numSoLuong.getValue(), txtMoTa.getText(), null));
 		} else {
 			String file = StringWorker.removeAccentedCharacter(txtTenSach.getText()).replaceAll("\\s+", "") + "-"
 					+ System.currentTimeMillis() / 100 + "." + fileExt;
