@@ -25,6 +25,7 @@ public class NguoiDungHeThongDAO {
                 NguoiDungHeThong ndht = new NguoiDungHeThong();
                 ndht.setUsername(rs.getString("ten_dang_nhap"));
                 ndht.setPassword(rs.getString("mat_khau"));
+                ndht.setAdmin(rs.getInt("admin"));
 
                 list.add(ndht);
             }

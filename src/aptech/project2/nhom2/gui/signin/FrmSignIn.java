@@ -5,10 +5,13 @@
  */
 package aptech.project2.nhom2.gui.signin;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import aptech.project2.nhom2.dao.NguoiDungHeThongDAO;
 import aptech.project2.nhom2.gui.maingui.FrmMainGui;
+import aptech.project2.nhom2.model.NguoiDungHeThong;
 import aptech.project2.nhom2.util.Md5Gen;
 
 /**
@@ -20,6 +23,9 @@ public class FrmSignIn extends javax.swing.JFrame {
     /**
      * Creates new form FrmSignIn
      */
+
+    private List<NguoiDungHeThong> userList = NguoiDungHeThongDAO.findAll();
+
     public FrmSignIn() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -139,8 +145,11 @@ public class FrmSignIn extends javax.swing.JFrame {
 
         String hashedPW = Md5Gen.getMD5(new String(pwMatKhau.getPassword()));
 
-        if (NguoiDungHeThongDAO.signIn(txtTenDangNhap.getText(), hashedPW)) {
-            FrmMainGui frm = new FrmMainGui();
+        NguoiDungHeThong user = userList.stream().filter(it -> it.getUsername().equals(txtTenDangNhap.getText()) && it.getPassword().equals(hashedPW)).findAny().orElse(null);
+
+        if (user != null) {
+            int perm = user.getAdmin();
+            FrmMainGui frm = new FrmMainGui(perm);
             this.setVisible(false);
             frm.setVisible(true);
         } else {
