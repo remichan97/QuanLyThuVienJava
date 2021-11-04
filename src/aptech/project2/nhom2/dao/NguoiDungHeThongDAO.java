@@ -108,25 +108,4 @@ public class NguoiDungHeThongDAO {
         }
         return false;
     }
-
-    public static boolean signIn(String username, String password) {
-        Connection con = DbConnect.open();
-        PreparedStatement stm = null;
-
-        try {
-            stm = con.prepareStatement(
-                    "select count(*) dem from nguoi_dung_he_thong where ten_dang_nhap = ? and mat_khau = ?");
-            stm.setString(1, username);
-            stm.setString(2, password);
-
-            ResultSet rs = stm.executeQuery();
-            rs.next();
-            return rs.getInt("dem") > 0;
-        } catch (SQLException ex) {
-            System.out.println("Loi: " + ex.getMessage());
-        } finally {
-            DbConnect.close(con, stm, null);
-        }
-        return false;
-    }
 }
