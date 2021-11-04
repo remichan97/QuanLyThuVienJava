@@ -24,7 +24,7 @@ public class DialogChiTietSach extends javax.swing.JDialog {
      * Creates new form DialogChiTietSach
      */
 
-    private final String path = "image/";
+    private final String path = "image/books/";
     private ThongTinSach sachData;
 
     public DialogChiTietSach(java.awt.Frame parent, boolean modal, ThongTinSach data) {
