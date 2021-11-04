@@ -171,7 +171,7 @@ public class DialogChangePassword extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Sai mật khẩu, vui lòng thử lại", "Sai mật khẩu", JOptionPane.INFORMATION_MESSAGE);
             return;
         } else {
-            NguoiDungHeThongDAO.update(new NguoiDungHeThong(user, new String(pwNewPassword.getPassword())));
+            NguoiDungHeThongDAO.update(new NguoiDungHeThong(user, Md5Gen.getMD5(new String(pwNewPassword.getPassword()))));
             JOptionPane.showMessageDialog(null, "Đã đổi mật khẩu thành công", "Đã đổi mật khẩu", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }

@@ -780,8 +780,14 @@ public class FrmMainGui extends javax.swing.JFrame {
 
 		if (sts == JFileChooser.APPROVE_OPTION) {
 			File selected = chooser.getSelectedFile();
-			txtFileAnh.setText(selected.getAbsolutePath());
-			fileExt = FileUtils.getExtension(selected.getAbsolutePath());
+			if (FileUtils.getExtension(selected.getAbsolutePath()).equals("jpg") || FileUtils.getExtension(selected.getAbsolutePath()).equals("png")) {
+                txtFileAnh.setText(selected.getAbsolutePath());
+                fileExt = FileUtils.getExtension(selected.getAbsolutePath());
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Vui lòng chỉ chọn file ảnh có định dạng jpg hoặc png", "Sai định dạng ảnh", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 		}
 
 	}// GEN-LAST:event_btnChonAnhActionPerformed
