@@ -1,10 +1,30 @@
 package aptech.project2.nhom2.model;
 
 public class SinhVien {
+    public SinhVien() {
+    }
+
+    public SinhVien(String ten, String sdt, ComboBoxData gioiTinh, String email, String anh) {
+        this.ten = ten;
+        Sdt = sdt;
+        GioiTinh = gioiTinh;
+        Email = email;
+        Anh = anh;
+    }
+
+    public SinhVien(String id, String ten, String sdt, ComboBoxData gioiTinh, String email, String anh) {
+        this.id = id;
+        this.ten = ten;
+        Sdt = sdt;
+        GioiTinh = gioiTinh;
+        Email = email;
+        Anh = anh;
+    }
+
     private String id;
     private String ten;
     private String Sdt;
-    private int GioiTinh;
+    private ComboBoxData GioiTinh;
     private String Email;
     private String Anh;
 
@@ -16,11 +36,11 @@ public class SinhVien {
         Sdt = sdt;
     }
 
-    public int getGioiTinh() {
+    public ComboBoxData getGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(int gioiTinh) {
+    public void setGioiTinh(ComboBoxData gioiTinh) {
         GioiTinh = gioiTinh;
     }
 

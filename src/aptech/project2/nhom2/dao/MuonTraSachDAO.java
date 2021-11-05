@@ -85,6 +85,34 @@ public class MuonTraSachDAO {
         return false;
 
     }
+    public static List<MuonSach> locMuonSach(String maSinhVien)  {
+        String sql1 = "select a.id_sach_muon, b.ten ten_sach_muon, a.ngay_muon from muon_sach a inner join thong_tin_sach b on a.id_sach_muon = b.id where id_sinh_vien = ? and a.status = 0";
+        List<MuonSach> dataMs = new ArrayList<>();
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            stm=con.prepareStatement(sql1);
+            stm.setString(1, maSinhVien );
+            rs=stm.executeQuery();
+
+            while(rs.next()){
+                MuonSach test = new MuonSach();
+                test.settSach(new ThongTinSach(rs.getInt("id_sach_muon"), rs.getString("ten_sach_muon")));
+                test.setNgay_muon(rs.getDate("ngay_muon"));
+
+                dataMs.add(test);
+            }
+
+        } catch (Exception e) {
+            //TODO: handle exception
+       }finally{
+            DbConnect.close(con, stm, rs);
+       }
+       
+        return dataMs;
+    }
 
     public static void returnBook(MuonSach traSach) {
         Connection con = DbConnect.open();

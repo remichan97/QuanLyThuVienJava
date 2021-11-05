@@ -6,18 +6,31 @@
 package aptech.project2.nhom2.gui.dialoguebox;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 import org.apache.commons.io.FileUtils;
+
+import aptech.project2.nhom2.dao.SinhVienDAO;
+import aptech.project2.nhom2.model.ComboBoxData;
+import aptech.project2.nhom2.model.SinhVien;
+import aptech.project2.nhom2.util.StringWorker;
 
 /**
  *
  * @author Admin
  */
 public class DialogSinhVien extends javax.swing.JDialog {
+    private SinhVienDAO sinhVienDAO = new SinhVienDAO();//gán biến đại diện cho sinhviendao
+
+    private List<SinhVien> sv;//tạo list
+    
 
     /**
      * Creates new form DialogSinhVien
@@ -28,8 +41,38 @@ public class DialogSinhVien extends javax.swing.JDialog {
     public DialogSinhVien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        showSinhvien(null);
     }
+    private void showSinhvien(String timKiem) {
+        DefaultTableModel person = (DefaultTableModel) jTable1.getModel();
+        sv = sinhVienDAO.findAll(); //pull dữ liệu từ database
+        person.setRowCount(0);//reset
+        if(timKiem == null){
+            sv.forEach(ps -> {
+            person.addRow(new Object[]{
+                ps.getId(),
+                ps.getTen(),
+                ps.getGioiTinh().getLabel(),
+                ps.getEmail(),
+                ps.getSdt()
+            });
+        });
+        }else{
+            List<SinhVien> locTimKiem = sv.stream().filter(ps -> ps.getTen().contains(txtTimKiem.getText())).collect(Collectors.toList());
+            locTimKiem.forEach(ps -> {
+                person.addRow(new Object[]{
+                    ps.getId(),
+                    ps.getTen(),
+                    ps.getGioiTinh().getLabel(),
+                    ps.getEmail(),
+                    ps.getSdt()
+                });
+            });
+            
+        }
+        
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,7 +148,12 @@ public class DialogSinhVien extends javax.swing.JDialog {
         btnAddSinhVien.setText("Thêm sinh viên");
         btnAddSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddSinhVienActionPerformed(evt);
+                try {
+                    btnAddSinhVienActionPerformed(evt);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -114,7 +162,12 @@ public class DialogSinhVien extends javax.swing.JDialog {
         btnEditSinhVien.setEnabled(false);
         btnEditSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditSinhVienActionPerformed(evt);
+                try {
+                    btnEditSinhVienActionPerformed(evt);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -246,6 +299,11 @@ public class DialogSinhVien extends javax.swing.JDialog {
         jLabel1.setText("Tìm kiếm theo tên");
 
         bntTimKiem.setText("Tìm kiếm");
+        bntTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,10 +343,29 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
         // TODO add your handling code here:
+        if (jTable1.getSelectedRow() != -1) {
+			int index = jTable1.getSelectedRow();
+
+			buttonStatus(true);
+
+			cmbGioiTinh.setSelectedIndex(sv.get(index).getGioiTinh().getValue());
+
+            txtMaSinhVien.setText(sv.get(index).getId());
+            txtTenSinhvien.setText(sv.get(index).getTen());
+			txtEmail.setText(sv.get(index).getEmail());
+			txtSoDienThoai.setText(sv.get(index).getSdt());
+
+            txtMaSinhVien.setEditable(false);
+        }
+
     }//GEN-LAST:event_jTable1MousePressed
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
         // TODO add your handling code here:
+        SinhVien anh;
+        anh = sv.stream().filter(ps ->ps.getId().equals(txtMaSinhVien.getText())).findAny().orElse(null);
+        DialogChiTietSinhVien chiTietSinhVien = new DialogChiTietSinhVien(null, true, anh);
+        chiTietSinhVien.setVisible(true);
     }//GEN-LAST:event_btnChiTietActionPerformed
 
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhActionPerformed
@@ -314,19 +391,108 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        txtMaSinhVien.setText("");
+        txtEmail.setText("");
+        txtFileAnh.setText("");
+        txtTenSinhvien.setText("");
+        txtSoDienThoai.setText("");
+        cmbGioiTinh.setSelectedIndex(-1);
+        txtMaSinhVien.setEditable(true);
+        jTable1.clearSelection();
+        buttonStatus(false);
+
+
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnDeleteSinhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSinhVienActionPerformed
         // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+		String id = sv.get(index).getId();
+
+		if (JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa sinh viên đã chọn?", "Xác nhận xóa",
+				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE) == 0) {
+			sinhVienDAO.delete(id);
+		}
+        showSinhvien(null);
+        btnResetActionPerformed(null);
+        buttonStatus(false);
     }//GEN-LAST:event_btnDeleteSinhVienActionPerformed
 
-    private void btnEditSinhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSinhVienActionPerformed
+    private void btnEditSinhVienActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnEditSinhVienActionPerformed
         // TODO add your handling code here:
+
+        if (txtTenSinhvien.getText().isEmpty() || txtEmail.getText().isEmpty() || txtSoDienThoai.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Vui lòng nhập các thông tin để thực hiện thao tác sửa thông tin sinh viên",
+					"Chưa nhập dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+			return;
+        }
+
+        SinhVien test = sv.stream().filter(ps -> ps.getEmail().equals(txtEmail.getText()) && !ps.getId().equals(txtMaSinhVien.getText()) && ps.getSdt().equals(txtSoDienThoai.getText()) && ps.getGioiTinh().getValue() == cmbGioiTinh.getSelectedIndex()).findAny().orElse(null);
+        if(test != null) {
+            JOptionPane.showMessageDialog(null,
+					"Thông tin chỉnh sửa trùng với thông tin sinh viên hiện đang có trong hệ thống",
+                    "Trùng thông tin",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+        }
+        if(!txtFileAnh.getText().isEmpty()) {
+            String file = StringWorker.removeAccentedCharacter(txtMaSinhVien.getText())
+						+ System.currentTimeMillis() / 100 + "." + fileExt;
+				FileUtils.copyFile(new File(txtFileAnh.getText()), new File("image/student/" + file));
+                sinhVienDAO.update(new SinhVien(txtMaSinhVien.getText(), txtTenSinhvien.getText(), txtSoDienThoai.getText(), new ComboBoxData(cmbGioiTinh.getSelectedIndex(),null), txtEmail.getText(),file));
+
+        }
+        sinhVienDAO.update(new SinhVien(txtMaSinhVien.getText(), txtTenSinhvien.getText(), txtSoDienThoai.getText(), new ComboBoxData(cmbGioiTinh.getSelectedIndex(),null), txtEmail.getText(),null));
+
+				
+                JOptionPane.showMessageDialog(null, " Đã thêm Sinh viên thành công vào trong hệ thống!", "Thêm sinh viên",
+					JOptionPane.INFORMATION_MESSAGE);
+        
+        showSinhvien(null);
+        btnResetActionPerformed(null);
+        buttonStatus(false);
+
     }//GEN-LAST:event_btnEditSinhVienActionPerformed
 
-    private void btnAddSinhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSinhVienActionPerformed
+    private void btnAddSinhVienActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnAddSinhVienActionPerformed
         // TODO add your handling code here:
+        // lọc input
+        if (txtMaSinhVien.getText().isEmpty() || txtTenSinhvien.getText().isEmpty() || txtEmail.getText().isEmpty() || txtSoDienThoai.getText().isEmpty() || txtFileAnh.getText().isEmpty() || cmbGioiTinh.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập các thông tin để thực hiện thao tác thêm sinh viên",
+					"Chưa nhập dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+			return;
+        }
+        //so sánh input với list sinh vien
+        SinhVien test = sv.stream()
+            .filter(ps -> ps.getId().equals(txtMaSinhVien.getText()) && ps.getEmail().equals(txtEmail.getText()) && ps.getSdt().equals(txtSoDienThoai.getText())).findAny().orElse(null);
+
+        if(test != null) {
+            JOptionPane.showMessageDialog(null, "Sinh viên cần thêm đã tồn tại trong hệ thống!", "Thêm sinh viên",
+					JOptionPane.INFORMATION_MESSAGE);
+			return;
+        }
+        //copy file chỉ định thành dạng có tên và dịnh dạng nằm ở đường dẫn chỉ định add vào database
+        String file = StringWorker.removeAccentedCharacter(txtMaSinhVien.getText())
+						+ System.currentTimeMillis() / 100 + "." + fileExt;
+				FileUtils.copyFile(new File(txtFileAnh.getText()), new File("image/student/" + file));
+				sinhVienDAO.addNew(new SinhVien(txtMaSinhVien.getText(), txtTenSinhvien.getText(), txtSoDienThoai.getText(), new ComboBoxData(cmbGioiTinh.getSelectedIndex(),null), txtEmail.getText(),file));
+
+                JOptionPane.showMessageDialog(null, " Đã thêm Sinh viên thành công vào trong hệ thống!", "Thêm sinh viên",
+					JOptionPane.INFORMATION_MESSAGE);
+        
+        showSinhvien(null);
+
     }//GEN-LAST:event_btnAddSinhVienActionPerformed
+
+    private void bntTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntTimKiemActionPerformed
+        // TODO add your handling code here:
+        if(txtTimKiem.getText().isEmpty()){
+            showSinhvien(null);
+        }else{
+            showSinhvien(txtTimKiem.getText());
+        }
+    }//GEN-LAST:event_bntTimKiemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,4 +562,10 @@ public class DialogSinhVien extends javax.swing.JDialog {
     private javax.swing.JTextField txtTenSinhvien;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables
+
+    private void buttonStatus (boolean status) {
+        btnEditSinhVien.setEnabled(status);
+        btnDeleteSinhVien.setEnabled(status);
+        btnChiTiet.setEnabled(status);
+    }
 }

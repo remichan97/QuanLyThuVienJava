@@ -216,6 +216,7 @@ public class DialogChiTietSach extends javax.swing.JDialog {
                 try {
                     lbImageMouseClicked(evt);
                 } catch (IOException e) {
+                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -227,7 +228,7 @@ public class DialogChiTietSach extends javax.swing.JDialog {
             panelAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAnhLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(lbImage, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
+                .addComponent(lbImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelAnhLayout.setVerticalGroup(
             panelAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
