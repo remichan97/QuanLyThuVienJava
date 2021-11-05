@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2021 at 04:11 PM
+-- Generation Time: Nov 05, 2021 at 03:49 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -82,9 +82,10 @@ INSERT INTO `muon_sach` (`id`, `id_sinh_vien`, `id_sach`, `ngay_muon`, `ngay_tra
 --
 
 CREATE TABLE `nguoi_dung_he_thong` (
+  `full_name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `ten_dang_nhap` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `mat_khau` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `role` enum('Admin','NguoiDung') COLLATE utf8_unicode_ci NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
   `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -92,8 +93,11 @@ CREATE TABLE `nguoi_dung_he_thong` (
 -- Dumping data for table `nguoi_dung_he_thong`
 --
 
-INSERT INTO `nguoi_dung_he_thong` (`ten_dang_nhap`, `mat_khau`, `role`, `status`) VALUES
-('admin', '96549e1e8ed56cbc3488058e98a5c3bc', 'Admin', 1);
+INSERT INTO `nguoi_dung_he_thong` (`full_name`, `ten_dang_nhap`, `mat_khau`, `admin`, `status`) VALUES
+('Quản Trị Viên', 'admin', '96549e1e8ed56cbc3488058e98a5c3bc', 1, 1),
+('User1', 'not_an_adm', '634ae794de02301ecf4d477d86a32fc1', 0, 1),
+('User2', 'test', '5d9c68c6c50ed3d02a2fcf54f63993b6', 0, 1),
+('test user', 'user', '25d55ad283aa400af464c76d713c07ad', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -126,6 +130,10 @@ INSERT INTO `nha_xuat_ban` (`id`, `ten`, `status`) VALUES
 CREATE TABLE `sinh_vien` (
   `id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `ten` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `so_dien_thoai` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `gioi_tinh` int(1) NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `anh` text COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -133,17 +141,17 @@ CREATE TABLE `sinh_vien` (
 -- Dumping data for table `sinh_vien`
 --
 
-INSERT INTO `sinh_vien` (`id`, `ten`, `status`) VALUES
-('1', 'kpswl', 0),
-('10', 'ivhmt', 0),
-('2', 'obrmo', 1),
-('3', 'pawer', 1),
-('4', 'jxtpf', 0),
-('5', 'lbepd', 1),
-('6', 'gqslp', 0),
-('7', 'diina', 1),
-('8', 'brgib', 0),
-('9', 'hikfd', 1);
+INSERT INTO `sinh_vien` (`id`, `ten`, `so_dien_thoai`, `gioi_tinh`, `email`, `anh`, `status`) VALUES
+('2', 'Lại Hoàng Lê', '0888999655', 0, 'laile@gmail.com', '216361233248.jpg', 1),
+('3', 'Vũ Xuân Hoa', '0845566256', 1, 'hoavx@outlook.com', '316361233964.png', 1),
+('SV001', 'Nguyễn Văn Hiếu', '0912378516', 0, 'hieunv@gmail.com', '', 0),
+('SV005', 'Nguyễn Văn Thắng', '0912355875', 0, 'thangnguyen@gmail.com', '516361234267.png', 1),
+('SV007', 'Đặng Hoàng Vĩnh', '03486158909', 0, 'vinhdang@gmail.com', '716361234453.jpg', 1),
+('SV008', 'Lê An Khang', '0348641890', 0, 'khang.le@gmail.com', '', 0),
+('SV009', 'Lại Minh Hằng', '0653322256', 1, 'hang.lai@gmail.com', '916361234839.jpg', 1),
+('SV010', 'Trương Vũ Thu Thảo', '0133225544', 1, 'thaotruong@outlook.com', '', 0),
+('SV015', 'Đặng Anh Thắng', '01234567890', 0, 'thangdang@gmail.com', '', 0),
+('SV085', 'Nguyễn Minh Trang', '0912355647', 1, 'trangnguyen@gmail.com', '', 0);
 
 -- --------------------------------------------------------
 
@@ -215,8 +223,8 @@ ALTER TABLE `danh_muc_sach`
 --
 ALTER TABLE `muon_sach`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_sinhvien` (`id_sinh_vien`),
-  ADD KEY `fk_sachmuon` (`id_sach`);
+  ADD KEY `fk_sachmuon` (`id_sach`),
+  ADD KEY `fk_sinhvien` (`id_sinh_vien`);
 
 --
 -- Indexes for table `nguoi_dung_he_thong`
@@ -294,7 +302,7 @@ ALTER TABLE `thong_tin_sach`
 --
 ALTER TABLE `muon_sach`
   ADD CONSTRAINT `fk_sachmuon` FOREIGN KEY (`id_sach`) REFERENCES `thong_tin_sach` (`id`),
-  ADD CONSTRAINT `fk_sinhvien` FOREIGN KEY (`id_sinh_vien`) REFERENCES `sinh_vien` (`ID`);
+  ADD CONSTRAINT `fk_sinhvien` FOREIGN KEY (`id_sinh_vien`) REFERENCES `sinh_vien` (`id`);
 
 --
 -- Constraints for table `thong_tin_sach`
