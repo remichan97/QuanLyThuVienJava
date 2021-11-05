@@ -85,19 +85,20 @@ public class MuonTraSachDAO {
         return false;
 
     }
-    public static List<MuonSach> locMuonSach(String maSinhVien)  {
-        String sql1 = "select a.id_sach_muon, b.ten ten_sach_muon, a.ngay_muon from muon_sach a inner join thong_tin_sach b on a.id_sach_muon = b.id where id_sinh_vien = ? and a.status = 0";
+
+    public static List<MuonSach> locMuonSach(String maSinhVien) {
+        String sql1 = "select a.id_sach, b.ten ten_sach_muon, a.ngay_muon from muon_sach a inner join thong_tin_sach b on a.id_sach = b.id where id_sinh_vien = ? and a.status = 0";
         List<MuonSach> dataMs = new ArrayList<>();
         Connection con = DbConnect.open();
         PreparedStatement stm = null;
         ResultSet rs = null;
 
         try {
-            stm=con.prepareStatement(sql1);
-            stm.setString(1, maSinhVien );
-            rs=stm.executeQuery();
+            stm = con.prepareStatement(sql1);
+            stm.setString(1, maSinhVien);
+            rs = stm.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 MuonSach test = new MuonSach();
                 test.settSach(new ThongTinSach(rs.getInt("id_sach_muon"), rs.getString("ten_sach_muon")));
                 test.setNgay_muon(rs.getDate("ngay_muon"));
@@ -106,11 +107,11 @@ public class MuonTraSachDAO {
             }
 
         } catch (Exception e) {
-            //TODO: handle exception
-       }finally{
+            e.printStackTrace();
+        } finally {
             DbConnect.close(con, stm, rs);
-       }
-       
+        }
+
         return dataMs;
     }
 
@@ -126,7 +127,7 @@ public class MuonTraSachDAO {
             stm.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
             stm.setInt(2, traSach.getStatus());
             stm.setInt(3, traSach.getId());
-            
+
             stm.executeUpdate();
 
             updateBook(traSach.gettSach().getId());
@@ -143,7 +144,8 @@ public class MuonTraSachDAO {
         ResultSet rs = null;
 
         try {
-            stm = con.prepareStatement("update thong_tin_sach set so_luong_da_muon = so_luong_da_muon + 1 where id = ?");
+            stm = con
+                    .prepareStatement("update thong_tin_sach set so_luong_da_muon = so_luong_da_muon + 1 where id = ?");
             stm.setInt(1, id);
 
             stm.executeUpdate();
@@ -185,7 +187,8 @@ public class MuonTraSachDAO {
         ResultSet rs = null;
 
         try {
-            stm = con.prepareStatement("update thong_tin_sach set so_luong_da_muon = so_luong_da_muon - 1 where id = ?");
+            stm = con
+                    .prepareStatement("update thong_tin_sach set so_luong_da_muon = so_luong_da_muon - 1 where id = ?");
             stm.setInt(1, idSach);
 
             stm.executeUpdate();

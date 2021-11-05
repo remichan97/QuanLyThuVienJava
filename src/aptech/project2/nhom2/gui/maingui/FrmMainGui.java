@@ -30,6 +30,7 @@ import aptech.project2.nhom2.gui.dialoguebox.DialogChiTietSach;
 import aptech.project2.nhom2.gui.dialoguebox.DialogDanhMuc;
 import aptech.project2.nhom2.gui.dialoguebox.DialogMuonSach;
 import aptech.project2.nhom2.gui.dialoguebox.DialogNguoiDung;
+import aptech.project2.nhom2.gui.dialoguebox.DialogSinhVien;
 import aptech.project2.nhom2.gui.dialoguebox.DialogTraSach;
 import aptech.project2.nhom2.gui.signin.FrmSignIn;
 import aptech.project2.nhom2.model.ComboBoxData;
@@ -66,8 +67,10 @@ public class FrmMainGui extends javax.swing.JFrame {
 	private DialogTraSach traSach;
     private DialogNguoiDung nguoiDung;
     private DialogChangePassword changePW;
+    private DialogSinhVien dialogSinhVien;
 
 	private String fileExt;
+    private int permission;
 
 	private DefaultComboBoxModel<ComboBoxData> tacGiaModel;
 	private DefaultComboBoxModel<ComboBoxData> danhMucSachModel;
@@ -85,6 +88,8 @@ public class FrmMainGui extends javax.swing.JFrame {
 		checkPerm(perm);
 
         username = user;
+
+        permission = perm;
 	}
 
 	private void checkPerm(int perm) {
@@ -532,6 +537,11 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         panelTongSoSinhVien.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTongSoSinhVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelTongSoSinhVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTongSoSinhVienMouseClicked(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_person_48px.png"))); // NOI18N
 
@@ -637,6 +647,11 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         menuDanhSachSinhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_user_menu_female_16px.png"))); // NOI18N
         menuDanhSachSinhVien.setText("Danh sách sinh viên");
+        menuDanhSachSinhVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDanhSachSinhVienActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuDanhSachSinhVien);
 
         menuDanhSachNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_what_i_do_16px.png"))); // NOI18N
@@ -728,6 +743,21 @@ public class FrmMainGui extends javax.swing.JFrame {
         changePW = new DialogChangePassword(null, true, username);
         changePW.setVisible(true);
     }//GEN-LAST:event_menuDoiMatKhauActionPerformed
+
+    private void menuDanhSachSinhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDanhSachSinhVienActionPerformed
+        dialogSinhVien = new DialogSinhVien(null, true);
+        dialogSinhVien.setVisible(true);
+        loadStats();
+
+    }//GEN-LAST:event_menuDanhSachSinhVienActionPerformed
+
+    private void panelTongSoSinhVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTongSoSinhVienMouseClicked
+        if (permission != 1) {
+            return;
+        }
+
+        menuDanhSachSinhVienActionPerformed(null);
+    }//GEN-LAST:event_panelTongSoSinhVienMouseClicked
 
 	private void btnMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMuonSachActionPerformed
 

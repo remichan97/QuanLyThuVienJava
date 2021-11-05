@@ -53,24 +53,24 @@ public class DialogDanhMuc extends javax.swing.JDialog {
         loadData(option);
 
         switch (option) {
-            case 1:
-                this.setTitle("Danh sách tác giả");
-                jLabel2.setText("Danh sách tác giả");
-                choice = option;
-                listDanhMuc.setModel(tacGiaModel);
-                break;
-            case 2:
-                this.setTitle("Danh mục sách");
-                jLabel2.setText("Danh mục sách hiện có");
-                choice = option;
-                listDanhMuc.setModel(danhMucSachModel);
-                break;
-            case 3:
-                this.setTitle("Danh mục nhà xuất bản");
-                jLabel2.setText("Danh sách nhà xuất bản");
-                choice = option;
-                listDanhMuc.setModel(nxbModel);
-                break;
+        case 1:
+            this.setTitle("Danh sách tác giả");
+            jLabel2.setText("Danh sách tác giả");
+            choice = option;
+            listDanhMuc.setModel(tacGiaModel);
+            break;
+        case 2:
+            this.setTitle("Danh mục sách");
+            jLabel2.setText("Danh mục sách hiện có");
+            choice = option;
+            listDanhMuc.setModel(danhMucSachModel);
+            break;
+        case 3:
+            this.setTitle("Danh mục nhà xuất bản");
+            jLabel2.setText("Danh sách nhà xuất bản");
+            choice = option;
+            listDanhMuc.setModel(nxbModel);
+            break;
         }
         this.setLocationRelativeTo(null);
 
@@ -78,24 +78,24 @@ public class DialogDanhMuc extends javax.swing.JDialog {
 
     private void loadData(int option) {
         switch (option) {
-            case 1:
-                tacGia = tacGiaDAO.findAll();
-                tacGia.forEach(it -> {
-                    tacGiaModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
-                });
-                break;
-            case 2:
-                danhMucSach = danhMucSachDAO.findAll();
-                danhMucSach.forEach(it -> {
-                    danhMucSachModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
-                });
-                break;
-            case 3:
-                nhaXuatBans = nhaXuatBanDAO.findAll();
-                nhaXuatBans.forEach(it -> {
-                    nxbModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
-                });
-                break;
+        case 1:
+            tacGia = tacGiaDAO.findAll();
+            tacGia.forEach(it -> {
+                tacGiaModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
+            });
+            break;
+        case 2:
+            danhMucSach = danhMucSachDAO.findAll();
+            danhMucSach.forEach(it -> {
+                danhMucSachModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
+            });
+            break;
+        case 3:
+            nhaXuatBans = nhaXuatBanDAO.findAll();
+            nhaXuatBans.forEach(it -> {
+                nxbModel.addElement(new ComboBoxData(it.getId(), it.getTen()));
+            });
+            break;
         }
     }
 
@@ -216,43 +216,46 @@ public class DialogDanhMuc extends javax.swing.JDialog {
             return;
         }
         switch (choice) {
-            case 1:
-                TacGia test = tacGia.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny().orElse(null);
-                if (test != null) {
-                    JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
-                    JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
-                tacGiaDAO.addNew(new TacGia(jTextField1.getText()));
-                tacGiaModel.setSize(0);
-                jTextField1.setText("");
-                loadData(choice);
-                break;
-
-            case 2:
-            DanhMucSach testDanhMucSach = danhMucSach.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny().orElse(null);
-            if (testDanhMucSach!= null) {
+        case 1:
+            TacGia test = tacGia.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny()
+                    .orElse(null);
+            if (test != null) {
                 JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
-                JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-                danhMucSachDAO.addNew(new DanhMucSach(jTextField1.getText()));
-                danhMucSachModel.setSize(0);
-                jTextField1.setText("");
-                loadData(choice);
-                break;
-            case 3:
-            NhaXuatBan testNhaXuatBan = nhaXuatBans.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny().orElse(null);
+            tacGiaDAO.addNew(new TacGia(jTextField1.getText()));
+            tacGiaModel.setSize(0);
+            jTextField1.setText("");
+            loadData(choice);
+            break;
+
+        case 2:
+            DanhMucSach testDanhMucSach = danhMucSach.stream().filter(it -> it.getTen().equals(jTextField1.getText()))
+                    .findAny().orElse(null);
+            if (testDanhMucSach != null) {
+                JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            danhMucSachDAO.addNew(new DanhMucSach(jTextField1.getText()));
+            danhMucSachModel.setSize(0);
+            jTextField1.setText("");
+            loadData(choice);
+            break;
+        case 3:
+            NhaXuatBan testNhaXuatBan = nhaXuatBans.stream().filter(it -> it.getTen().equals(jTextField1.getText()))
+                    .findAny().orElse(null);
             if (testNhaXuatBan != null) {
                 JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
-                JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
-                nhaXuatBanDAO.addNew(new NhaXuatBan(jTextField1.getText()));
-                nxbModel.setSize(0);
-                jTextField1.setText("");
-                loadData(choice);
-                break;
+            nhaXuatBanDAO.addNew(new NhaXuatBan(jTextField1.getText()));
+            nxbModel.setSize(0);
+            jTextField1.setText("");
+            loadData(choice);
+            break;
         }
 
     }// GEN-LAST:event_btnAddActionPerformed
@@ -265,24 +268,24 @@ public class DialogDanhMuc extends javax.swing.JDialog {
         }
 
         switch (choice) {
-            case 1:
-                tacGiaDAO.update(new TacGia(id, jTextField1.getText()));
-                jTextField1.setText("");
-                tacGiaModel.setSize(0);
-                loadData(choice);
-                break;
-            case 2:
-                danhMucSachDAO.update(new DanhMucSach(id, jTextField1.getText()));
-                jTextField1.setText("");
-                danhMucSachModel.setSize(0);
-                loadData(choice);
-                break;
-            case 3:
-                nhaXuatBanDAO.update(new NhaXuatBan(id, jTextField1.getText()));
-                jTextField1.setText("");
-                nxbModel.setSize(0);
-                loadData(choice);
-                break;
+        case 1:
+            tacGiaDAO.update(new TacGia(id, jTextField1.getText()));
+            jTextField1.setText("");
+            tacGiaModel.setSize(0);
+            loadData(choice);
+            break;
+        case 2:
+            danhMucSachDAO.update(new DanhMucSach(id, jTextField1.getText()));
+            jTextField1.setText("");
+            danhMucSachModel.setSize(0);
+            loadData(choice);
+            break;
+        case 3:
+            nhaXuatBanDAO.update(new NhaXuatBan(id, jTextField1.getText()));
+            jTextField1.setText("");
+            nxbModel.setSize(0);
+            loadData(choice);
+            break;
         }
 
     }// GEN-LAST:event_btnEditActionPerformed
@@ -297,21 +300,21 @@ public class DialogDanhMuc extends javax.swing.JDialog {
         if (JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa danh mục đã chọn?", "Xác nhận xóa",
                 JOptionPane.YES_NO_OPTION) == 0) {
             switch (choice) {
-                case 1:
-                    tacGiaDAO.delete(id);
-                    tacGiaModel.setSize(0);
-                    loadData(choice);
-                    break;
-                case 2:
-                    danhMucSachDAO.delete(id);
-                    danhMucSachModel.setSize(0);
-                    loadData(choice);
-                    break;
-                case 3:
-                    nhaXuatBanDAO.delete(id);
-                    nxbModel.setSize(0);
-                    loadData(choice);
-                    break;
+            case 1:
+                tacGiaDAO.delete(id);
+                tacGiaModel.setSize(0);
+                loadData(choice);
+                break;
+            case 2:
+                danhMucSachDAO.delete(id);
+                danhMucSachModel.setSize(0);
+                loadData(choice);
+                break;
+            case 3:
+                nhaXuatBanDAO.delete(id);
+                nxbModel.setSize(0);
+                loadData(choice);
+                break;
 
             }
         }
@@ -327,21 +330,21 @@ public class DialogDanhMuc extends javax.swing.JDialog {
         }
 
         switch (choice) {
-            case 1:
-                List<ThongTinSach> sachtg = thongTinSachDAO.findByTacGia(id);
-                DialogSachView frm = new DialogSachView(null, true, sachtg);
-                frm.setVisible(true);
-                break;
-            case 2:
-                List<ThongTinSach> sachs = thongTinSachDAO.findByDanhMuc(id);
-                DialogSachView frmDanhMuc = new DialogSachView(null, true, sachs);
-                frmDanhMuc.setVisible(true);
-                break;
-            case 3:
-                List<ThongTinSach> sachnxb = thongTinSachDAO.findByNXB(id);
-                DialogSachView frmNXB = new DialogSachView(null, true, sachnxb);
-                frmNXB.setVisible(true);
-                break;
+        case 1:
+            List<ThongTinSach> sachtg = thongTinSachDAO.findByTacGia(id);
+            DialogSachView frm = new DialogSachView(null, true, sachtg);
+            frm.setVisible(true);
+            break;
+        case 2:
+            List<ThongTinSach> sachs = thongTinSachDAO.findByDanhMuc(id);
+            DialogSachView frmDanhMuc = new DialogSachView(null, true, sachs);
+            frmDanhMuc.setVisible(true);
+            break;
+        case 3:
+            List<ThongTinSach> sachnxb = thongTinSachDAO.findByNXB(id);
+            DialogSachView frmNXB = new DialogSachView(null, true, sachnxb);
+            frmNXB.setVisible(true);
+            break;
         }
     }// GEN-LAST:event_btnViewBooksActionPerformed
 
