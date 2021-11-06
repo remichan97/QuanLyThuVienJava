@@ -37,19 +37,19 @@ Dưới đây là một số ảnh chụp màn hình của Project:
 
  - Giao diện phần đăng nhập phần mềm:
 
-![Màn hình đăng nhập](image\githubthumbnail\signin.png)
+![Màn hình đăng nhập](image/githubthumbnail/signin.png)
 
 - Giao diện chính, đồng thời là giao diện quản lý sách của phần mềm:
 
-![Giao diện chính](image\githubthumbnail\maingui.png)
+![Giao diện chính](image/githubthumbnail/maingui.png)
 
 - Giao diện hộp thoại xem chi tiết sách:
 
-![Xem chi tiết](image\githubthumbnail\bookdetails.png)
+![Xem chi tiết](image/githubthumbnail/bookdetails.png)
 
 - Giao diện phần trả sách:
 
-![Trả sách](image\githubthumbnail\returnbooks.png)
+![Trả sách](image/githubthumbnail/returnbooks.png)
 
 # Các nguồn tham khảo
 
