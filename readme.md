@@ -3,7 +3,7 @@
 
 
 # Chức năng chương trình
-Hiện tại chương có những chức năng sau:
+Hiện tại chương trình có những chức năng sau:
 
 Với thủ thư:
  
@@ -23,11 +23,11 @@ Với thủ thư:
 
  # Cài đặt môi trường
 
- Để cài đặt Project lên máy tính cá nhân, đảm bảo máy tính cá nhân có những phần mềm sau:
+ Để cài đặt Project lên máy tính cá nhân, đảm bảo máy tính cá nhân có những phần mềm sau, lưu ý là những link ở đây sẽ giả sử hệ thống đang dùng Windows:
 
  - [XAMPP](https://www.apachefriends.org/index.html) : Project sử dụng môi trường MySQL được cài đặt sẵn trong XAMPP.
 
- - [NetBeans 8.2](https://drive.google.com/file/d/1ROjHav5eodUgaglLg3WmGCdT8ohpCRJL/view?usp=sharing) : IDE chủ yếu được dùng để tạo phần giao diện đồ họa (GUI) của Project . Trước đây Oracle có cung cấp download cho phiên bản được sử dụng cho Project, nhưng hiện tại đã không còn, link được đặt ở đây sẽ dẫn đến Google Drive cá nhân để download file.
+ - [NetBeans 8.2](https://drive.google.com/file/d/1ROjHav5eodUgaglLg3WmGCdT8ohpCRJL/view?usp=sharing) : IDE chủ yếu được dùng để tạo phần giao diện đồ họa (GUI) của Project . Trước đây Oracle có cung cấp download cho phiên bản được sử dụng cho Project, nhưng hiện tại đã không còn, link được đặt ở đây sẽ dẫn đến Google Drive cá nhân để download bộ cài đặt.
 
  - [VSCode](https://code.visualstudio.com/) : (Tùy chọn, có thể cài đặt hoặc không) Phần mềm các thành viên trong nhóm sử dụng để code Project. Tuy nhiên, để VSCode có thể hỗ trợ ngôn ngữ Java, thì ngoài bộ Extension hỗ trợ của VSCode , vui lòng cài đặt thêm [JDK phiên bản 11 trở lên](https://adoptium.net/). Bạn có thể đọc [issue này](https://github.com/redhat-developer/vscode-java/wiki/JDK-Requirements#setting-the-jdk) để biết lý do của yêu cầu này.
 
