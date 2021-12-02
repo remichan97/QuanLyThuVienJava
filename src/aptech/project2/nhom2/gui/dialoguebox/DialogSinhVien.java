@@ -124,7 +124,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin sách"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin sinh viên"));
 
         jLabel7.setText("Tên sinh viên");
 
@@ -164,7 +164,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
         btnDeleteSinhVien.setIcon(new javax.swing.ImageIcon(
                 getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"))); // NOI18N
-        btnDeleteSinhVien.setText("Xóa sách");
+        btnDeleteSinhVien.setText("Xóa sinh viên");
         btnDeleteSinhVien.setEnabled(false);
         btnDeleteSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -145,7 +145,7 @@ public class FrmSignIn extends javax.swing.JFrame {
 
         String hashedPW = Md5Gen.getMD5(new String(pwMatKhau.getPassword()));
 
-        NguoiDungHeThong user = userList.stream().filter(it -> it.getUsername().equals(txtTenDangNhap.getText()) && it.getPassword().equals(hashedPW)).findAny().orElse(null);
+        NguoiDungHeThong user = userList.stream().filter(it -> it.getUsername().equals(txtTenDangNhap.getText()) && it.getPassword().equals(hashedPW) && it.getStatus() == 1).findAny().orElse(null);
 
         if (user != null) {
             int perm = user.getAdmin();

@@ -965,18 +965,21 @@ public class FrmMainGui extends javax.swing.JFrame {
 		DialogDanhMuc dialog = new DialogDanhMuc(null, true, 1);
 		dialog.setVisible(true);
 		loadData4ComboBox();
+        loadBook();
 	}// GEN-LAST:event_btnTacGiaActionPerformed
 
 	private void btnDanhMucSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDanhMucSachActionPerformed
 		DialogDanhMuc dialog = new DialogDanhMuc(null, true, 2);
 		dialog.setVisible(true);
 		loadData4ComboBox();
+        loadBook();
 	}// GEN-LAST:event_btnDanhMucSachActionPerformed
 
 	private void btnNhaXuatBanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNhaXuatBanActionPerformed
 		DialogDanhMuc dialog = new DialogDanhMuc(null, true, 3);
 		dialog.setVisible(true);
 		loadData4ComboBox();
+        loadBook();
 	}// GEN-LAST:event_btnNhaXuatBanActionPerformed
 
 	private void menuThoatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuThoatActionPerformed
@@ -984,7 +987,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 	}// GEN-LAST:event_menuThoatActionPerformed
 
 	private void menuDangXuatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuDangXuatActionPerformed
-		if (JOptionPane.showConfirmDialog(null, "Bạn muốn đăng xuất phần mềm", "Xác nhận đăng xuất",
+		if (JOptionPane.showConfirmDialog(null, "Bạn muốn đăng xuất phần mềm?", "Xác nhận đăng xuất",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 			FrmSignIn frm = new FrmSignIn();
 			this.setVisible(false);
