@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
+    <Property name="title" type="java.lang.String" value="Users Credentials"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -59,7 +59,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="TH&#xf4;ng tin ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
+            <TitledBorder title="User Information"/>
           </Border>
         </Property>
       </Properties>
@@ -69,27 +69,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="txtFullName" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtRePassword" pref="275" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtUsername" max="32767" attributes="0"/>
-                              <Component id="txtPassword" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtRePassword" max="32767" attributes="0"/>
+                      <Component id="txtFullName" max="32767" attributes="0"/>
+                      <Component id="txtUsername" max="32767" attributes="0"/>
+                      <Component id="txtPassword" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -145,26 +135,26 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n"/>
+            <Property name="text" type="java.lang.String" value="Full name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFullName">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p"/>
+            <Property name="text" type="java.lang.String" value="Username"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtUsername">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u"/>
+            <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n l&#x1ea1;i m&#x1ead;t kh&#x1ea9;u"/>
+            <Property name="text" type="java.lang.String" value="Verify Password"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAddUser">
@@ -172,7 +162,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_add_16px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
+            <Property name="text" type="java.lang.String" value="Add User"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddUserActionPerformed"/>
@@ -183,7 +173,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_password_reset_16px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x110;&#x1eb7;t l&#x1ea1;i m&#x1ead;t kh&#x1ea9;u"/>
+            <Property name="text" type="java.lang.String" value="Reset Password"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -195,7 +185,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="X&#xf3;a ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
+            <Property name="text" type="java.lang.String" value="Delete User"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -207,7 +197,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_reset_16px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec1;n l&#x1ea1;i"/>
+            <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetInputActionPerformed"/>
@@ -221,7 +211,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xec;m t&#xea;n &#x111;&#x103;ng nh&#x1ead;p"/>
+        <Property name="text" type="java.lang.String" value="Search by Username"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTimKiem">
@@ -231,7 +221,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/aptech/project2/nhom2/gui/icons/buttonicons/icons8_search_16px.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+        <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiemActionPerformed"/>
@@ -248,8 +238,8 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="2" rowCount="0">
-                <Column editable="false" title="H&#x1ecd; t&#xea;n" type="java.lang.Object"/>
-                <Column editable="false" title="T&#xea;n &#x111;&#x103;ng nh&#x1ead;p" type="java.lang.Object"/>
+                <Column editable="false" title="Full name" type="java.lang.Object"/>
+                <Column editable="false" title="Username" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

@@ -192,25 +192,25 @@ public class FrmMainGui extends javax.swing.JFrame {
         menuThoat = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Quản lý thư viện");
+        setTitle("Library Management Program");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin sách"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Book Information"));
 
-        jLabel7.setText("Tên sách");
+        jLabel7.setText("Name");
 
-        jLabel8.setText("Tác giả");
+        jLabel8.setText("Author");
 
-        btnTacGia.setText("Quản lý danh mục tác giả");
+        btnTacGia.setText("Manage Authors");
         btnTacGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTacGiaActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Danh mục");
+        jLabel9.setText("Category");
 
-        btnDanhMucSach.setText("Quản lý danh mục sách");
+        btnDanhMucSach.setText("Manage Categories");
         btnDanhMucSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDanhMucSachActionPerformed(evt);
@@ -222,7 +222,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         numSoLuong.setModel(new javax.swing.SpinnerNumberModel(10, 1, null, 1));
 
         btnAddBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_add_16px.png"))); // NOI18N
-        btnAddBook.setText("Thêm sách");
+        btnAddBook.setText("Add Book");
         btnAddBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -234,7 +234,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
 
         btnEditBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_edit_16px.png"))); // NOI18N
-        btnEditBook.setText("Sửa thông tin");
+        btnEditBook.setText("Update");
         btnEditBook.setEnabled(false);
         btnEditBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,7 +247,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
 
         btnDeleteBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"))); // NOI18N
-        btnDeleteBook.setText("Xóa sách");
+        btnDeleteBook.setText("Delete");
         btnDeleteBook.setEnabled(false);
         btnDeleteBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,30 +256,30 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
 
         btnResetBook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_reset_16px.png"))); // NOI18N
-        btnResetBook.setText("Điền lại");
+        btnResetBook.setText("Reset");
         btnResetBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetBookActionPerformed(evt);
             }
         });
 
-        jLabel12.setText("Nhà xuất bản");
+        jLabel12.setText("Publisher");
 
-        btnNhaXuatBan.setText("Quản lý danh mục nhà xuất bản");
+        btnNhaXuatBan.setText("Manage Publishers");
         btnNhaXuatBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNhaXuatBanActionPerformed(evt);
             }
         });
 
-        jLabel13.setText("Mô tả");
+        jLabel13.setText("Description");
 
-        jLabel14.setText("Ảnh");
+        jLabel14.setText("Image");
 
         txtFileAnh.setEnabled(false);
 
         btnChonAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_browse_folder_16px.png"))); // NOI18N
-        btnChonAnh.setText("Chọn ảnh");
+        btnChonAnh.setText("Browse");
         btnChonAnh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonAnhActionPerformed(evt);
@@ -287,7 +287,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
 
         btnMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_borrow_book_16px.png"))); // NOI18N
-        btnMuonSach.setText("Mượn sách");
+        btnMuonSach.setText("Issue Selected Book");
         btnMuonSach.setEnabled(false);
         btnMuonSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,7 +299,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_info_16px.png"))); // NOI18N
-        btnChiTiet.setText("Xem chi tiết");
+        btnChiTiet.setText("View Details");
         btnChiTiet.setEnabled(false);
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +362,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                                 .addComponent(btnMuonSach)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnChiTiet)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 79, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtFileAnh)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -429,7 +429,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên sách", "Tác giả", "Danh mục sách", "Nhà xuất bản", "Số lượng", "Số lượng đã mượn"
+                "Name", "Author", "Category", "Publisher", "Quantity", "Total Issued"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -448,10 +448,10 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel11.setText("Tìm tên sách");
+        jLabel11.setText("Search by Name");
 
         btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_search_16px.png"))); // NOI18N
-        btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.setText("Search");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimKiemActionPerformed(evt);
@@ -459,7 +459,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         });
 
         btnTimKiemNangCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_advanced_search_16px.png"))); // NOI18N
-        btnTimKiemNangCao.setText("Tìm kiếm nâng cao");
+        btnTimKiemNangCao.setText("Advanced Search");
         btnTimKiemNangCao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimKiemNangCaoActionPerformed(evt);
@@ -504,7 +504,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_books_48px.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Số lượng sách");
+        jLabel2.setText("Total Books");
 
         lbTongSoSach.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbTongSoSach.setText("0");
@@ -517,12 +517,12 @@ public class FrmMainGui extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(panelTongSoSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTongSoSachLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel2))
-                    .addGroup(panelTongSoSachLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(lbTongSoSach)))
-                .addGap(0, 48, Short.MAX_VALUE))
+                        .addComponent(lbTongSoSach))
+                    .addGroup(panelTongSoSachLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel2)))
+                .addGap(0, 66, Short.MAX_VALUE))
         );
         panelTongSoSachLayout.setVerticalGroup(
             panelTongSoSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,7 +546,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_person_48px.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Tổng số sinh viên");
+        jLabel5.setText("Students");
 
         lbSosinhVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbSosinhVien.setText("0");
@@ -559,12 +559,12 @@ public class FrmMainGui extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGroup(panelTongSoSinhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTongSoSinhVienLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel5))
+                        .addGap(85, 85, 85)
+                        .addComponent(lbSosinhVien))
                     .addGroup(panelTongSoSinhVienLayout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(lbSosinhVien)))
-                .addGap(0, 20, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel5)))
+                .addGap(0, 80, Short.MAX_VALUE))
         );
         panelTongSoSinhVienLayout.setVerticalGroup(
             panelTongSoSinhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -588,7 +588,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/icons8_borrow_book_48px.png"))); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("Số lượng sách đang mượn");
+        jLabel6.setText("Issued Books");
 
         lbSoSachMuon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbSoSachMuon.setText("0");
@@ -599,13 +599,14 @@ public class FrmMainGui extends javax.swing.JFrame {
             panelTongSoSachMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelTongSoSachMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
                     .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel6))
+                    .addGroup(panelTongSoSachMuonLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
                         .addComponent(lbSoSachMuon)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelTongSoSachMuonLayout.setVerticalGroup(
             panelTongSoSachMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -624,11 +625,11 @@ public class FrmMainGui extends javax.swing.JFrame {
             panelOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOverviewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelTongSoSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelTongSoSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(panelTongSoSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTongSoSachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(panelTongSoSachMuon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelOverviewLayout.setVerticalGroup(
             panelOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -643,10 +644,10 @@ public class FrmMainGui extends javax.swing.JFrame {
 
         jMenuBar1.setBorder(null);
 
-        jMenu1.setText("Chức năng");
+        jMenu1.setText("Tasks");
 
         menuDanhSachSinhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_user_menu_female_16px.png"))); // NOI18N
-        menuDanhSachSinhVien.setText("Danh sách sinh viên");
+        menuDanhSachSinhVien.setText("Manage Students Information");
         menuDanhSachSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuDanhSachSinhVienActionPerformed(evt);
@@ -655,7 +656,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(menuDanhSachSinhVien);
 
         menuDanhSachNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_what_i_do_16px.png"))); // NOI18N
-        menuDanhSachNguoiDung.setText("Danh sách người dùng");
+        menuDanhSachNguoiDung.setText("Manage Users Credentials");
         menuDanhSachNguoiDung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuDanhSachNguoiDungActionPerformed(evt);
@@ -665,7 +666,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         menuMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_borrow_book_16px_1.png"))); // NOI18N
-        menuMuonSach.setText("Mượn sách");
+        menuMuonSach.setText("Isssue Book");
         menuMuonSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuMuonSachActionPerformed(evt);
@@ -674,7 +675,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(menuMuonSach);
 
         menuTraSachMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_assignment_return_16px.png"))); // NOI18N
-        menuTraSachMuon.setText("Trả sách");
+        menuTraSachMuon.setText("Return Book");
         menuTraSachMuon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuTraSachMuonActionPerformed(evt);
@@ -684,7 +685,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(jSeparator2);
 
         menuDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_password_window_16px.png"))); // NOI18N
-        menuDoiMatKhau.setText("Đổi mật khẩu");
+        menuDoiMatKhau.setText("Change Password");
         menuDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuDoiMatKhauActionPerformed(evt);
@@ -694,7 +695,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(jSeparator4);
 
         menuDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_exit_sign_16px.png"))); // NOI18N
-        menuDangXuat.setText("Đăng xuất");
+        menuDangXuat.setText("Sign-out");
         menuDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuDangXuatActionPerformed(evt);
@@ -703,7 +704,7 @@ public class FrmMainGui extends javax.swing.JFrame {
         jMenu1.add(menuDangXuat);
 
         menuThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/menuicons/icons8_close_window_16px.png"))); // NOI18N
-        menuThoat.setText("Thoát");
+        menuThoat.setText("Exit");
         menuThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuThoatActionPerformed(evt);
@@ -764,7 +765,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 		int index = jTable1.getSelectedRow();
 
 		if (sachs.get(index).getSoLuongDaMuon() == sachs.get(index).getSoLuong()) {
-			JOptionPane.showMessageDialog(null, "Sách đã chọn đã được mượn hết", "Hết sách",
+			JOptionPane.showMessageDialog(null, "The selected book is not available for issuing ", "Not available",
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
@@ -803,7 +804,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 	private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonAnhActionPerformed
 		JFileChooser chooser = new JFileChooser();
 
-		chooser.setDialogTitle("Chọn file ảnh");
+		chooser.setDialogTitle("Choose an Image File");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.setFileFilter(new FileNameExtensionFilter("Image files", "jpg", "png"));
 		int sts = chooser.showOpenDialog(null);
@@ -815,7 +816,7 @@ public class FrmMainGui extends javax.swing.JFrame {
                 fileExt = FileUtils.getExtension(selected.getAbsolutePath());
             }
             else {
-                JOptionPane.showMessageDialog(null, "Vui lòng chỉ chọn file ảnh có định dạng jpg hoặc png", "Sai định dạng ảnh", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please only choose jpg or png file", "Incorrect file format", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 		}
@@ -879,7 +880,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 				.findAny().orElse(null);
 		if (test != null) {
 			JOptionPane.showMessageDialog(null,
-					"Thông tin chỉnh sửa trùng với thông tin sách hiện đang có trong hệ thống", "Trùng thông tin",
+					"The inputted information already existed in the system!", "Duplicated",
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
@@ -905,7 +906,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 		int index = jTable1.getSelectedRow();
 		int id = sachs.get(index).getId();
 
-		if (JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa sách đã chọn?", "Xác nhận xóa",
+		if (JOptionPane.showConfirmDialog(null, "Would you like to delete the selected book?", "Delete",
 				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE) == 0) {
 			thongTinSachDAO.delete(id);
 		}
@@ -918,8 +919,8 @@ public class FrmMainGui extends javax.swing.JFrame {
 	private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) throws IOException {// GEN-FIRST:event_btnAddBookActionPerformed
 		if (txtTenSach.getText().isEmpty() || cmbDanhMuc.getSelectedIndex() == -1 || cmbTacGia.getSelectedIndex() == -1
 				|| cmbNhaXuatBan.getSelectedIndex() == -1 || txtMoTa.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập các thông tin để thực hiện thao tác thêm sách",
-					"Chưa nhập dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Please type in all information before adding a book",
+					"No data", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
@@ -937,7 +938,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 				.findAny().orElse(null);
 
 		if (test != null) {
-			JOptionPane.showMessageDialog(null, "Sách cần thêm đã tồn tại trong hệ thống!", "Thêm sách",
+			JOptionPane.showMessageDialog(null, "The information provided already exist in the system!", "Duplicate",
 					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
@@ -987,7 +988,7 @@ public class FrmMainGui extends javax.swing.JFrame {
 	}// GEN-LAST:event_menuThoatActionPerformed
 
 	private void menuDangXuatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuDangXuatActionPerformed
-		if (JOptionPane.showConfirmDialog(null, "Bạn muốn đăng xuất phần mềm?", "Xác nhận đăng xuất",
+		if (JOptionPane.showConfirmDialog(null, "Would you like to sign-out?", "Sign-out",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
 			FrmSignIn frm = new FrmSignIn();
 			this.setVisible(false);

@@ -51,14 +51,14 @@ public class FrmSignIn extends javax.swing.JFrame {
         btnSignIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Đăng nhập phần mềm");
+        setTitle("Sign-in");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin đăng nhập"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Sign-in Information"));
 
-        jLabel1.setText("Tên đăng nhập");
+        jLabel1.setText("Username");
 
-        jLabel2.setText("Mật khẩu");
+        jLabel2.setText("Password");
 
         pwMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class FrmSignIn extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTenDangNhap)
-                    .addComponent(pwMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                    .addComponent(pwMatKhau))
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,7 +95,8 @@ public class FrmSignIn extends javax.swing.JFrame {
         );
 
         btnSignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_enter_16px.png"))); // NOI18N
-        btnSignIn.setText("Đăng nhập");
+        btnSignIn.setText("Sign-in");
+        btnSignIn.setToolTipText("");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignInActionPerformed(evt);
@@ -108,11 +109,11 @@ public class FrmSignIn extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSignIn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 280, Short.MAX_VALUE)
+                        .addComponent(btnSignIn))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,7 +139,7 @@ public class FrmSignIn extends javax.swing.JFrame {
 
     private void doLogIn() {
         if (txtTenDangNhap.getText().isEmpty() || new String(pwMatKhau.getPassword()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng điền tên đăng nhập và mật khẩu tương ứng!", "Thiếu dữ liệu",
+            JOptionPane.showMessageDialog(null, "Please enter your login credentials!", "No data",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -153,7 +154,7 @@ public class FrmSignIn extends javax.swing.JFrame {
             this.setVisible(false);
             frm.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Vui lòng kiểm tra lại tên đăng nhập và mật khẩu!", "Lỗi đăng nhập",
+            JOptionPane.showMessageDialog(null, "Please double check your sign-in credential!", "Sign-in error",
                     JOptionPane.WARNING_MESSAGE);
         }
     }

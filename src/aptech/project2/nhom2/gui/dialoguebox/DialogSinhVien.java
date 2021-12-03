@@ -76,7 +76,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
     // @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -105,15 +105,22 @@ public class DialogSinhVien extends javax.swing.JDialog {
         bntTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Danh sách sinh viên");
+        setTitle("Students List");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        }, new String[] { "Mã sinh viên", "Tên sinh viên", "Giới tính", "Email", "Số điện thoại" }) {
-            boolean[] canEdit = new boolean[] { false, false, false, false, false };
+            },
+            new String [] {
+                "Student ID", "Name", "Gender", "Email", "Phone No."
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -124,20 +131,19 @@ public class DialogSinhVien extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin sinh viên"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Student Information"));
 
-        jLabel7.setText("Tên sinh viên");
+        jLabel7.setText("Name");
 
-        jLabel8.setText("Giới tính");
+        jLabel8.setText("Gender");
 
         cmbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
         cmbGioiTinh.setSelectedIndex(-1);
 
-        jLabel9.setText("Mã sinh viên");
+        jLabel9.setText("Student ID");
 
-        btnAddSinhVien.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_add_16px.png"))); // NOI18N
-        btnAddSinhVien.setText("Thêm sinh viên");
+        btnAddSinhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_add_16px.png"))); // NOI18N
+        btnAddSinhVien.setText("Add Student");
         btnAddSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
@@ -148,9 +154,8 @@ public class DialogSinhVien extends javax.swing.JDialog {
             }
         });
 
-        btnEditSinhVien.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_edit_16px.png"))); // NOI18N
-        btnEditSinhVien.setText("Sửa thông tin");
+        btnEditSinhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_edit_16px.png"))); // NOI18N
+        btnEditSinhVien.setText("Update");
         btnEditSinhVien.setEnabled(false);
         btnEditSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,9 +167,8 @@ public class DialogSinhVien extends javax.swing.JDialog {
             }
         });
 
-        btnDeleteSinhVien.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"))); // NOI18N
-        btnDeleteSinhVien.setText("Xóa sinh viên");
+        btnDeleteSinhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_delete_16px.png"))); // NOI18N
+        btnDeleteSinhVien.setText("Delete");
         btnDeleteSinhVien.setEnabled(false);
         btnDeleteSinhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,9 +176,8 @@ public class DialogSinhVien extends javax.swing.JDialog {
             }
         });
 
-        btnReset.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_reset_16px.png"))); // NOI18N
-        btnReset.setText("Điền lại");
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_reset_16px.png"))); // NOI18N
+        btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -183,24 +186,22 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
         jLabel12.setText("Email");
 
-        jLabel13.setText("Số điện thoại");
+        jLabel13.setText("Phone Number");
 
-        jLabel14.setText("Ảnh");
+        jLabel14.setText("Photo");
 
         txtFileAnh.setEnabled(false);
 
-        btnChonAnh.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_browse_folder_16px.png"))); // NOI18N
-        btnChonAnh.setText("Chọn ảnh");
+        btnChonAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_browse_folder_16px.png"))); // NOI18N
+        btnChonAnh.setText("Browse");
         btnChonAnh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonAnhActionPerformed(evt);
             }
         });
 
-        btnChiTiet.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_info_16px.png"))); // NOI18N
-        btnChiTiet.setText("Xem chi tiết");
+        btnChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_info_16px.png"))); // NOI18N
+        btnChiTiet.setText("View Details");
         btnChiTiet.setEnabled(false);
         btnChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,91 +211,86 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel14)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12).addComponent(jLabel8))
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtFileAnh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnChonAnh))
+                    .addComponent(txtEmail)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAddSinhVien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditSinhVien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeleteSinhVien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnReset)
+                        .addGap(133, 133, 133)
+                        .addComponent(btnChiTiet)
+                        .addGap(0, 106, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(txtFileAnh)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnChonAnh))
-                                .addComponent(txtEmail)
-                                .addGroup(jPanel1Layout.createSequentialGroup().addComponent(btnAddSinhVien)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnEditSinhVien)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDeleteSinhVien)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnReset).addGap(133, 133, 133).addComponent(btnChiTiet)
-                                        .addGap(0, 50, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtTenSinhvien, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cmbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 64,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel13).addComponent(jLabel9))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtMaSinhVien).addComponent(txtSoDienThoai))))
-                        .addContainerGap()));
-        jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addGroup(jPanel1Layout
-                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtTenSinhvien, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9)
-                                .addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(cmbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13)
-                                .addComponent(txtSoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel12).addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel14)
-                                .addComponent(txtFileAnh, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnChonAnh))
+                            .addComponent(txtTenSinhvien, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnAddSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnEditSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnDeleteSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(btnChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMaSinhVien)
+                            .addComponent(txtSoDienThoai))))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTenSinhvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(txtMaSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cmbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtSoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtFileAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChonAnh))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAddSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDeleteSinhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jLabel1.setText("Tìm kiếm theo tên");
+        jLabel1.setText("Search by Name");
 
-        bntTimKiem.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_search_16px.png"))); // NOI18N
-        bntTimKiem.setText("Tìm kiếm");
+        bntTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aptech/project2/nhom2/gui/icons/buttonicons/icons8_search_16px.png"))); // NOI18N
+        bntTimKiem.setText("Search");
         bntTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bntTimKiemActionPerformed(evt);
@@ -303,32 +299,34 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                        layout.createSequentialGroup().addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup().addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtTimKiem)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(bntTimKiem)))
-                                .addContainerGap())
-                .addComponent(jScrollPane1));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup().addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTimKiem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(bntTimKiem))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)));
+                        .addComponent(bntTimKiem)))
+                .addContainerGap())
+            .addComponent(jScrollPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntTimKiem))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -361,7 +359,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
     private void btnChonAnhActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnChonAnhActionPerformed
         JFileChooser chooser = new JFileChooser();
 
-        chooser.setDialogTitle("Chọn file ảnh");
+        chooser.setDialogTitle("Browse for Image");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setFileFilter(new FileNameExtensionFilter("Image files", "jpg", "png"));
         int sts = chooser.showOpenDialog(null);
@@ -373,8 +371,8 @@ public class DialogSinhVien extends javax.swing.JDialog {
                 txtFileAnh.setText(selected.getAbsolutePath());
                 fileExt = FileUtils.getExtension(selected.getAbsolutePath());
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng chỉ chọn file ảnh có định dạng jpg hoặc png",
-                        "Sai định dạng ảnh", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please choose jpg or png file",
+                        "Wrong file format", JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
@@ -397,7 +395,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
         int index = jTable1.getSelectedRow();
         String id = sv.get(index).getId();
 
-        if (JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa sinh viên đã chọn?", "Xác nhận xóa",
+        if (JOptionPane.showConfirmDialog(null, "Would you like to delete the selected student?", "Delete",
                 JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE) == 0) {
             sinhVienDAO.delete(id);
         }
@@ -410,7 +408,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
 
         if (txtTenSinhvien.getText().isEmpty() || txtEmail.getText().isEmpty() || txtSoDienThoai.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "Vui lòng nhập các thông tin để thực hiện thao tác sửa thông tin sinh viên", "Chưa nhập dữ liệu",
+                    "Please type in required information before updating student information", "No data",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -422,7 +420,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
                 .findAny().orElse(null);
         if (test != null) {
             JOptionPane.showMessageDialog(null,
-                    "Thông tin chỉnh sửa trùng với thông tin sinh viên hiện đang có trong hệ thống", "Trùng thông tin",
+                    "The updating information already existed in the database", "Duplicate",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -437,7 +435,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
         sinhVienDAO.update(new SinhVien(txtMaSinhVien.getText(), txtTenSinhvien.getText(), txtSoDienThoai.getText(),
                 new ComboBoxData(cmbGioiTinh.getSelectedIndex(), null), txtEmail.getText(), null));
 
-        JOptionPane.showMessageDialog(null, " Đã thêm Sinh viên thành công vào trong hệ thống!", "Thêm sinh viên",
+        JOptionPane.showMessageDialog(null, "Successfully updated student information!", "Update",
                 JOptionPane.INFORMATION_MESSAGE);
 
         showSinhvien(null);
@@ -451,8 +449,8 @@ public class DialogSinhVien extends javax.swing.JDialog {
         if (txtMaSinhVien.getText().isEmpty() || txtTenSinhvien.getText().isEmpty() || txtEmail.getText().isEmpty()
                 || txtSoDienThoai.getText().isEmpty() || txtFileAnh.getText().isEmpty()
                 || cmbGioiTinh.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập các thông tin để thực hiện thao tác thêm sinh viên",
-                    "Chưa nhập dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please type in required information before adding a student",
+                    "No data", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         // so sánh input với list sinh vien
@@ -462,7 +460,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
                 .findAny().orElse(null);
 
         if (test != null) {
-            JOptionPane.showMessageDialog(null, "Sinh viên cần thêm đã tồn tại trong hệ thống!", "Thêm sinh viên",
+            JOptionPane.showMessageDialog(null, "Student information already existed!", "Duplicate",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -474,7 +472,7 @@ public class DialogSinhVien extends javax.swing.JDialog {
         sinhVienDAO.addNew(new SinhVien(txtMaSinhVien.getText(), txtTenSinhvien.getText(), txtSoDienThoai.getText(),
                 new ComboBoxData(cmbGioiTinh.getSelectedIndex(), null), txtEmail.getText(), file));
 
-        JOptionPane.showMessageDialog(null, " Đã thêm Sinh viên thành công vào trong hệ thống!", "Thêm sinh viên",
+        JOptionPane.showMessageDialog(null, "Successfully added Student Information!", "Add Student",
                 JOptionPane.INFORMATION_MESSAGE);
 
         showSinhvien(null);

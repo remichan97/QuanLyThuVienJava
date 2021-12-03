@@ -54,20 +54,20 @@ public class DialogDanhMuc extends javax.swing.JDialog {
 
         switch (option) {
         case 1:
-            this.setTitle("Danh sách tác giả");
-            jLabel2.setText("Danh sách tác giả");
+            this.setTitle("Manage Authors");
+            jLabel2.setText("Authors Listing");
             choice = option;
             listDanhMuc.setModel(tacGiaModel);
             break;
         case 2:
-            this.setTitle("Danh mục sách");
-            jLabel2.setText("Danh mục sách hiện có");
+            this.setTitle("Manage Books Categories");
+            jLabel2.setText("Available Categories");
             choice = option;
             listDanhMuc.setModel(danhMucSachModel);
             break;
         case 3:
-            this.setTitle("Danh mục nhà xuất bản");
-            jLabel2.setText("Danh sách nhà xuất bản");
+            this.setTitle("Manage Publishers Listing");
+            jLabel2.setText("Available Publishers");
             choice = option;
             listDanhMuc.setModel(nxbModel);
             break;
@@ -126,30 +126,30 @@ public class DialogDanhMuc extends javax.swing.JDialog {
         setModal(true);
         setResizable(false);
 
-        jLabel1.setText("Tên");
+        jLabel1.setText("Name");
 
-        btnAdd.setText("Thêm");
+        btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
-        btnEdit.setText("Sửa");
+        btnEdit.setText("Update");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
 
-        btnDelete.setText("Xóa");
+        btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
 
-        btnViewBooks.setText("Xem sách");
+        btnViewBooks.setText("View Books");
         btnViewBooks.setEnabled(false);
         btnViewBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class DialogDanhMuc extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnViewBooks))
                             .addComponent(jLabel2))
-                        .addGap(0, 112, Short.MAX_VALUE)))
+                        .addGap(0, 84, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -225,7 +225,7 @@ public class DialogDanhMuc extends javax.swing.JDialog {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAddActionPerformed
         if (jTextField1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Vui lòng nhập tên danh mục cần thêm", "Thiếu dữ liệu",
+            JOptionPane.showMessageDialog(null, "Please Enter a category name before adding", "No data",
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -234,7 +234,7 @@ public class DialogDanhMuc extends javax.swing.JDialog {
             TacGia test = tacGia.stream().filter(it -> it.getTen().equals(jTextField1.getText())).findAny()
                     .orElse(null);
             if (test != null) {
-                JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                JOptionPane.showMessageDialog(null, "Author already existed", "Duplicate",
                         JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
@@ -248,7 +248,7 @@ public class DialogDanhMuc extends javax.swing.JDialog {
             DanhMucSach testDanhMucSach = danhMucSach.stream().filter(it -> it.getTen().equals(jTextField1.getText()))
                     .findAny().orElse(null);
             if (testDanhMucSach != null) {
-                JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                JOptionPane.showMessageDialog(null, "Category existed", "Duplicate",
                         JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
@@ -261,7 +261,7 @@ public class DialogDanhMuc extends javax.swing.JDialog {
             NhaXuatBan testNhaXuatBan = nhaXuatBans.stream().filter(it -> it.getTen().equals(jTextField1.getText()))
                     .findAny().orElse(null);
             if (testNhaXuatBan != null) {
-                JOptionPane.showMessageDialog(null, "Danh mục đã tồn tại", "Trùng dữ liệu",
+                JOptionPane.showMessageDialog(null, "Publisher already existed", "Duplicated",
                         JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
@@ -277,8 +277,8 @@ public class DialogDanhMuc extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditActionPerformed
         if (listDanhMuc.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn một danh mục tại danh sách để sửa thông tin",
-                    "Chưa chọn danh mục", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please choose a category from the list below to change its name",
+                    "No data selected", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -309,12 +309,12 @@ public class DialogDanhMuc extends javax.swing.JDialog {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteActionPerformed
         if (listDanhMuc.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn một danh mục tại danh sách để xóa thông tin",
-                    "Chưa chọn danh mục", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a category for deletion",
+                    "No data seleted", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa danh mục đã chọn?", "Xác nhận xóa",
+        if (JOptionPane.showConfirmDialog(null, "Would you like to delete the selected category?", "Delete",
                 JOptionPane.YES_NO_OPTION) == 0) {
             switch (choice) {
             case 1:

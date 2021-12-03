@@ -3,7 +3,7 @@
 <Form version="1.6" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Tr&#x1ea3; s&#xe1;ch"/>
+    <Property name="title" type="java.lang.String" value="Return Book"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -43,7 +43,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Th&#xf4;ng tin tr&#x1ea3; s&#xe1;ch"/>
+            <TitledBorder title="Returning Information"/>
           </Border>
         </Property>
       </Properties>
@@ -139,12 +139,12 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n ng&#x1b0;&#x1edd;i m&#x1b0;&#x1ee3;n"/>
+            <Property name="text" type="java.lang.String" value="Borrower Name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n s&#xe1;ch m&#x1b0;&#x1ee3;n"/>
+            <Property name="text" type="java.lang.String" value="Borrowed Book"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTenSinhVien">
@@ -165,7 +165,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ng&#xe0;y m&#x1b0;&#x1ee3;n"/>
+            <Property name="text" type="java.lang.String" value="Issued On"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNgayMuon">
@@ -178,7 +178,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ng&#xe0;y h&#x1eb9;n tr&#x1ea3;"/>
+            <Property name="text" type="java.lang.String" value="Return on"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNgayHenTra">
@@ -191,7 +191,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ghi ch&#xfa;"/>
+            <Property name="text" type="java.lang.String" value="Note"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -211,7 +211,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnTraSach">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tr&#x1ea3; s&#xe1;ch"/>
+            <Property name="text" type="java.lang.String" value="Return Book"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -220,7 +220,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnBaoMat">
           <Properties>
-            <Property name="text" type="java.lang.String" value="B&#xe1;o m&#x1ea5;t"/>
+            <Property name="text" type="java.lang.String" value="Mark as Lost"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -229,7 +229,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnChonLai">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n l&#x1ea1;i"/>
+            <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChonLaiActionPerformed"/>
@@ -237,7 +237,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnClose">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x110;&#xf3;ng"/>
+            <Property name="text" type="java.lang.String" value="Close"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
@@ -249,7 +249,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="B&#x1ea3;ng d&#x1eef; li&#x1ec7;u"/>
+            <TitledBorder title="Data"/>
           </Border>
         </Property>
       </Properties>
@@ -263,7 +263,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" pref="414" max="32767" attributes="0"/>
+                          <Component id="jComboBox1" pref="479" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -315,18 +315,18 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n d&#x1eef; li&#x1ec7;u c&#x1ea7;n xem"/>
+            <Property name="text" type="java.lang.String" value="Filter by"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
-                <StringItem index="0" value="&#x110;ang m&#x1b0;&#x1ee3;n"/>
-                <StringItem index="1" value="S&#xe1;ch tr&#x1ea3; &#x111;&#xfa;ng h&#x1ea1;n"/>
-                <StringItem index="2" value="Tr&#x1ea3; mu&#x1ed9;n"/>
-                <StringItem index="3" value="B&#xe1;o m&#x1ea5;t"/>
-                <StringItem index="4" value="Thu h&#x1ed3;i quy&#x1ec1;n m&#x1b0;&#x1ee3;n s&#xe1;ch"/>
+                <StringItem index="0" value="Issued Book"/>
+                <StringItem index="1" value="Returned On Time"/>
+                <StringItem index="2" value="Late Returning"/>
+                <StringItem index="3" value="Lost Books"/>
+                <StringItem index="4" value="Suspended"/>
               </StringArray>
             </Property>
           </Properties>
