@@ -258,7 +258,7 @@ public class DialogNguoiDung extends javax.swing.JDialog {
                 if (txtFullName.getText().isEmpty() || txtFullName.getText().isEmpty()
                                 || txtPassword.getPassword().length == 0 || txtRePassword.getPassword().length == 0) {
                         JOptionPane.showMessageDialog(null,
-                                        "Vui lòng điền đầy dủ các thông tin trước khi thêm người dùng", "Thiếu dữ liệu",
+                                        "Please input all data before adding user", "No data",
                                         JOptionPane.INFORMATION_MESSAGE);
                         return;
                 }
@@ -267,14 +267,14 @@ public class DialogNguoiDung extends javax.swing.JDialog {
                                 .findAny().orElse(null);
 
                 if (test != null) {
-                        JOptionPane.showMessageDialog(null, "Tên đăng nhập đã tồn tại trong hệ thống",
-                                        "Tên đăng nhập đã tồn tại", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Username already existed",
+                                        "Duplicate", JOptionPane.INFORMATION_MESSAGE);
                         return;
                 }
 
                 if (!new String(txtPassword.getPassword()).equals(new String(txtRePassword.getPassword()))) {
-                        JOptionPane.showMessageDialog(null, "Xác nhận mật khẩu không khớp. Vui lòng kiểm tra lại",
-                                        "Mật khẩu không khớp", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Password do not match. Please try again",
+                                        "Password not match", JOptionPane.INFORMATION_MESSAGE);
                         return;
                 }
 
@@ -283,7 +283,7 @@ public class DialogNguoiDung extends javax.swing.JDialog {
                 NguoiDungHeThongDAO
                                 .addNew(new NguoiDungHeThong(txtFullName.getText(), txtUsername.getText(), hashedPW));
 
-                JOptionPane.showMessageDialog(null, "Đã thêm người dùng thành công", "Thêm người dùng",
+                JOptionPane.showMessageDialog(null, "Successfully added the user", "Added",
                                 JOptionPane.INFORMATION_MESSAGE);
                 loadData(null);
                 btnResetInputActionPerformed(null);
@@ -291,22 +291,22 @@ public class DialogNguoiDung extends javax.swing.JDialog {
         }// GEN-LAST:event_btnAddUserActionPerformed
 
         private void btnResetPwActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnResetPwActionPerformed
-                if (JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn đặt lại mật khẩu cho người dùng đã chọn?",
-                                "Xác nhận đặt lại mật khẩu", JOptionPane.YES_NO_OPTION,
+                if (JOptionPane.showConfirmDialog(null, "Would you like to reset the selected user password?",
+                                "Reset Password", JOptionPane.YES_NO_OPTION,
                                 JOptionPane.QUESTION_MESSAGE) == 0) {
                         NguoiDungHeThongDAO.update(new NguoiDungHeThong(txtUsername.getText(), hashedDefault));
-                        JOptionPane.showMessageDialog(null, "Đã đặt lại mật khẩu. Mật khẩu mới là '12345678'",
-                                        "Đặt lại mật khẩu", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Selected user has their password reset. New password is '12345678'",
+                                        "Reset Password", JOptionPane.INFORMATION_MESSAGE);
                 }
                 btnResetInputActionPerformed(null);
 
         }// GEN-LAST:event_btnResetPwActionPerformed
 
         private void btnDeleteUsersActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteUsersActionPerformed
-                if (JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa người dùng đã chọn?", "Xác nhận xóa",
+                if (JOptionPane.showConfirmDialog(null, "Would you like to delete the selected user?", "Delete",
                                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
                         NguoiDungHeThongDAO.delete(txtUsername.getText());
-                        JOptionPane.showMessageDialog(null, "Đã xóa người dùng", "Xóa người dùng",
+                        JOptionPane.showMessageDialog(null, "Successfully deleted the user", "Deleted",
                                         JOptionPane.INFORMATION_MESSAGE);
                 }
                 loadData(null);

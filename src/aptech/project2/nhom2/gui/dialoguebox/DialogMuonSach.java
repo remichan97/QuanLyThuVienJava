@@ -62,12 +62,12 @@ public class DialogMuonSach extends javax.swing.JDialog {
 			lbTenSach.setVisible(true);
 			lbTenSach.setText("Tên sách: " + sach.getTen());
 			lbBookStatus.setVisible(true);
-			lbBookStatus.setText("Tình trạng: Sách còn trong thư viện");
+			lbBookStatus.setText("Status: Book is available for issuing");
 			dataSach = sach;
 		}
 		if (sv != null) {
 			txtMaSinhVien.setText(sv.getId());
-			lbTenSinhVien.setText("Tên sinh viên: " + sv.getTen());
+			lbTenSinhVien.setText("Student name: " + sv.getTen());
 			dataSV = sv;
 		}
 	}
@@ -253,12 +253,12 @@ public class DialogMuonSach extends javax.swing.JDialog {
 				btnMuonSach.setEnabled(false);
 			} else if (checkBanned(txtMaSinhVien.getText())) {
 				btnMuonSach.setEnabled(false);
-				lbStudentStatus.setText("Sinh viên đã bị đình chỉ mượn sách tại thư viện");
+				lbStudentStatus.setText("Student has been suspended from borrowing book");
 				lbStudentStatus.setVisible(true);
 			}
 		} else {
 			lbTenSinhVien.setVisible(false);
-			JOptionPane.showMessageDialog(null, "Không tìm thấy sinh viên với mã sinh viên đã nhập", "Không tìm thấy",
+			JOptionPane.showMessageDialog(null, "No student found for the typed in Student ID", "Not found",
 					JOptionPane.INFORMATION_MESSAGE);
 			btnMuonSach.setEnabled(false);
 		}
@@ -275,16 +275,16 @@ public class DialogMuonSach extends javax.swing.JDialog {
 			if (search.getSoLuong() == search.getSoLuongDaMuon()) {
 				btnMuonSach.setEnabled(false);
 				lbBookStatus.setVisible(true);
-				lbBookStatus.setText("Tình trạng: Sách đã mượn hết");
+				lbBookStatus.setText("Status: Book is not available for issuing");
 				btnMuonSach.setEnabled(false);
 			} else {
 				btnMuonSach.setEnabled(true);
 				lbBookStatus.setVisible(true);
-				lbBookStatus.setText("Tình trạng: Sách còn trong thư viện");
+				lbBookStatus.setText("Status: Book is available for issuing");
 				btnMuonSach.setEnabled(true);
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Không tìm thấy sách có mã đã nhập", "Không tìm thấy",
+			JOptionPane.showMessageDialog(null, "No book matched the Book ID inputted", "Not found",
 					JOptionPane.INFORMATION_MESSAGE);
 			lbTenSach.setVisible(false);
 			lbBookStatus.setVisible(false);
@@ -294,32 +294,32 @@ public class DialogMuonSach extends javax.swing.JDialog {
 
 	private void btnMuonSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMuonSachActionPerformed
 		if (txtMaSinhVien.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ các thông tin trước khi tiến hành mượn sách",
-					"Thiếu dữ liệu", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Please type in all information required before issuing book",
+					"No data", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (lbTenSach.isVisible() == false || lbTenSinhVien.isVisible() == false) {
 			JOptionPane.showMessageDialog(null,
-					"Vui lòng kiểm tra tình trạng sách và kiểm tra thông tin sinh viên trước khi tiến hành mượn sách",
-					"Chưa kiểm tra thông tin", JOptionPane.INFORMATION_MESSAGE);
+					"Please check student and book availability before issuing book",
+					"Not verified yet", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (checkBorrowed(txtMaSinhVien.getText(), (int) numMaSach.getValue()) == false) {
-			JOptionPane.showMessageDialog(null, "Sinh viên đã mượn sách đã chọn! Không thể mượn thêm",
-					"Sách đã được mượn", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Unable to issue book! Student has already borrowed the book",
+					"Already issued", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 
 		if (txtGhiChu.getText().isEmpty()) {
-			MuonTraSachDAO.borrowBooks(new MuonSach(dataSV, dataSach, "Không có", 0));
+			MuonTraSachDAO.borrowBooks(new MuonSach(dataSV, dataSach, "None", 0));
 
 		} else {
 			MuonTraSachDAO.borrowBooks(new MuonSach(dataSV, dataSach, txtGhiChu.getText(), 0));
 		}
 
-		JOptionPane.showMessageDialog(null, "Đã mượn sách thành công", "Mượn sách", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Successfully issued the book", "Issued", JOptionPane.INFORMATION_MESSAGE);
 		this.dispose();
 	}// GEN-LAST:event_btnMuonSachActionPerformed
 

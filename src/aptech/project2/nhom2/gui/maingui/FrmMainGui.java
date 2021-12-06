@@ -217,7 +217,7 @@ public class FrmMainGui extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Số lượng");
+        jLabel10.setText("Quantity");
 
         numSoLuong.setModel(new javax.swing.SpinnerNumberModel(10, 1, null, 1));
 
