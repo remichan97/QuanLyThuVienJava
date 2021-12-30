@@ -10,6 +10,7 @@ public class MuonSach {
     private Date ngay_tra;
     private Date ngay_tra_thuc_te;
     private String ghi_chu;
+    private int le_phi_phat;
     private int status;
 
     public int getId() {
@@ -83,6 +84,14 @@ public class MuonSach {
         this.status = status;
     }
 
+    public int getLe_phi_phat() {
+        return le_phi_phat;
+    }
+
+    public void setLe_phi_phat(int le_phi_phat) {
+        this.le_phi_phat = le_phi_phat;
+    }
+
     public MuonSach() {
     }
 
@@ -90,6 +99,14 @@ public class MuonSach {
         this.id = id;
         this.tSach = tSach;
         this.ghi_chu = ghi_chu;
+        this.status = status;
+    }
+
+    public MuonSach(int id, ThongTinSach tSach, String ghi_chu, int le_phi_phat, int status) {
+        this.id = id;
+        this.tSach = tSach;
+        this.ghi_chu = ghi_chu;
+        this.le_phi_phat = le_phi_phat;
         this.status = status;
     }
 

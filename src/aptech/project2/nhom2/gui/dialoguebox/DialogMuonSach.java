@@ -250,8 +250,10 @@ public class DialogMuonSach extends javax.swing.JDialog {
 			if (count == 3) {
 				lbStudentStatus.setVisible(true);
 				btnMuonSach.setEnabled(false);
-			} else {
-				btnMuonSach.setEnabled(true);
+			} else if (checkBanned(txtMaSinhVien.getText())) {
+				btnMuonSach.setEnabled(false);
+				lbStudentStatus.setText("Sinh viên đã bị đình chỉ mượn sách tại thư viện");
+				lbStudentStatus.setVisible(true);
 			}
 		} else {
 			lbTenSinhVien.setVisible(false);
@@ -296,7 +298,7 @@ public class DialogMuonSach extends javax.swing.JDialog {
 			return;
 		}
 
-		if (lbTenSach.isVisible() == false || lbTenSinhVien.isVisible()) {
+		if (lbTenSach.isVisible() == false || lbTenSinhVien.isVisible() == false) {
 			JOptionPane.showMessageDialog(null,
 					"Vui lòng kiểm tra tình trạng sách và kiểm tra thông tin sinh viên trước khi tiến hành mượn sách",
 					"Chưa kiểm tra thông tin", JOptionPane.INFORMATION_MESSAGE);
@@ -408,5 +410,10 @@ public class DialogMuonSach extends javax.swing.JDialog {
 	private boolean checkBorrowed(String maSV, int id_sach) {
 		MuonSach check = muonSach.stream().filter(it -> it.getSinhVien().getId().equals(maSV)).findAny().orElse(null);
 		return check == null;
+	}
+
+	private boolean checkBanned(String maSV) {
+		MuonSach check = muonSach.stream().filter(it -> it.getSinhVien().getId().equals(maSV) && it.getStatus() == 3).findAny().orElse(null);
+		return check != null;
 	}
 }

@@ -5,6 +5,7 @@
  */
 package aptech.project2.nhom2.gui.dialoguebox;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -33,15 +34,20 @@ public class DialogTraSach extends javax.swing.JDialog {
     private DefaultTableModel listReturnedModel = new DefaultTableModel(new Object[][] {},
             new String[] { "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú" });
     private DefaultTableModel listReturnedLateModel = new DefaultTableModel(new Object[][] {}, new String[] {
-            "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Ghi chú" });
+            "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày trả", "Lệ phí", "Ghi chú" });
     private DefaultTableModel listLostModel = new DefaultTableModel(new Object[][] {},
             new String[] { "Mã sinh viên", "Mã sách mượn", "Ngày mượn", "Ngày hẹn trả", "Ngày mất", "Ghi chú" });
+    private DefaultTableModel listBannedModel = new DefaultTableModel(new Object[][] {},
+            new String[] { "Mã sinh viên", "Ghi chú" });
 
     private List<MuonSach> dataList;
     private List<MuonSach> issued;
     private List<MuonSach> returned;
     private List<MuonSach> returnedLate;
     private List<MuonSach> lost;
+    private List<MuonSach> banned;
+
+    private final int lateFineThreshold = 300000;
 
     public DialogTraSach(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -87,7 +93,7 @@ public class DialogTraSach extends javax.swing.JDialog {
         returnedLate.forEach(it -> {
             listReturnedLateModel.addRow(new Object[] { it.getSinhVien().getId(), it.gettSach().getId(),
                     DateUtil.convertDate(it.getNgay_muon()), DateUtil.convertDate(it.getNgay_tra()),
-                    DateUtil.convertDate(it.getNgay_tra_thuc_te()), it.getGhi_chu() });
+                    DateUtil.convertDate(it.getNgay_tra_thuc_te()), it.getLe_phi_phat(), it.getGhi_chu() });
         });
 
         lost = dataList.stream().filter(it -> it.getStatus() == 2).collect(Collectors.toList());
@@ -97,6 +103,13 @@ public class DialogTraSach extends javax.swing.JDialog {
             listLostModel.addRow(new Object[] { it.getSinhVien().getId(), it.gettSach().getId(),
                     DateUtil.convertDate(it.getNgay_muon()), DateUtil.convertDate(it.getNgay_tra()),
                     DateUtil.convertDate(it.getNgay_tra_thuc_te()), it.getGhi_chu(), });
+        });
+
+        banned = dataList.stream().filter(it -> it.getStatus() == 3).collect(Collectors.toList());
+
+        listBannedModel.setRowCount(0);
+        banned.forEach(it -> {
+            listBannedModel.addRow(new Object[] {it.getSinhVien().getId(), it.getGhi_chu()});
         });
 
     }
@@ -289,7 +302,7 @@ public class DialogTraSach extends javax.swing.JDialog {
 
         jLabel6.setText("Chọn dữ liệu cần xem");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang mượn", "Sách trả đúng hạn", "Trả muộn", "Báo mất" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang mượn", "Sách trả đúng hạn", "Trả muộn", "Báo mất", "Thu hồi quyền mượn sách" }));
         jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jComboBox1PropertyChange(evt);
@@ -372,15 +385,33 @@ public class DialogTraSach extends javax.swing.JDialog {
     }// GEN-LAST:event_btnBaoMatActionPerformed
 
     private void btnTraSachActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTraSachActionPerformed
+        MuonSach traSach;
+        
         int index = jTable1.getSelectedRow();
 
         int id = issued.get(index).getId();
 
         ThongTinSach data = new ThongTinSach(issued.get(index).gettSach().getId(), null);
 
-        MuonSach traSach = new MuonSach(id, data, txtGhiChu.getText(), 1);
+        if (java.util.Calendar.getInstance().getTime().before(issued.get(index).getNgay_tra())) {
+            traSach = new MuonSach(id, data, txtGhiChu.getText(), 1);
+            MuonTraSachDAO.returnBook(traSach);
+        } else {
+            int diff = DateUtil.compareDate(new java.util.Date(issued.get(index).getNgay_tra().getTime()), java.util.Calendar.getInstance().getTime());
+            if (diff <= 30) {
+                int fine = diff * 10000;
+                String note = "Sinh viên " + txtTenSinhVien.getText() + " trả muộn quyển " + txtTenSachMuon.getText() + " " + diff + " ngày, phạt " + fine + " đồng";
+                traSach = new MuonSach(id, data, note, fine, 1);
+                JOptionPane.showMessageDialog(null, note, "Trả sách muộn", JOptionPane.INFORMATION_MESSAGE);
+                MuonTraSachDAO.lateReturn(traSach);
+            } else {
+                String note = "Sinh viên " + txtTenSinhVien.getText() + " trả muộn quyển " + txtTenSachMuon.getText() + " quá 30 ngày, phạt" + lateFineThreshold + " đồng, và bị thu hồi quyền mượn sách tại thư viện";
+                traSach = new MuonSach(id, data, note, lateFineThreshold, 3);
+                JOptionPane.showMessageDialog(null, note, "Trả sách muộn", JOptionPane.INFORMATION_MESSAGE);
+                MuonTraSachDAO.lateReturn(traSach);
+            }
+        }
 
-        MuonTraSachDAO.returnBook(traSach);
         JOptionPane.showMessageDialog(null, "Đã trả sách thành công", "Trả sách", JOptionPane.INFORMATION_MESSAGE);
         loadData();
     }// GEN-LAST:event_btnTraSachActionPerformed
@@ -423,6 +454,10 @@ public class DialogTraSach extends javax.swing.JDialog {
             txtNgayHenTra.setText(DateUtil.convertDate(lost.get(index).getNgay_tra()));
             txtGhiChu.setText(lost.get(index).getGhi_chu());
             break;
+        case 4:
+            txtTenSinhVien.setText(banned.get(index).getSinhVien().getTen());
+            txtGhiChu.setText(banned.get(index).getGhi_chu());
+            break;
         }
 
         if (jComboBox1.getSelectedIndex() == 0) {
@@ -449,6 +484,11 @@ public class DialogTraSach extends javax.swing.JDialog {
             break;
         case 3:
             jTable1.setModel(listLostModel);
+
+            buttonStatus(false);
+            break;
+        case 4:
+            jTable1.setModel(listBannedModel);
 
             buttonStatus(false);
             break;

@@ -22,7 +22,7 @@ public class MuonTraSachDAO {
 
         try {
             stm = con.prepareStatement(
-                    "SELECT a.id, a.id_sinh_vien, c.ten ten_sinh_vien, a.id_sach, b.ten ten_sach_muon, a.ngay_muon, a.ngay_tra, a.ngay_tra_thuc_te, a.ghi_chu, a.status \n"
+                    "SELECT a.id, a.id_sinh_vien, c.ten ten_sinh_vien, a.id_sach, b.ten ten_sach_muon, a.ngay_muon, a.ngay_tra, a.ngay_tra_thuc_te, a.ghi_chu, a.status, a.le_phi_phat \n"
                             + "FROM muon_sach a \n" + "inner join thong_tin_sach b on a.id_sach = b.id \n"
                             + "inner join sinh_vien c on a.id_sinh_vien = c.id");
             rs = stm.executeQuery();
@@ -34,6 +34,7 @@ public class MuonTraSachDAO {
                 muonSach.setNgay_tra_thuc_te(rs.getDate("ngay_tra_thuc_te"));
                 muonSach.setGhi_chu(rs.getString("ghi_chu"));
                 muonSach.setStatus(rs.getInt("status"));
+                muonSach.setLe_phi_phat(rs.getInt("le_phi_phat"));
 
                 SinhVien sv = new SinhVien();
                 sv.setId(rs.getString("id_sinh_vien"));
@@ -97,9 +98,7 @@ public class MuonTraSachDAO {
             stm.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
             stm.setInt(2, traSach.getStatus());
             stm.setInt(3, traSach.getId());
-            stm.addBatch();
-
-
+            
             stm.executeUpdate();
 
             updateBook(traSach.gettSach().getId());
@@ -127,7 +126,30 @@ public class MuonTraSachDAO {
         }
     }
 
-    
+    public static void lateReturn(MuonSach traMuon) {
+        Connection con = DbConnect.open();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            String sql1 = "update muon_sach set ngay_tra_thuc_te = ?, status = ?, le_phi_phat = ?, ghi_chu = ? where id = ?";
+
+            stm = con.prepareStatement(sql1);
+            stm.setDate(1, java.sql.Date.valueOf(java.time.LocalDate.now()));
+            stm.setInt(2, traMuon.getStatus());
+            stm.setInt(3, traMuon.getLe_phi_phat());
+            stm.setString(4, traMuon.getGhi_chu());
+            stm.setInt(5, traMuon.getId());
+
+            stm.executeUpdate();
+
+            updateBook(traMuon.gettSach().getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbConnect.close(con, stm, rs);
+        }
+    }
 
     public static void updateBook(int idSach) {
         Connection con = DbConnect.open();
