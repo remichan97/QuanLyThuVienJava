@@ -5,7 +5,6 @@
  */
 package aptech.project2.nhom2.gui.dialoguebox;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -405,7 +404,7 @@ public class DialogTraSach extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, note, "Trả sách muộn", JOptionPane.INFORMATION_MESSAGE);
                 MuonTraSachDAO.lateReturn(traSach);
             } else {
-                String note = "Sinh viên " + txtTenSinhVien.getText() + " trả muộn quyển " + txtTenSachMuon.getText() + " quá 30 ngày, phạt" + lateFineThreshold + " đồng, và bị thu hồi quyền mượn sách tại thư viện";
+                String note = "Sinh viên " + txtTenSinhVien.getText() + " trả muộn quyển " + txtTenSachMuon.getText() + " quá 30 ngày, phạt " + lateFineThreshold + " đồng, và bị thu hồi quyền mượn sách tại thư viện";
                 traSach = new MuonSach(id, data, note, lateFineThreshold, 3);
                 JOptionPane.showMessageDialog(null, note, "Trả sách muộn", JOptionPane.INFORMATION_MESSAGE);
                 MuonTraSachDAO.lateReturn(traSach);
